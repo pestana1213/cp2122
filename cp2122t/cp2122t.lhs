@@ -900,9 +900,9 @@ bob   = undefined
 
 both :: Ord d => LTree d -> (d, d)
 both = cataLTree g
-g = either g1 g2
-g1 x = (x,x)
-g2 ((a,b),(c,d)) = (a+c,b+d)
+g = either g11 g12
+g11 x = (x,x)
+g12 ((a,b),(c,d)) = (a+c,b+d)
 
 \end{code}
 
@@ -929,13 +929,13 @@ hyloLTree3 f g = cataLTree3 f · anaLTree3 g
 Genes do hilomorfismo |sierpinski|:
 \begin{code}
 
-g1 = (singl 'either' (conc · (id * conc))) where conc' (l1,(l2,l3)) = l1++l2++l3
+g1 = (singl either (conc · (id * conc))) where conc' (l1,(l2,l3)) = l1++l2++l3
 
 g2 (t,0) = i1 t 
 g2 (((x,y),s),n+1) = i2((t1,t2),t3) where
-     t1 = (((x,y),s÷2),n)
-     t2 = (((x + s÷2,y),s÷2),n)
-     t3 = (((x,y +s÷2),s÷2),n)
+     t1 = (((x,y),s/2),n)
+     t2 = (((x + s/2,y),s/2),n)
+     t3 = (((x,y +s/2),s/2),n)
 \end{code}
 
 \subsection*{Problema 4}
