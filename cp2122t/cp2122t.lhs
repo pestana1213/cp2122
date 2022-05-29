@@ -151,15 +151,13 @@
 
 \begin{center}\large
 \begin{tabular}{ll}
-\textbf{Grupo} nr. & 99 (preencher)
+\textbf{Grupo} nr. & 51 
 \\\hline
-a11111 & Nome1 (preencher)
+a91640 & Beatriz Fernandes Oliveira
 \\
-a22222 & Nome2 (preencher)
+a87973 & João Ricardo Rodrigues Nogueira
 \\
-a33333 & Nome3 (preencher)
-\\
-a44444 & Nome4 (preencher, se aplicável, ou apagar)
+a90416 & Miguel André Carvalho Gonçalves 
 \end{tabular}
 \end{center}
 
@@ -203,7 +201,6 @@ import Control.Applicative hiding ((<|>))
 import System.Process
 import Data.Char
 import Probability hiding (scale)
-
 main = undefined
 \end{code}
 %endif
@@ -224,10 +221,8 @@ Esta, por sua vez, é o emparelhamento das seguintes funções mutuamente recurs
 \begin{code}
 q d 0 = 0
 q d (n+1) = q d n + (if x == 0 then 1 else 0) where x = c d n
-
 r d 0 = 0
 r d (n+1) = if x == 0 then 0 else 1 + r d n where x = c d n
-
 c d 0 = d
 c d (n+1) = if x == 0 then d else x-1 where x = c d n
 \end{code}
@@ -687,7 +682,6 @@ recordar o sistema:
 \begin{spec}
 fib 0 = 1
 fib(n+1) = f n
-
 f 0 = 1
 f (n+1) = fib n + f n
 \end{spec}
@@ -717,7 +711,6 @@ de $f\ x = a x^2 + b x + c$ derivam-se duas funções mutuamente recursivas:
 \begin{spec}
 f 0 = c
 f (n+1) = f n + k n
-
 k 0 = a + b
 k(n+1) = k n + 2 a
 \end{spec}
@@ -824,28 +817,19 @@ type Svg = String
 Funções básicas:
 \begin{code}
 type Bit = Int
-
 type Bin = [Bit]
-
 type Bit3 = (Bit,Bit,Bit)
-
 tobin = rtrim 5 . pad 5 . dec2bin
-
 frombin = bin2dec . rtrim 5
-
 bin2dec :: Bin -> Int
 bin2dec [a] = a
 bin2dec b   = bin2dec(init b) * 2 + last b
-
 rtrim n a = drop (length a - n) a
-
 dec2bin 0 = []
 dec2bin n = dec2bin m ++ [b] where (m,b) = (div n 2, mod n 2)
-
 pad n x = take m zeros ++ x where
    m = n-length x
    zeros = 0:zeros
-
 bflips = propagate bflip
 \end{code}
 Função que vota no bit mais frequente:
@@ -867,7 +851,6 @@ Para visualização abreviada de distribuições:
 \begin{code}
 consolidate :: Eq a => Dist a -> Dist a
 consolidate = D . filter q . map (id><sum) . collect . unD where q(a,p) = p > 0.001
-
 collect x = nub [ k |-> nub [ d' | (k',d') <- x , k'==k ] | (k,d) <- x ]
 \end{code}
 
@@ -887,9 +870,301 @@ simples e elegantes.
 
 \subsection*{Problema 1} \label{pg:P1}
 
-Apresentar cálculos aqui, se desejável acompanhados de diagramas, etc.
+Para resolver este problema, é necessário definir-mos as funções dadas no enunciado em pointfree.
+Comecemos, então, pela função q d.
+
+
+\begin{eqnarray*}
+     \start
+            |lcbr(
+                 (q d) 0 = 0
+          )(
+              (q d) n+1 = (q d) n + (if x == 0 then 1 else 0) where x = (c d) n
+          )|
+     %
+     \just\equiv{Def succ dada nas aulas}
+     %
+             |lcbr(
+                  (q d) 0 = 0
+          )(
+               (q d) (succ n) =  (q d) n + if (c d) n == 0 then 1 else 0
+          )|
+     %
+     \just\equiv{Def-const (74), $\forall \ x \  (c \ d) \ x |==| 0 \  \equiv \  \forall \ x \ (c \ d) \ x \ (|==| 0) \  \equiv \ \forall \ x \ (0 |==|) \ . \ (c \ d) \ x \ \equiv \ \forall \ x \ ((0 |==|) \ . \ (c \ d))$}
+     %
+             |lcbr(
+                  (q d) 0 = 0
+          )(
+               (q d) (succ n) =  (q d) n + if (((0 ==) . (c d))) n then const(1) n else const(0) n 
+          )|
+     %
+     \just\equiv{Def-comp (72), Def-cond (78)}
+     %
+             |lcbr(
+                  (q d) 0 = 0
+          )(
+               ((q d).succ) n =  (q d) n + ((0 ==) . (cd) ==> const(1), const(0)) n 
+          )|
+     %
+     \just\equiv{Def condicional de McCarthy (30), Def-const (74)}
+     %
+             |lcbr(
+                  (q d) . const(0) n = const(0) n
+          )(
+               ((q d) . succ ) n =  (q d) n + ((0 ==) . (cd) ==> const(1), const(0)) n 
+          )|
+     %
+     \just\equiv{Uncurry (84)}
+     %
+             |lcbr(
+                  (q d) . const(0) n = const(0) n 
+          )(
+               ((q d) . succ ) n  = uncurry (+) . ((q d) n , ((0 ==) . (cd) ==> const(1), const(0)) n ) 
+          )|
+     %
+     \just\equiv{Def-split (76)}
+     %
+             |lcbr(
+                  (q d) . const(0) n = const(0) n 
+          )(
+               ((q d) . succ) n  = uncurry (+)  . (split (q d) ((0 ==) . (cd) ==> const(1), const(0)))  n
+          )|
+     %
+     \just\equiv{Igualdade extensional (71)}
+     %
+             |lcbr(
+                  (q d) . const(0) = 0 
+          )(
+               ((q d) . succ) = uncurry(+) . (split (q d) ((0 ==) . (cd) ==> const(1), const(0))) 
+          )|
+     \qed
+\end{eqnarray*}
+
+Procederemos à obtenção de uma definição alternativa da função (r d).
+\begin{eqnarray*}
+     \start
+                 |lcbr(
+                    (r d) 0 = 0
+               )(
+                   (r d) (n+1) = if x == 0 then 0 else 1 + (r d) n where x = (c d) n
+               )|
+     %
+     \just\equiv{Def succ dada nas aulas}
+     %
+                  |lcbr(
+                       (r d) 0 = 0
+               )(
+                    (r d) (succ n) = if (c d) n == 0 then 0 else 1 + (r d) n
+               )|
+     %
+     \just\equiv{Def-const (74), $\forall \ x \  (c \ d) \ x |==| 0 \  \equiv \  \forall \ x \ (c \ d) \ x \ (|==| 0) \  \equiv \ \forall \ x \ (0 |==|) \ . \ (c \ d) \ x \ \equiv \ \forall \ x \ ((0 |==|) \ . \ (c \ d))$}
+     %
+                  |lcbr(
+                       (r d) . (const(0)) n = (const(0)) n
+               )(
+                    (r d) (succ n) =  if ((0 ==) . (c d)) n then const (0) n else const (1) n + (r d) n 
+               )|
+     %
+     \just\equiv{Uncurry (84), Def-comp (72)}
+     %
+                  |lcbr(
+                    (r d) . const(0) n = const(0) n
+               )(
+                    ((r d) . succ) n =  if ((0 ==) . (c d)) n then const (0) n else uncurry(+) . (const(1) n, (r d) n)
+               )|
+     %
+     \just\equiv{Def-split (76)}
+     %
+                  |lcbr(
+                    (r d) . const(0) n = const(0) n
+               )(
+                    ((r d) . succ) n =  if ((0 ==) . (c d)) n then const (0) n else uncurry(+) . (split (const (1)) (r d)) n
+                )|
+     %
+     \just\equiv{Def-cond (78)}
+     %
+                  |lcbr(
+                    (r d) . const(0) n = const(0) n
+               )(
+                    ((r d) . succ) n  = (((0 ==) . (c d)) ==> const (0), uncurry(+) . (split (const (1)) (r d)) ) n
+               )|
+     %
+     \just\equiv{Igualdade extensional (71)}
+     %
+                  |lcbr(
+                    (r d) . const(0) = const(0) 
+               )(
+                    ((r d) . succ) = (((0 ==) . (c d))  ==>  const (0), uncurry(+) . (split (const (1)) (r d)) ) 
+               )|
+     \qed
+\end{eqnarray*}
+     
+%format (cases3 (x)(y)(z)) = "\begin{lcbr}" x "\\" y "\\" z "\end{lcbr}"
+\begin{code}
+c d 0 = d
+c d (n+1) = if x == 0 then d else x-1 where x = c d n
+\end{code}
 
 \subsection*{Problema 2}
+
+Para obtermos a definição das funções alice e bob, é necessário resolvermos a seguinte equação:
+
+\begin{eqnarray*}
+     \start
+            |(cata (g))| = |(split (alice) (bob))|
+     %
+     \just\equiv{Universal-cata (45)}
+     %
+            g . F |(split (alice) (bob))| = |(split (alice) (bob))| . in
+     %
+     \just\equiv{Base-cata (49)}
+     %
+            g . B (id,|(split (alice) (bob))|) = |(split (alice) (bob))| . in
+     %
+     \just\equiv{Definição de g}
+     %
+           |(either (g11) (g12))|  . B (id,|(split (alice) (bob))|) = |(split (alice) (bob))| . in
+     %
+     \just\equiv{B(id,|(split (alice) (bob))|) = id + id |><| |(split (alice) (bob))|}
+     %
+           |(either (g11) (g12)) | . (id + id \times |(split (alice) (bob))|) = |(split (alice) (bob))| . in
+     %
+     \just\equiv{Absorção-+ (22)}
+     %
+           |(either (g11 . id) ((g12 . id) >< (split (alice) (bob))) )|= |(split (alice) (bob))| . in
+     %
+     \just\equiv{Natural-id (1)}
+     %
+           |(either (g11) (g12  >< (split (alice) (bob)) ) )|  = |(split (alice) (bob))| . in
+     %
+     \just\equiv{ Definição do in de Ltree : |(either (Leaf) (Fork))|}
+     %
+           |(either (g11) (g12 >< (split (alice) (bob)) ) )| = |(split (alice) (bob)) . (either (Leaf) (Fork))|
+     %
+     \just\equiv{Fusão-+ (20)}
+     %
+           |(either (g11) (g12 >< (split (alice) (bob)) ) )| = 
+           |(either ( (split (alice) (bob)) . Leaf) ( (split (alice) (bob)) . Fork) )|
+     %
+     \just\equiv{Def-x (10)}
+     %
+           |(either (g11) ((split (g12 . pi 1) ((split (alice) (bob)) . pi 2))))| = 
+           |(either ((split (alice) (bob)) . Leaf) ((split (alice) (bob)) . Fork))|
+     %
+     \just\equiv{Fusão-x (9)}
+     %
+           |(either (g11) ( (split (g12. pi 1) ( (split (alice . pi 2) (bob . pi 2)) ) ) ) )| = 
+           |(either ( (split (alice . Leaf) (bob . Leaf)) ) ((split (alice . Fork) (bob . Fork ))) )|
+     %
+     \just\equiv{Eq-+ (27)}
+     %
+               |lcbr(
+                    g11 = (split (alice . Leaf) (bob . Leaf))
+               )(
+                    (split (g12 . pi 1) ((split (alice . pi 2) (bob . pi 2)))) = (split (alice . Fork) (bob . Fork ))
+               )| 
+     %
+     \just\equiv{Eq-x (16)}
+     %
+               |cases3(
+                    g11 = (split (alice . Leaf) (bob . Leaf) ) 
+          )(
+               g12 . pi 1 = alice . Fork
+          )(
+               (split (alice . pi 2) (bob . pi 2)) = bob . Fork 
+          )|
+     %
+     \just\equiv{Universal-x (6)}
+     %
+               |cases3(
+                    lcbr(
+                         pi 1 . g11 = alice . Leaf 
+                    )(
+                         pi 2 . g11 = bob . Leaf 
+                    )
+          )(
+               g12 . pi 1 = alice . Fork
+          )(
+                    lcbr(
+                         pi 1 . bob . Fork = alice . pi 2
+                    )(
+                         pi 2 . bob . Fork = bob . pi 2
+                    )
+          )|
+     %
+     \just\equiv{Igualdade extensional (71)}
+     %
+               |cases3(
+                    lcbr(
+                         (pi 1 . g11) x = (alice . Leaf) x 
+                    )(
+                         (pi 2 . g11) x = (bob . Leaf) x 
+                    )
+          )(
+               (g12 . pi 1) (y,z) = (alice . Fork) (y,z)
+          )(
+               lcbr(
+                         (pi 1 . bob . Fork) (y,z) = (alice . pi 2) (y,z)
+               )(
+                         (pi 2 . bob . Fork) (y,z) = (bob . pi 2) (y,z)
+               )
+          )|
+     %
+     \just\equiv{Def-comp (72)}
+     %
+               |cases3(
+                    lcbr(
+                         pi 1 (g11 x) = alice (Leaf x)  
+               )(
+                         pi 2 (g11 x) = bob (Leaf x) 
+               )
+          )(
+               g12 (pi 1 (y,z)) = alice (Fork (y,z))
+          )(
+                    lcbr(
+                         pi 1 ((bob . Fork) (y,z)) = alice (pi 2 (y,z))
+               )(
+                         pi 2 ( (bob . Fork) (y,z)) = bob  (pi 2 (y,z))
+               )
+          )|
+     %
+     \just\equiv{Def-comp (72)}
+     %
+               |cases3(
+                    lcbr(
+                         pi 1 (g11 x) = alice (Leaf x)  
+               )(
+                    pi 2 (g11 x) = bob (Leaf x) 
+               )
+          )(
+               g12 (pi 1 (y,z)) = alice (Fork (y,z))
+          )(
+               lcbr(
+                    pi 1 (bob (Fork (y,z)))= alice (pi 2 (y,z))
+               )(
+                    pi 2 (bob (Fork (y,z))) = bob  (pi 2 (y,z))
+               )
+          )|
+     %
+     \just\equiv{Definição de g11}
+     %
+               |cases3(
+                    lcbr(
+                         pi 1 (x,x) = alice (Leaf x)  
+               )(
+                    pi 2 (x,x) = bob (Leaf x) 
+               )
+          )(
+               g12 (pi 1 (y,z)) = alice (Fork (y,z))
+          )(
+               lcbr(
+                    pi 1 (bob (Fork (y,z))) = alice (pi 2 (y,z))
+               )(
+                    pi 2 (bob (Fork (y,z))) = bob (pi 2 (y,z))
+               )
+          )|
+     \qed
+\end{eqnarray*}
 
 \begin{code}
 alice :: Ord c => LTree c -> c
@@ -903,7 +1178,6 @@ both = cataLTree g
 g = either g11 g12
 g11 x = (x,x)
 g12 ((a,b),(c,d)) = (a+c,b+d)
-
 \end{code}
 
 \subsection*{Problema 3}
@@ -911,9 +1185,51 @@ Biblioteca |LTree3|:
 
 \begin{code}
 inLTree3 = [Tri,Nodo]
+\end{code}
 
-outLTree3 (Tri t) = i1 t
-outLTree3 (Nodo a b c) =  i1 a b c
+Ora, sabendo que outLTree3 é o isomorfismo de inLTree3, temos então que outLTree3 . inLTree3 = id. Ou seja, a partir desta equação, conseguimos obter a definição de outLTree3.
+
+\begin{eqnarray*}
+     \start
+           outLTree3 |.| inLTree3 = id
+     %
+     \just\equiv{Definição de inLTree3 : |(either (Tri) (Nodo))|}
+     %
+          outLTree3 |.| |(either (Tri) (Nodo))| = id
+     %
+     \just\equiv{Fusão-+ (20)}
+     %
+          |(either (outLTree3 . Tri) (outLTree3 . Nodo))| = id
+     %
+     \just\equiv{Universal-+ (17)}
+     %
+             |lcbr( 
+               outLTree3 . Tri = id . i1
+          )(
+               outLTree3 . Nodo = id . i2
+          )|
+     %
+     \just\equiv{Natural-id (1), Igualdade extensional (71) considerando que x, t, y, z são LTree3}
+     %
+             |lcbr(
+               (outLTree3  .  Tri) x = i1 x
+          )(
+               (outLTree3  .  Nodo) t y z = i2 t y z
+          )|
+     %
+     \just\equiv{Def-comp (72)}
+     %
+          |lcbr(
+               outLTree3 (Tri x) = i1 x
+          )(
+               outLTree3 (Nodo t y z) = i2 t y z
+          )|
+     \qed
+\end{eqnarray*}
+
+\begin{code}
+outLTree3 (Tri x) = i1 x
+outLTree3 (Nodo t y z) =  i1 t y z
 
 baseLTree3 f g =  g + f * (f * f)
 
@@ -924,9 +1240,10 @@ cataLTree3 f = f · (recLTree3 (cataLTree3 f)) · outLTree3
 anaLTree3 f = inLTree3 · (recLTree3 (anaLTree3 f )) · f
 
 hyloLTree3 f g = cataLTree3 f · anaLTree3 g
-
 \end{code}
+
 Genes do hilomorfismo |sierpinski|:
+
 \begin{code}
 
 g1 = (singl either (conc · (id * conc))) where conc' (l1,(l2,l3)) = l1++l2++l3
