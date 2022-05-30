@@ -1167,17 +1167,6 @@ Para visualização abreviada de distribuições:
 %----------------- Soluções dos alunos -----------------------------------------%
 
 \section{Soluções dos alunos}\label{sec:resolucao}
-
-Os alunos devem colocar neste anexo\footnote{E apenas neste anexo,
-i.e, não podem alterar o resto do documento.} as suas soluções para os
-exercícios propostos, de acordo com o "layout" que se fornece. Não podem
-ser alterados os nomes ou tipos das funções dadas, mas podem ser adicionadas
-outras funções auxiliares que sejam necessárias, bem como 
-textos, inc.\ diagramas que expliquem como se chegou às soluções encontradas.
-
-Valoriza-se a escrita de \emph{pouco} código que corresponda a soluções
-simples e elegantes.
-
 \subsection*{Problema 1} \label{pg:P1}
 
 Para resolver este problema, é necessário definir-mos as funções dadas no enunciado em pointfree.
@@ -1194,19 +1183,15 @@ Comecemos, então, pela função q d.
      %
      \just\equiv{Def-const (74), $\forall \ x \  (c \ d) \ x \ensuremath{\equiv } 0 \  \equiv \  \forall \ x \ (c \ d) \ x \ (\ensuremath{\equiv } 0) \  \equiv \ \forall \ x \ (0 \ensuremath{\equiv }) \ . \ (c \ d) \ x \ \equiv \ \forall \ x \ ((0 \ensuremath{\equiv }) \ . \ (c \ d))$}
      %
-             \ensuremath{\begin{lcbr}(\Varid{q}\;\Varid{d})\;\mathrm{0}\mathrel{=}\mathrm{0}\\(\Varid{q}\;\Varid{d})\;(\succ \;\Varid{n})\mathrel{=}(\Varid{q}\;\Varid{d})\;\Varid{n}\mathbin{+}\mathbf{if}\;(((\mathrm{0}\equiv )\comp (\Varid{c}\;\Varid{d})))\;\Varid{n}\;\mathbf{then}\;\underline{\mathrm{1}}\;\Varid{n}\;\mathbf{else}\;\underline{\mathrm{0}}\;\Varid{n}\end{lcbr}}
+             \ensuremath{\begin{lcbr}(\Varid{q}\;\Varid{d})\;(\underline{\mathrm{0}}\;\Varid{n})\mathrel{=}\underline{\mathrm{0}}\;\Varid{n}\\(\Varid{q}\;\Varid{d})\;(\succ \;\Varid{n})\mathrel{=}(\Varid{q}\;\Varid{d})\;\Varid{n}\mathbin{+}\mathbf{if}\;(((\mathrm{0}\equiv )\comp (\Varid{c}\;\Varid{d})))\;\Varid{n}\;\mathbf{then}\;\underline{\mathrm{1}}\;\Varid{n}\;\mathbf{else}\;\underline{\mathrm{0}}\;\Varid{n}\end{lcbr}}
      %
      \just\equiv{Def-comp (72), Def-cond (78)}
-     %
-             \ensuremath{\begin{lcbr}(\Varid{q}\;\Varid{d})\;\mathrm{0}\mathrel{=}\mathrm{0}\\((\Varid{q}\;\Varid{d})\comp \succ )\;\Varid{n}\mathrel{=}(\Varid{q}\;\Varid{d})\;\Varid{n}\mathbin{+}((\mathrm{0}\equiv )\comp (\Varid{cd})\Rightarrow\underline{\mathrm{1}},\underline{\mathrm{0}})\;\Varid{n}\end{lcbr}}
-     %
-     \just\equiv{Def condicional de McCarthy (30), Def-const (74)}
      %
              \ensuremath{\begin{lcbr}(\Varid{q}\;\Varid{d})\comp \underline{\mathrm{0}}\;\Varid{n}\mathrel{=}\underline{\mathrm{0}}\;\Varid{n}\\((\Varid{q}\;\Varid{d})\comp \succ )\;\Varid{n}\mathrel{=}(\Varid{q}\;\Varid{d})\;\Varid{n}\mathbin{+}((\mathrm{0}\equiv )\comp (\Varid{cd})\Rightarrow\underline{\mathrm{1}},\underline{\mathrm{0}})\;\Varid{n}\end{lcbr}}
      %
      \just\equiv{Uncurry (84)}
      %
-             \ensuremath{\begin{lcbr}(\Varid{q}\;\Varid{d})\comp \underline{\mathrm{0}}\;\Varid{n}\mathrel{=}\underline{\mathrm{0}}\;\Varid{n}\\((\Varid{q}\;\Varid{d})\comp \succ )\;\Varid{n}\mathrel{=}\uncurry{(\mathbin{+})}\comp ((\Varid{q}\;\Varid{d})\;\Varid{n},((\mathrm{0}\equiv )\comp (\Varid{cd})\Rightarrow\underline{\mathrm{1}},\underline{\mathrm{0}})\;\Varid{n})\end{lcbr}}
+             \ensuremath{\begin{lcbr}(\Varid{q}\;\Varid{d})\comp \underline{\mathrm{0}}\;\Varid{n}\mathrel{=}\underline{\mathrm{0}}\;\Varid{n}\\((\Varid{q}\;\Varid{d})\comp \succ )\;\Varid{n}\mathrel{=}\uncurry{(\mathbin{+})}\;((\Varid{q}\;\Varid{d})\;\Varid{n},((\mathrm{0}\equiv )\comp (\Varid{cd})\Rightarrow\underline{\mathrm{1}},\underline{\mathrm{0}})\;\Varid{n})\end{lcbr}}
      %
      \just\equiv{Def-split (76)}
      %
@@ -1215,6 +1200,10 @@ Comecemos, então, pela função q d.
      \just\equiv{Igualdade extensional (71)}
      %
              \ensuremath{\begin{lcbr}(\Varid{q}\;\Varid{d})\comp \underline{\mathrm{0}}\mathrel{=}\mathrm{0}\\((\Varid{q}\;\Varid{d})\comp \succ )\mathrel{=}\uncurry{(\mathbin{+})}\comp \conj{\Varid{q}\;\Varid{d}}{(\mathrm{0}\equiv )\comp (\Varid{cd})\Rightarrow\underline{\mathrm{1}},\underline{\mathrm{0}}}\end{lcbr}}
+     %
+     \just\equiv{Def condicional de McCarthy (30)}
+     %
+               \ensuremath{\begin{lcbr}(\Varid{q}\;\Varid{d})\comp \underline{\mathrm{0}}\mathrel{=}\mathrm{0}\\((\Varid{q}\;\Varid{d})\comp \succ )\mathrel{=}\uncurry{(\mathbin{+})}\comp \conj{\Varid{q}\;\Varid{d}}{\alt{\underline{\mathrm{1}}}{\underline{\mathrm{0}}}\comp ((\mathrm{0}\equiv )\comp (\Varid{cd}))\mathbin{?}}\end{lcbr}}
      \qed
 \end{eqnarray*}
 
@@ -1229,11 +1218,11 @@ Procederemos à obtenção de uma definição alternativa da função (r d).
      %
      \just\equiv{Def-const (74), $\forall \ x \  (c \ d) \ x \ensuremath{\equiv } 0 \  \equiv \  \forall \ x \ (c \ d) \ x \ (\ensuremath{\equiv } 0) \  \equiv \ \forall \ x \ (0 \ensuremath{\equiv }) \ . \ (c \ d) \ x \ \equiv \ \forall \ x \ ((0 \ensuremath{\equiv }) \ . \ (c \ d))$}
      %
-                  \ensuremath{\begin{lcbr}(\Varid{r}\;\Varid{d})\comp \underline{\mathrm{0}}\;\Varid{n}\mathrel{=}\underline{\mathrm{0}}\;\Varid{n}\\(\Varid{r}\;\Varid{d})\;(\succ \;\Varid{n})\mathrel{=}\mathbf{if}\;((\mathrm{0}\equiv )\comp (\Varid{c}\;\Varid{d}))\;\Varid{n}\;\mathbf{then}\;\underline{\mathrm{0}}\;\Varid{n}\;\mathbf{else}\;\underline{\mathrm{1}}\;\Varid{n}\mathbin{+}(\Varid{r}\;\Varid{d})\;\Varid{n}\end{lcbr}}
+                  \ensuremath{\begin{lcbr}(\Varid{r}\;\Varid{d})\;(\underline{\mathrm{0}}\;\Varid{n})\mathrel{=}\underline{\mathrm{0}}\;\Varid{n}\\(\Varid{r}\;\Varid{d})\;(\succ \;\Varid{n})\mathrel{=}\mathbf{if}\;((\mathrm{0}\equiv )\comp (\Varid{c}\;\Varid{d}))\;\Varid{n}\;\mathbf{then}\;\underline{\mathrm{0}}\;\Varid{n}\;\mathbf{else}\;\underline{\mathrm{1}}\;\Varid{n}\mathbin{+}(\Varid{r}\;\Varid{d})\;\Varid{n}\end{lcbr}}
      %
      \just\equiv{Uncurry (84), Def-comp (72)}
      %
-                  \ensuremath{\begin{lcbr}(\Varid{r}\;\Varid{d})\comp \underline{\mathrm{0}}\;\Varid{n}\mathrel{=}\underline{\mathrm{0}}\;\Varid{n}\\((\Varid{r}\;\Varid{d})\comp \succ )\;\Varid{n}\mathrel{=}\mathbf{if}\;((\mathrm{0}\equiv )\comp (\Varid{c}\;\Varid{d}))\;\Varid{n}\;\mathbf{then}\;\underline{\mathrm{0}}\;\Varid{n}\;\mathbf{else}\;\uncurry{(\mathbin{+})}\comp (\underline{\mathrm{1}}\;\Varid{n},(\Varid{r}\;\Varid{d})\;\Varid{n})\end{lcbr}}
+                  \ensuremath{\begin{lcbr}(\Varid{r}\;\Varid{d})\comp \underline{\mathrm{0}}\;\Varid{n}\mathrel{=}\underline{\mathrm{0}}\;\Varid{n}\\((\Varid{r}\;\Varid{d})\comp \succ )\;\Varid{n}\mathrel{=}\mathbf{if}\;((\mathrm{0}\equiv )\comp (\Varid{c}\;\Varid{d}))\;\Varid{n}\;\mathbf{then}\;\underline{\mathrm{0}}\;\Varid{n}\;\mathbf{else}\;\uncurry{(\mathbin{+})}\;(\underline{\mathrm{1}}\;\Varid{n},(\Varid{r}\;\Varid{d})\;\Varid{n})\end{lcbr}}
      %
      \just\equiv{Def-split (76)}
      %
@@ -1246,18 +1235,49 @@ Procederemos à obtenção de uma definição alternativa da função (r d).
      \just\equiv{Igualdade extensional (71)}
      %
                   \ensuremath{\begin{lcbr}(\Varid{r}\;\Varid{d})\comp \underline{\mathrm{0}}\mathrel{=}\underline{\mathrm{0}}\\((\Varid{r}\;\Varid{d})\comp \succ )\mathrel{=}(((\mathrm{0}\equiv )\comp (\Varid{c}\;\Varid{d}))\Rightarrow\underline{\mathrm{0}},\uncurry{(\mathbin{+})}\comp \conj{\underline{\mathrm{1}}}{\Varid{r}\;\Varid{d}})\end{lcbr}}
+     %
+     \just\equiv{Def condicional de McCarthy (30)}
+     %
+               \ensuremath{\begin{lcbr}(\Varid{r}\;\Varid{d})\comp \underline{\mathrm{0}}\mathrel{=}\mathrm{0}\\((\Varid{r}\;\Varid{d})\comp \succ )\mathrel{=}\alt{\underline{\mathrm{0}}}{\uncurry{(\mathbin{+})}\comp \conj{\underline{\mathrm{1}}}{\Varid{r}\;\Varid{d}}}\comp ((\mathrm{0}\equiv )\comp (\Varid{c}\;\Varid{d}))\mathbin{?}\end{lcbr}}
      \qed
 \end{eqnarray*}
-     
-\begin{hscode}\SaveRestoreHook
-\column{B}{@{}>{\hspre}l<{\hspost}@{}}%
-\column{E}{@{}>{\hspre}l<{\hspost}@{}}%
-\>[B]{}\Varid{c}\;\Varid{d}\;\mathrm{0}\mathrel{=}\Varid{d}{}\<[E]%
-\\
-\>[B]{}\Varid{c}\;\Varid{d}\;(\Varid{n}\mathbin{+}\mathrm{1})\mathrel{=}\mathbf{if}\;\Varid{x}\equiv \mathrm{0}\;\mathbf{then}\;\Varid{d}\;\mathbf{else}\;\Varid{x}\mathbin{-}\mathrm{1}\;\mathbf{where}\;\Varid{x}\mathrel{=}\Varid{c}\;\Varid{d}\;\Varid{n}{}\<[E]%
-\ColumnHook
-\end{hscode}\resethooks
 
+Finalmente, aplicaremos o mesmo processo para a função (c d).
+
+\begin{eqnarray*}
+     \start
+                 \ensuremath{\begin{lcbr}(\Varid{c}\;\Varid{d})\;\mathrm{0}\mathrel{=}\Varid{d}\\(\Varid{c}\;\Varid{d})\;(\Varid{n}\mathbin{+}\mathrm{1})\mathrel{=}\mathbf{if}\;\Varid{x}\equiv \mathrm{0}\;\mathbf{then}\;\Varid{d}\;\mathbf{else}\;\Varid{x}\mathbin{-}\mathrm{1}\;\mathbf{where}\;\Varid{x}\mathrel{=}(\Varid{c}\;\Varid{d})\;\Varid{n}\end{lcbr}}
+     %
+     \just\equiv{Def succ dada nas aulas}
+     %
+                  \ensuremath{\begin{lcbr}(\Varid{c}\;\Varid{d})\;\mathrm{0}\mathrel{=}\Varid{d}\\(\Varid{c}\;\Varid{d})\;(\succ \;\Varid{n})\mathrel{=}\mathbf{if}\;(\Varid{c}\;\Varid{d})\;\Varid{n}\equiv \mathrm{0}\;\mathbf{then}\;\Varid{d}\;\mathbf{else}\;(\Varid{c}\;\Varid{d})\;\Varid{n}\mathbin{-}\mathrm{1}\end{lcbr}}
+     %
+     \just\equiv{Def-const (74), $\forall \ x \  (c \ d) \ x \ensuremath{\equiv } 0 \  \equiv \  \forall \ x \ (c \ d) \ x \ (\ensuremath{\equiv } 0) \  \equiv \ \forall \ x \ (0 \ensuremath{\equiv }) \ . \ (c \ d) \ x \ \equiv \ \forall \ x \ ((0 \ensuremath{\equiv }) \ . \ (c \ d))$}
+     %
+                  \ensuremath{\begin{lcbr}(\Varid{c}\;\Varid{d})\;(\underline{\mathrm{0}}\;\Varid{n})\mathrel{=}\underline{\Varid{d}}\;\Varid{n}\\(\Varid{c}\;\Varid{d})\;(\succ \;\Varid{n})\mathrel{=}\mathbf{if}\;((\mathrm{0}\equiv )\comp (\Varid{c}\;\Varid{d}))\;\Varid{n}\;\mathbf{then}\;\underline{\Varid{d}}\;\Varid{n}\;\mathbf{else}\;(\Varid{c}\;\Varid{d})\;\Varid{n}\mathbin{-}(\underline{\mathrm{1}}\;\Varid{n})\end{lcbr}}
+     %
+     \just\equiv{Uncurry (84), Def-comp (72)}
+     %
+                  \ensuremath{\begin{lcbr}(\Varid{c}\;\Varid{d})\comp \underline{\mathrm{0}}\;\Varid{n}\mathrel{=}\underline{\Varid{d}}\;\Varid{n}\\((\Varid{c}\;\Varid{d})\comp \succ )\;\Varid{n}\mathrel{=}\mathbf{if}\;((\mathrm{0}\equiv )\comp (\Varid{c}\;\Varid{d}))\;\Varid{n}\;\mathbf{then}\;\underline{\Varid{d}}\;\Varid{n}\;\mathbf{else}\;\uncurry{(\mathbin{-})}\;((\Varid{c}\;\Varid{d})\;\Varid{n},\underline{\mathrm{1}}\;\Varid{n})\end{lcbr}}
+     %
+     \just\equiv{Def-split (76)}
+     %
+                  \ensuremath{\begin{lcbr}(\Varid{c}\;\Varid{d})\comp \underline{\mathrm{0}}\;\Varid{n}\mathrel{=}\underline{\Varid{d}}\;\Varid{n}\\((\Varid{c}\;\Varid{d})\comp \succ )\;\Varid{n}\mathrel{=}\mathbf{if}\;((\mathrm{0}\equiv )\comp (\Varid{c}\;\Varid{d}))\;\Varid{n}\;\mathbf{then}\;\underline{\Varid{d}}\;\Varid{n}\;\mathbf{else}\;\uncurry{(\mathbin{-})}\comp \conj{(\Varid{c}\;\Varid{d})}{\underline{\mathrm{1}}}\;\Varid{n}\end{lcbr}}
+     %
+     \just\equiv{Def-cond (78)}
+     %
+                  \ensuremath{\begin{lcbr}(\Varid{c}\;\Varid{d})\comp \underline{\mathrm{0}}\;\Varid{n}\mathrel{=}\underline{\Varid{d}}\;\Varid{n}\\((\Varid{r}\;\Varid{d})\comp \succ )\;\Varid{n}\mathrel{=}(((\mathrm{0}\equiv )\comp (\Varid{c}\;\Varid{d}))\Rightarrow\underline{\Varid{d}},\uncurry{(\mathbin{-})}\comp \conj{(\Varid{c}\;\Varid{d})}{\underline{\mathrm{1}}})\;\Varid{n}\end{lcbr}}
+     %
+     \just\equiv{Igualdade extensional (71)}
+     %
+                  \ensuremath{\begin{lcbr}(\Varid{c}\;\Varid{d})\comp \underline{\mathrm{0}}\mathrel{=}\underline{\Varid{d}}\\((\Varid{c}\;\Varid{d})\comp \succ )\mathrel{=}(((\mathrm{0}\equiv )\comp (\Varid{c}\;\Varid{d}))\Rightarrow\underline{\Varid{d}},\uncurry{(\mathbin{-})}\comp \conj{(\Varid{c}\;\Varid{d})}{\underline{\mathrm{1}}})\end{lcbr}}
+     %
+     \just\equiv{Def condicional de McCarthy (30)}
+     %
+               \ensuremath{\begin{lcbr}(\Varid{c}\;\Varid{d})\comp \underline{\mathrm{0}}\mathrel{=}\mathrm{0}\\((\Varid{c}\;\Varid{d})\comp \succ )\mathrel{=}\alt{\underline{\Varid{d}}}{\uncurry{(\mathbin{-})}\comp \conj{(\Varid{c}\;\Varid{d})}{\underline{\mathrm{1}}}}\comp ((\mathrm{0}\equiv )\comp (\Varid{c}\;\Varid{d}))\mathbin{?}\end{lcbr}}
+     \qed
+\end{eqnarray*}
+\newpage
 \subsection*{Problema 2}
 
 Para obtermos a definição das funções alice e bob, é necessário resolvermos a seguinte equação:
@@ -1290,52 +1310,70 @@ Para obtermos a definição das funções alice e bob, é necessário resolvermo
      %
            \ensuremath{\alt{\Varid{g11}}{\Varid{g12}\times\conj{\Varid{alice}}{\Varid{bob}}}}  = \ensuremath{\conj{\Varid{alice}}{\Varid{bob}}} . in
      %
+     \just\equiv{ Fusão-$\times$ (9) }
+     %
+           \ensuremath{\alt{\Varid{g11}}{\Varid{g12}\times\conj{\Varid{alice}}{\Varid{bob}}}} = \ensuremath{\conj{\Varid{alice}\comp \mathbf{in}\;}{\Varid{bob}\comp \mathbf{in}\;}}
+     %
      \just\equiv{ Definição do in de Ltree : \ensuremath{\alt{\Conid{Leaf}}{\Conid{Fork}}}}
      %
-           \ensuremath{\alt{\Varid{g11}}{\Varid{g12}\times\conj{\Varid{alice}}{\Varid{bob}}}} = \ensuremath{\conj{\Varid{alice}}{\Varid{bob}}\comp \alt{\Conid{Leaf}}{\Conid{Fork}}}
+           \ensuremath{\alt{\Varid{g11}}{\Varid{g12}\times\conj{\Varid{alice}}{\Varid{bob}}}} = \ensuremath{\conj{\Varid{alice}\comp \alt{\Conid{Leaf}}{\Conid{Fork}}}{\Varid{bob}\comp \alt{\Conid{Leaf}}{\Conid{Fork}}}}
      %
      \just\equiv{Fusão-+ (20)}
      %
            \ensuremath{\alt{\Varid{g11}}{\Varid{g12}\times\conj{\Varid{alice}}{\Varid{bob}}}} = 
-           \ensuremath{\alt{\conj{\Varid{alice}}{\Varid{bob}}\comp \Conid{Leaf}}{\conj{\Varid{alice}}{\Varid{bob}}\comp \Conid{Fork}}}
+           \ensuremath{\conj{\alt{\Varid{alice}\comp \Conid{Leaf}}{\Varid{alice}\comp \Conid{Fork}}}{\alt{\Varid{bob}\comp \Conid{Leaf}}{\Varid{bob}\comp \Conid{Fork}}}}
      %
-     \just\equiv{Def-x (10)}
+     \just\equiv{Lei da Troca (28)}
      %
-           \ensuremath{\alt{\Varid{g11}}{(\conj{\Varid{g12}\comp \pi \;\mathrm{1}}{\conj{\Varid{alice}}{\Varid{bob}}\comp \pi \;\mathrm{2}})}} = 
-           \ensuremath{\alt{\conj{\Varid{alice}}{\Varid{bob}}\comp \Conid{Leaf}}{\conj{\Varid{alice}}{\Varid{bob}}\comp \Conid{Fork}}}
+            \ensuremath{\alt{\Varid{g11}}{\Varid{g12}\times\conj{\Varid{alice}}{\Varid{bob}}}} = 
+            \ensuremath{\alt{\conj{\Varid{alice}\comp \Conid{Leaf}}{\Varid{alice}\comp \Conid{Fork}}}{\conj{\Varid{bob}\comp \Conid{Leaf}}{\Varid{bob}\comp \Conid{Fork}}}}
      %
-     \just\equiv{Fusão-x (9)}
+     \just\equiv{Def - $\times$ (10)}
      %
-           \ensuremath{\alt{\Varid{g11}}{(\conj{\Varid{g12}\comp \pi \;\mathrm{1}}{(\conj{\Varid{alice}\comp \pi \;\mathrm{2}}{\Varid{bob}\comp \pi \;\mathrm{2}})})}} = 
-           \ensuremath{\alt{(\conj{\Varid{alice}\comp \Conid{Leaf}}{\Varid{bob}\comp \Conid{Leaf}})}{(\conj{\Varid{alice}\comp \Conid{Fork}}{\Varid{bob}\comp \Conid{Fork}})}}
+            \ensuremath{\alt{\Varid{g11}}{\conj{\Varid{g12}\comp \p1}{\conj{\Varid{alice}}{\Varid{bob}}\comp \p2}}} = 
+            \ensuremath{\alt{\conj{\Varid{alice}\comp \Conid{Leaf}}{\Varid{alice}\comp \Conid{Fork}}}{\conj{\Varid{bob}\comp \Conid{Leaf}}{\Varid{bob}\comp \Conid{Fork}}}}
      %
+      %
+      \just\equiv{Fusão- $\times$ (10)}
+      %
+             \ensuremath{\alt{\Varid{g11}}{\conj{\Varid{g12}\comp \p1}{\conj{\Varid{alice}\comp \p2}{\Varid{bob}\comp \p2}}}} = 
+             \ensuremath{\alt{\conj{\Varid{alice}\comp \Conid{Leaf}}{\Varid{alice}\comp \Conid{Fork}}}{\conj{\Varid{bob}\comp \Conid{Leaf}}{\Varid{bob}\comp \Conid{Fork}}}}
+      %
      \just\equiv{Eq-+ (27)}
      %
-               \ensuremath{\begin{lcbr}\Varid{g11}\mathrel{=}\conj{\Varid{alice}\comp \Conid{Leaf}}{\Varid{bob}\comp \Conid{Leaf}}\\\conj{\Varid{g12}\comp \pi \;\mathrm{1}}{(\conj{\Varid{alice}\comp \pi \;\mathrm{2}}{\Varid{bob}\comp \pi \;\mathrm{2}})}\mathrel{=}\conj{\Varid{alice}\comp \Conid{Fork}}{\Varid{bob}\comp \Conid{Fork}}\end{lcbr}} 
+            \ensuremath{\begin{lcbr}\Varid{g11}\mathrel{=}\conj{\Varid{alice}\comp \Conid{Leaf}}{\Varid{alice}\comp \Conid{Fork}}\\\conj{\Varid{g12}\comp \p1}{\conj{\Varid{alice}\comp \p2}{\Varid{bob}\comp \p2}}\mathrel{=}\conj{\Varid{bob}\comp \Conid{Leaf}}{\Varid{bob}\comp \Conid{Fork}}\end{lcbr}} 
      %
      \just\equiv{Eq-x (16)}
      %
-               \ensuremath{\begin{lcbr}\Varid{g11}\mathrel{=}\conj{\Varid{alice}\comp \Conid{Leaf}}{\Varid{bob}\comp \Conid{Leaf}}\\\Varid{g12}\comp \pi \;\mathrm{1}\mathrel{=}\Varid{alice}\comp \Conid{Fork}\\\conj{\Varid{alice}\comp \pi \;\mathrm{2}}{\Varid{bob}\comp \pi \;\mathrm{2}}\mathrel{=}\Varid{bob}\comp \Conid{Fork}\end{lcbr}}
+               \ensuremath{\begin{lcbr}\Varid{g11}\mathrel{=}\conj{\Varid{alice}\comp \Conid{Leaf}}{\Varid{bob}\comp \Conid{Leaf}}\\\Varid{g12}\comp \p1\mathrel{=}\Varid{bob}\comp \Conid{Leaf}\\\conj{\Varid{alice}\comp \p2}{\Varid{bob}\comp \p2}\mathrel{=}\Varid{bob}\comp \Conid{Fork}\end{lcbr}}
      %
-     \just\equiv{Universal-x (6)}
+     \just\equiv{Universal-x (6) aplicada no primeiro e no último ramo, sendo que neste consideramos k := bob . Fork}
      %
-               \ensuremath{\begin{lcbr}\begin{lcbr}\pi \;\mathrm{1}\comp \Varid{g11}\mathrel{=}\Varid{alice}\comp \Conid{Leaf}\\\pi \;\mathrm{2}\comp \Varid{g11}\mathrel{=}\Varid{bob}\comp \Conid{Leaf}\end{lcbr}\\\Varid{g12}\comp \pi \;\mathrm{1}\mathrel{=}\Varid{alice}\comp \Conid{Fork}\\\begin{lcbr}\pi \;\mathrm{1}\comp \Varid{bob}\comp \Conid{Fork}\mathrel{=}\Varid{alice}\comp \pi \;\mathrm{2}\\\pi \;\mathrm{2}\comp \Varid{bob}\comp \Conid{Fork}\mathrel{=}\Varid{bob}\comp \pi \;\mathrm{2}\end{lcbr}\end{lcbr}}
+               \ensuremath{\begin{lcbr}\begin{lcbr}\p1\comp \Varid{g11}\mathrel{=}\Varid{alice}\comp \Conid{Leaf}\\\p2\comp \Varid{g11}\mathrel{=}\Varid{bob}\comp \Conid{Leaf}\end{lcbr}\\\Varid{g12}\comp \p1\mathrel{=}\Varid{bob}\comp \Conid{Leaf}\\\begin{lcbr}\p1\comp \Varid{bob}\comp \Conid{Fork}\mathrel{=}\Varid{alice}\comp \p2\\\p2\comp \Varid{bob}\comp \Conid{Fork}\mathrel{=}\Varid{bob}\comp \p2\end{lcbr}\end{lcbr}}
      %
-     \just\equiv{Igualdade extensional (71)}
+     \just\equiv{Igualdade extensional (71) }
      %
-               \ensuremath{\begin{lcbr}\begin{lcbr}(\pi \;\mathrm{1}\comp \Varid{g11})\;\Varid{x}\mathrel{=}(\Varid{alice}\comp \Conid{Leaf})\;\Varid{x}\\(\pi \;\mathrm{2}\comp \Varid{g11})\;\Varid{x}\mathrel{=}(\Varid{bob}\comp \Conid{Leaf})\;\Varid{x}\end{lcbr}\\(\Varid{g12}\comp \pi \;\mathrm{1})\;(\Varid{y},\Varid{z})\mathrel{=}(\Varid{alice}\comp \Conid{Fork})\;(\Varid{y},\Varid{z})\\\begin{lcbr}(\pi \;\mathrm{1}\comp \Varid{bob}\comp \Conid{Fork})\;(\Varid{y},\Varid{z})\mathrel{=}(\Varid{alice}\comp \pi \;\mathrm{2})\;(\Varid{y},\Varid{z})\\(\pi \;\mathrm{2}\comp \Varid{bob}\comp \Conid{Fork})\;(\Varid{y},\Varid{z})\mathrel{=}(\Varid{bob}\comp \pi \;\mathrm{2})\;(\Varid{y},\Varid{z})\end{lcbr}\end{lcbr}}
+               \ensuremath{\begin{lcbr}\begin{lcbr}(\p1\comp \Varid{g11})\;\Varid{x}\mathrel{=}(\Varid{alice}\comp \Conid{Leaf})\;\Varid{x}\\(\p2\comp \Varid{g11})\;\Varid{x}\mathrel{=}(\Varid{bob}\comp \Conid{Leaf})\;\Varid{x}\end{lcbr}\\(\Varid{g12}\comp \p1)\;\Varid{x}\mathrel{=}(\Varid{bob}\comp \Conid{Leaf})\;\Varid{x}\\\begin{lcbr}(\p1\comp \Varid{bob}\comp \Conid{Fork})\;\Varid{x}\mathrel{=}(\Varid{alice}\comp \p2)\;\Varid{x}\\(\p2\comp \Varid{bob}\comp \Conid{Fork})\;\Varid{x}\mathrel{=}(\Varid{bob}\comp \p2)\;\Varid{x}\end{lcbr}\end{lcbr}}
      %
-     \just\equiv{Def-comp (72)}
+     \just\equiv{Def-comp (72) }
      %
-               \ensuremath{\begin{lcbr}\begin{lcbr}\pi \;\mathrm{1}\;(\Varid{g11}\;\Varid{x})\mathrel{=}\Varid{alice}\;(\Conid{Leaf}\;\Varid{x})\\\pi \;\mathrm{2}\;(\Varid{g11}\;\Varid{x})\mathrel{=}\Varid{bob}\;(\Conid{Leaf}\;\Varid{x})\end{lcbr}\\\Varid{g12}\;(\pi \;\mathrm{1}\;(\Varid{y},\Varid{z}))\mathrel{=}\Varid{alice}\;(\Conid{Fork}\;(\Varid{y},\Varid{z}))\\\begin{lcbr}\pi \;\mathrm{1}\;((\Varid{bob}\comp \Conid{Fork})\;(\Varid{y},\Varid{z}))\mathrel{=}\Varid{alice}\;(\pi \;\mathrm{2}\;(\Varid{y},\Varid{z}))\\\pi \;\mathrm{2}\;((\Varid{bob}\comp \Conid{Fork})\;(\Varid{y},\Varid{z}))\mathrel{=}\Varid{bob}\;(\pi \;\mathrm{2}\;(\Varid{y},\Varid{z}))\end{lcbr}\end{lcbr}}
+               \ensuremath{\begin{lcbr}\begin{lcbr}\p1\;(\Varid{g11}\;\Varid{x})\mathrel{=}\Varid{alice}\;(\Conid{Leaf}\;\Varid{x})\\\p2\;(\Varid{g11}\;\Varid{x})\mathrel{=}\Varid{bob}\;(\Conid{Leaf}\;\Varid{x})\end{lcbr}\\\Varid{g12}\;(\p1\;\Varid{x})\mathrel{=}\Varid{bob}\;(\Conid{Leaf}\;\Varid{x})\\\begin{lcbr}\p1\;(\Varid{bob}\comp \Conid{Fork})\;\Varid{x}\mathrel{=}\Varid{alice}\;(\p2\;\Varid{x})\\\p2\;(\Varid{bob}\comp \Conid{Fork})\;\Varid{x}\mathrel{=}\Varid{bob}\;(\p2\;\Varid{x})\end{lcbr}\end{lcbr}}
      %
-     \just\equiv{Def-comp (72)}
+     \just\equiv{Def-comp (72) }
      %
-               \ensuremath{\begin{lcbr}\begin{lcbr}\pi \;\mathrm{1}\;(\Varid{g11}\;\Varid{x})\mathrel{=}\Varid{alice}\;(\Conid{Leaf}\;\Varid{x})\\\pi \;\mathrm{2}\;(\Varid{g11}\;\Varid{x})\mathrel{=}\Varid{bob}\;(\Conid{Leaf}\;\Varid{x})\end{lcbr}\\\Varid{g12}\;(\pi \;\mathrm{1}\;(\Varid{y},\Varid{z}))\mathrel{=}\Varid{alice}\;(\Conid{Fork}\;(\Varid{y},\Varid{z}))\\\begin{lcbr}\pi \;\mathrm{1}\;(\Varid{bob}\;(\Conid{Fork}\;(\Varid{y},\Varid{z})))\mathrel{=}\Varid{alice}\;(\pi \;\mathrm{2}\;(\Varid{y},\Varid{z}))\\\pi \;\mathrm{2}\;(\Varid{bob}\;(\Conid{Fork}\;(\Varid{y},\Varid{z})))\mathrel{=}\Varid{bob}\;(\pi \;\mathrm{2}\;(\Varid{y},\Varid{z}))\end{lcbr}\end{lcbr}}
+               \ensuremath{\begin{lcbr}\begin{lcbr}\p1\;(\Varid{g11}\;\Varid{x})\mathrel{=}\Varid{alice}\;(\Conid{Leaf}\;\Varid{x})\\\p2\;(\Varid{g11}\;\Varid{x})\mathrel{=}\Varid{bob}\;(\Conid{Leaf}\;\Varid{x})\end{lcbr}\\\Varid{g12}\;(\p1\;\Varid{x})\mathrel{=}\Varid{bob}\;(\Conid{Leaf}\;\Varid{x})\\\begin{lcbr}\p1\;(\Varid{bob}\;(\Conid{Fork}\;\Varid{x}))\mathrel{=}\Varid{alice}\;(\p2\;\Varid{x})\\\p2\;(\Varid{bob}\;(\Conid{Fork}\;\Varid{x}))\mathrel{=}\Varid{bob}\;(\p2\;\Varid{x})\end{lcbr}\end{lcbr}}
      %
      \just\equiv{Definição de g11}
      %
-               \ensuremath{\begin{lcbr}\begin{lcbr}\pi \;\mathrm{1}\;(\Varid{x},\Varid{x})\mathrel{=}\Varid{alice}\;(\Conid{Leaf}\;\Varid{x})\\\pi \;\mathrm{2}\;(\Varid{x},\Varid{x})\mathrel{=}\Varid{bob}\;(\Conid{Leaf}\;\Varid{x})\end{lcbr}\\\Varid{g12}\;(\pi \;\mathrm{1}\;(\Varid{y},\Varid{z}))\mathrel{=}\Varid{alice}\;(\Conid{Fork}\;(\Varid{y},\Varid{z}))\\\begin{lcbr}\pi \;\mathrm{1}\;(\Varid{bob}\;(\Conid{Fork}\;(\Varid{y},\Varid{z})))\mathrel{=}\Varid{alice}\;(\pi \;\mathrm{2}\;(\Varid{y},\Varid{z}))\\\pi \;\mathrm{2}\;(\Varid{bob}\;(\Conid{Fork}\;(\Varid{y},\Varid{z})))\mathrel{=}\Varid{bob}\;(\pi \;\mathrm{2}\;(\Varid{y},\Varid{z}))\end{lcbr}\end{lcbr}}
+               \ensuremath{\begin{lcbr}\begin{lcbr}\p1\;(\Varid{x},\Varid{x})\mathrel{=}\Varid{alice}\;(\Conid{Leaf}\;\Varid{x})\\\p2\;(\Varid{x},\Varid{x})\mathrel{=}\Varid{bob}\;(\Conid{Leaf}\;\Varid{x})\end{lcbr}\\\Varid{g12}\;(\p1\;\Varid{x})\mathrel{=}\Varid{bob}\;(\Conid{Leaf}\;\Varid{x})\\\begin{lcbr}\p1\;(\Varid{bob}\;(\Conid{Fork}\;\Varid{x}))\mathrel{=}\Varid{alice}\;(\p2\;\Varid{x})\\\p2\;(\Varid{bob}\;(\Conid{Fork}\;\Varid{x}))\mathrel{=}\Varid{bob}\;(\p2\;\Varid{x})\end{lcbr}\end{lcbr}}
+     %
+     \just\equiv{Mudança de variável no 2º e 3º ramo, x:=(y,z), dado que p1 e p2 recebem como argumentos pares}
+     %
+               \ensuremath{\begin{lcbr}\begin{lcbr}\p1\;(\Varid{x},\Varid{x})\mathrel{=}\Varid{alice}\;(\Conid{Leaf}\;\Varid{x})\\\p2\;(\Varid{x},\Varid{x})\mathrel{=}\Varid{bob}\;(\Conid{Leaf}\;\Varid{x})\end{lcbr}\\\Varid{g12}\;(\p1\;(\Varid{y},\Varid{z}))\mathrel{=}\Varid{bob}\;(\Conid{Leaf}\;(\Varid{y},\Varid{z}))\\\begin{lcbr}\p1\;(\Varid{bob}\;(\Conid{Fork}\;(\Varid{y},\Varid{z})))\mathrel{=}\Varid{alice}\;(\p2\;(\Varid{y},\Varid{z}))\\\p2\;(\Varid{bob}\;(\Conid{Fork}\;(\Varid{y},\Varid{z})))\mathrel{=}\Varid{bob}\;(\p2\;(\Varid{y},\Varid{z}))\end{lcbr}\end{lcbr}}
+     %
+     \just\equiv{Def-proj (79)}
+     %
+               \ensuremath{\begin{lcbr}\begin{lcbr}\Varid{x}\mathrel{=}\Varid{alice}\;(\Conid{Leaf}\;\Varid{x})\\\Varid{x}\mathrel{=}\Varid{bob}\;(\Conid{Leaf}\;\Varid{x})\end{lcbr}\\\Varid{g12}\;(\Varid{y})\mathrel{=}\Varid{bob}\;(\Conid{Leaf}\;(\Varid{y},\Varid{z}))\\\begin{lcbr}\p1\;(\Varid{bob}\;(\Conid{Fork}\;(\Varid{y},\Varid{z})))\mathrel{=}\Varid{alice}\;(\Varid{z})\\\p2\;(\Varid{bob}\;(\Conid{Fork}\;(\Varid{y},\Varid{z})))\mathrel{=}\Varid{bob}\;(\Varid{z})\end{lcbr}\end{lcbr}}
      \qed
 \end{eqnarray*}
 
