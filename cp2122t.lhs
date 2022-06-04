@@ -1159,7 +1159,7 @@ Ora, sabendo que outLTree3 é o isomorfismo de inLTree3, temos então que outLTr
 
 \begin{code}
 outLTree3 (Tri x) = i1 x
-outLTree3 (Nodo t y z) =  i1 t y z
+outLTree3 (Nodo t y z) =  i2 t y z
 
 baseLTree3 f g =  g + f * (f * f)
 
