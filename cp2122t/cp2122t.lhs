@@ -1352,7 +1352,7 @@ Genes do hilomorfismo |sierpinski|:
 
 \begin{code}
 
-g1 = (singl either (conc · (id * conc))) where conc' (l1,(l2,l3)) = l1++l2++l3
+g1 = (singl 'either' (conc · (id * conc))) where conc' (l1,(l2,l3)) = l1++l2++l3
 
 g2 (t,0) = i1 t 
 g2 (((x,y),s),n+1) = i2((t1,t2),t3) where
