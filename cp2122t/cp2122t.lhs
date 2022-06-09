@@ -1062,7 +1062,82 @@ Finalmente, aplicaremos o mesmo processo para a função (c d).
                   ((c d) . succ) = (either (const d) (uncurry(-) . (split ((c d)) (const(1))) )) . ((0 ==) . (c d)) ?
               )|
      \qed
+     
 \end{eqnarray*}
+
+Por aplicação da lei de recursividade mútua em aux temos: 
+\begin{eqnarray*}
+     \start
+     \just\equiv{fokkinga (52)}
+
+               |lcbr(
+                    (q d) . in = h . F<q d,<r d, c d>> 
+              )(
+                    (r d) . in = k . F<q d,<r d, c d>> 
+              )(
+                    (c d) . in = l . F<q d,<r d, c d>> 
+              )|
+
+     \just\equiv{def in, F<q d,<r d, c d>>}
+
+               |lcbr(
+                    (q d) . [const(0),succ] = h . (id + <q d, <r d, c d>>)
+              )(
+                    (r d) . [const(0),succ]  = k . (id + <q d, <r d, c d>>)
+              )(
+                    (c d) . [const(0),succ]   = l . (id + <q d, <r d, c d>>)
+              )|
+
+     \just\equiv{Fusão-+ (20)}
+
+               |lcbr(
+                    [q d .const(0),q d . succ] = [h_1,h_2] . (id + <q d, <r d, c d>>)
+              )(
+                    [r d .const(0),r d . succ]  = [k_1,k_2] . (id + <q d, <r d, c d>>)
+              )(
+                    [c d .const(0),c d . succ]  = [l_1,l_2] . (id + <q d, <r d, c d>>) 
+              )|
+
+     \just\equiv{Absorção-+ (22),natural-id(1)}
+
+               |lcbr(
+                    [q d .const(0),q d . succ] = [h_1,h_2 . <q d, <r d, c d>>]
+              )(
+                    [r d .const(0),r d . succ]  = [k_1,k_2 . <q d, <r d, c d>>]
+              )(
+                    [c d .const(0),c d . succ]  = [l_1,l_2 . <q d, <r d, c d>>]
+              )|
+     \qed
+
+\end{eqnarray*}
+
+Vamos pegar em cada ramo do sistema de cada vez para facilitar a resolução da questao.
+
+O primeiro ramo: 
+\begin{eqnarray*}
+     \start
+               |lcbr(
+                    (q d) . const(0) = h_1 
+              )(
+                    (q d) . succ = h_2 . <q d, <r d, c d>>
+              )|
+
+     \just\equiv{Como foi provado em cima, (q d) . const(0) = 0, Igualdade extensional(71),Def-comp(72),
+     def-split(76)}
+
+               |lcbr(
+                    const(0) = h_1 
+              )(
+                    (q d) succ (x) = h_2 (q d x, (r d x, c d x))
+              )|
+
+     \just\equiv{Como foi provado em cima, (q d) . scc = uncurry(+) . (split (q d) ((either (const 1) (const 0)) . ((0 ==) . (cd)) ?))}   
+          
+          |lcbr(
+                    const(0) = h_1 
+              )(
+                    uncurry(+) . (split (q d) ((either (const 1) (const 0)) . ((0 ==) . (cd)) ?)) = h_2 (q d x, (r d x, c d x))
+              )|  
 \newpage
 %format (cases3 (x)(y)(z)) = "\begin{lcbr}" x "\\" y "\\" z "\end{lcbr}"
 \subsection*{Problema 2}
