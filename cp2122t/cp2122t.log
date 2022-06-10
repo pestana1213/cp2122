@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019/Debian) (preloaded format=pdflatex 2022.5.28)  30 MAY 2022 22:04
+This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019/Debian) (preloaded format=pdflatex 2022.5.28)  10 JUN 2022 21:14
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -764,227 +764,520 @@ File: ot1phv.fd 2001/06/04 scalable font definitions for OT1/phv.
 \openout5 = `cp2122t.ptb'.
 
  [10]
-Overfull \hbox (2.95995pt too wide) in alignment at lines 1176--1208
+! Missing { inserted.
+<to be read again> 
+                   \begingroup 
+l.1202 ...m{1}},\underline{\mathrm{0}}}\end{lcbr}}
+                                                  
+? 
+! Missing } inserted.
+<inserted text> 
+                }
+l.1202 ...m{1}},\underline{\mathrm{0}}}\end{lcbr}}
+                                                  
+? 
+! Missing { inserted.
+<to be read again> 
+                   \begingroup 
+l.1206 ...omp (\Varid{cd}))\mathbin{?}}\end{lcbr}}
+                                                  
+? 
+! Missing } inserted.
+<inserted text> 
+                }
+l.1206 ...omp (\Varid{cd}))\mathbin{?}}\end{lcbr}}
+                                                  
+? 
+! Missing { inserted.
+<to be read again> 
+                   \begingroup 
+l.1210 ...equiv )\comp (\Varid{cd}))\mathbin{?}}}}
+                                                  
+? 
+! Missing } inserted.
+<inserted text> 
+                }
+l.1212      \just\equiv{FusÃ£o - + (20)}
+                                        
+? 
+! Missing { inserted.
+<to be read again> 
+                   \begingroup 
+l.1214 ...equiv )\comp (\Varid{cd}))\mathbin{?}}}}
+                                                  
+? 
+! Missing } inserted.
+<inserted text> 
+                }
+l.1216      \qed
+                
+? 
+
+Overfull \hbox (2.95995pt too wide) in alignment at lines 1176--1217
  [][][] []
  []
 
+! Missing { inserted.
+<to be read again> 
+                   \begingroup 
+l.1246 ...m{1}}}{\Varid{r}\;\Varid{d}})\end{lcbr}}
+                                                  
+? 
+! Missing } inserted.
+<inserted text> 
+                }
+l.1246 ...m{1}}}{\Varid{r}\;\Varid{d}})\end{lcbr}}
+                                                  
+? 
+! Missing { inserted.
+<to be read again> 
+                   \begingroup 
+l.1250 ...id{c}\;\Varid{d}))\mathbin{?}\end{lcbr}}
+                                                  
+? 
+! Missing } inserted.
+<inserted text> 
+                }
+l.1250 ...id{c}\;\Varid{d}))\mathbin{?}\end{lcbr}}
+                                                  
+? 
+! Missing { inserted.
+<to be read again> 
+                   \begingroup 
+l.1254 ...omp (\Varid{c}\;\Varid{d}))\mathbin{?}}}
+                                                  
+? 
+! Missing } inserted.
+<inserted text> 
+                }
+l.1256      \just\equiv{FusÃ£o - + (20)}
+                                        
+? 
+! Missing { inserted.
+<to be read again> 
+                   \begingroup 
+l.1258 ...omp (\Varid{c}\;\Varid{d}))\mathbin{?}}}
+                                                  
+? 
+! Missing } inserted.
+<inserted text> 
+                }
+l.1260      \qed
+                
+? 
 
-Overfull \hbox (2.95995pt too wide) in alignment at lines 1211--1243
+Overfull \hbox (2.95995pt too wide) in alignment at lines 1220--1261
  [][][] []
  []
 
 [11]
-Overfull \hbox (2.95995pt too wide) in alignment at lines 1247--1279
+! Missing { inserted.
+<to be read again> 
+                   \begingroup 
+l.1291 ...d})}{\underline{\mathrm{1}}})\end{lcbr}}
+                                                  
+? 
+! Missing } inserted.
+<inserted text> 
+                }
+l.1291 ...d})}{\underline{\mathrm{1}}})\end{lcbr}}
+                                                  
+? 
+! Missing { inserted.
+<to be read again> 
+                   \begingroup 
+l.1295 ...id{c}\;\Varid{d}))\mathbin{?}\end{lcbr}}
+                                                  
+? 
+! Missing } inserted.
+<inserted text> 
+                }
+l.1295 ...id{c}\;\Varid{d}))\mathbin{?}\end{lcbr}}
+                                                  
+? 
+! Missing { inserted.
+<to be read again> 
+                   \begingroup 
+l.1299 ...omp (\Varid{c}\;\Varid{d}))\mathbin{?}}}
+                                                  
+? 
+! Missing } inserted.
+<inserted text> 
+                }
+l.1301      \just\equiv{FusÃ£o - + (20)}
+                                        
+? 
+! Missing { inserted.
+<to be read again> 
+                   \begingroup 
+l.1303 ...omp (\Varid{c}\;\Varid{d}))\mathbin{?}}}
+                                                  
+? 
+! Missing } inserted.
+<inserted text> 
+                }
+l.1305      \qed
+                
+? 
+
+Overfull \hbox (5.20995pt too wide) in alignment at lines 1265--1306
  [][][] []
  []
 
 [12]
-Overfull \hbox (33.19342pt too wide) in alignment at lines 1285--1378
+! Missing { inserted.
+<to be read again> 
+                   \begingroup 
+l.1319 ...d{d}}{\Varid{c}\;\Varid{d}}})\end{lcbr}}
+                                                  
+? 
+! Missing } inserted.
+<inserted text> 
+                }
+l.1319 ...d{d}}{\Varid{c}\;\Varid{d}}})\end{lcbr}}
+                                                  
+? 
+! Missing { inserted.
+<to be read again> 
+                   \begingroup 
+l.1319 ...d{d}}{\Varid{c}\;\Varid{d}}})\end{lcbr}}
+                                                  
+? 
+! Missing } inserted.
+<inserted text> 
+                }
+l.1319 ...d{d}}{\Varid{c}\;\Varid{d}}})\end{lcbr}}
+                                                  
+? 
+! Missing { inserted.
+<to be read again> 
+                   \begingroup 
+l.1319 ...d{d}}{\Varid{c}\;\Varid{d}}})\end{lcbr}}
+                                                  
+? 
+! Missing } inserted.
+<inserted text> 
+                }
+l.1319 ...d{d}}{\Varid{c}\;\Varid{d}}})\end{lcbr}}
+                                                  
+? 
+! Missing { inserted.
+<to be read again> 
+                   \begingroup 
+l.1323 ...})}{(\Varid{c}\;\Varid{d})}})\end{lcbr}}
+                                                  
+? 
+! Missing } inserted.
+<inserted text> 
+                }
+l.1323 ...})}{(\Varid{c}\;\Varid{d})}})\end{lcbr}}
+                                                  
+? 
+! Missing { inserted.
+<to be read again> 
+                   \begingroup 
+l.1323 ...})}{(\Varid{c}\;\Varid{d})}})\end{lcbr}}
+                                                  
+? 
+! Missing } inserted.
+<inserted text> 
+                }
+l.1323 ...})}{(\Varid{c}\;\Varid{d})}})\end{lcbr}}
+                                                  
+? 
+! Missing { inserted.
+<to be read again> 
+                   \begingroup 
+l.1323 ...})}{(\Varid{c}\;\Varid{d})}})\end{lcbr}}
+                                                  
+? 
+! Missing } inserted.
+<inserted text> 
+                }
+l.1323 ...})}{(\Varid{c}\;\Varid{d})}})\end{lcbr}}
+                                                  
+? 
+! Missing { inserted.
+<to be read again> 
+                   \begingroup 
+l.1327 ...})}{(\Varid{c}\;\Varid{d})}}}\end{lcbr}}
+                                                  
+? 
+! Missing } inserted.
+<inserted text> 
+                }
+l.1327 ...})}{(\Varid{c}\;\Varid{d})}}}\end{lcbr}}
+                                                  
+? 
+! Missing { inserted.
+<to be read again> 
+                   \begingroup 
+l.1327 ...})}{(\Varid{c}\;\Varid{d})}}}\end{lcbr}}
+                                                  
+? 
+! Missing } inserted.
+<inserted text> 
+                }
+l.1327 ...})}{(\Varid{c}\;\Varid{d})}}}\end{lcbr}}
+                                                  
+? 
+! Missing { inserted.
+<to be read again> 
+                   \begingroup 
+l.1327 ...})}{(\Varid{c}\;\Varid{d})}}}\end{lcbr}}
+                                                  
+? 
+! Missing } inserted.
+<inserted text> 
+                }
+l.1327 ...})}{(\Varid{c}\;\Varid{d})}}}\end{lcbr}}
+                                                  
+? 
+! Missing { inserted.
+<to be read again> 
+                   \begingroup 
+l.1334 ...\;\Varid{d})}{(\Varid{c}\;\Varid{d})}}}}
+                                                  
+? 
+! Missing } inserted.
+<inserted text> 
+                }
+l.1336      \just\equiv{Eq - +}
+                               
+? 
+! Missing { inserted.
+<to be read again> 
+                   \begingroup 
+l.1338 ...id{d}}{\Varid{c}\;\Varid{d}}}\end{lcbr}}
+                                                  
+? 
+! Missing } inserted.
+<inserted text> 
+                }
+l.1338 ...id{d}}{\Varid{c}\;\Varid{d}}}\end{lcbr}}
+                                                  
+? 
+
+Overfull \hbox (14.69911pt too wide) in alignment at lines 1332--1349
  [][][] []
  []
 
-[13]
-\openout5 = `cp2122t.ptb'.
-
-\openout5 = `cp2122t.ptb'.
-
- [14]
+<xymatrix 2x2 232> [13]
 \openout5 = `cp2122t.ptb'.
 
 
-
-LaTeX Warning: Command \textperiodcentered invalid in math mode on input line 1
-464.
-
-
-LaTeX Warning: Command \textperiodcentered invalid in math mode on input line 1
-464.
-
-
-LaTeX Warning: Command \textperiodcentered invalid in math mode on input line 1
-464.
-
-
-LaTeX Warning: Command \textperiodcentered invalid in math mode on input line 1
-464.
-
-Missing character: There is no · in font cmr10!
-Missing character: There is no · in font cmr10!
-
-LaTeX Warning: Command \textperiodcentered invalid in math mode on input line 1
-464.
-
-
-LaTeX Warning: Command \textperiodcentered invalid in math mode on input line 1
-464.
-
-
-LaTeX Warning: Command \textperiodcentered invalid in math mode on input line 1
-464.
-
-
-LaTeX Warning: Command \textperiodcentered invalid in math mode on input line 1
-464.
-
-Missing character: There is no · in font cmr10!
-Missing character: There is no · in font cmr10!
-
-LaTeX Warning: Command \textperiodcentered invalid in math mode on input line 1
-464.
-
-
-LaTeX Warning: Command \textperiodcentered invalid in math mode on input line 1
-464.
-
-Missing character: There is no · in font cmr10!
-
-LaTeX Warning: Command \textperiodcentered invalid in math mode on input line 1
-464.
-
-
-LaTeX Warning: Command \textperiodcentered invalid in math mode on input line 1
-464.
-
-
-LaTeX Warning: Command \textperiodcentered invalid in math mode on input line 1
-464.
-
-
-LaTeX Warning: Command \textperiodcentered invalid in math mode on input line 1
-464.
-
-Missing character: There is no · in font cmr10!
-Missing character: There is no · in font cmr10!
-
-LaTeX Warning: Command \textperiodcentered invalid in math mode on input line 1
-464.
-
-
-LaTeX Warning: Command \textperiodcentered invalid in math mode on input line 1
-464.
-
-
-LaTeX Warning: Command \textperiodcentered invalid in math mode on input line 1
-464.
-
-
-LaTeX Warning: Command \textperiodcentered invalid in math mode on input line 1
-464.
-
-Missing character: There is no · in font cmr10!
-Missing character: There is no · in font cmr10!
-
-LaTeX Warning: Command \textperiodcentered invalid in math mode on input line 1
-464.
-
-
-LaTeX Warning: Command \textperiodcentered invalid in math mode on input line 1
-464.
-
-Missing character: There is no · in font cmr10!
-
-LaTeX Warning: Command \textperiodcentered invalid in math mode on input line 1
-464.
-
-
-LaTeX Warning: Command \textperiodcentered invalid in math mode on input line 1
-464.
-
-
-LaTeX Warning: Command \textperiodcentered invalid in math mode on input line 1
-464.
-
-
-LaTeX Warning: Command \textperiodcentered invalid in math mode on input line 1
-464.
-
-Missing character: There is no · in font cmr10!
-Missing character: There is no · in font cmr10!
-
-LaTeX Warning: Command \textperiodcentered invalid in math mode on input line 1
-464.
-
-
-LaTeX Warning: Command \textperiodcentered invalid in math mode on input line 1
-464.
-
-
-LaTeX Warning: Command \textperiodcentered invalid in math mode on input line 1
-464.
-
-
-LaTeX Warning: Command \textperiodcentered invalid in math mode on input line 1
-464.
-
-Missing character: There is no · in font cmr10!
-Missing character: There is no · in font cmr10!
-
-LaTeX Warning: Command \textperiodcentered invalid in math mode on input line 1
-464.
-
-
-LaTeX Warning: Command \textperiodcentered invalid in math mode on input line 1
-464.
-
-Missing character: There is no · in font cmr10!
-\openout5 = `cp2122t.ptb'.
-
-
-LaTeX Warning: Command \textperiodcentered invalid in math mode on input line 1
-487.
-
-
-LaTeX Warning: Command \textperiodcentered invalid in math mode on input line 1
-487.
-
-Missing character: There is no · in font cmr10!
-
-LaTeX Warning: Command \textperiodcentered invalid in math mode on input line 1
-487.
-
-
-LaTeX Warning: Command \textperiodcentered invalid in math mode on input line 1
-487.
-
-Missing character: There is no · in font cmr10!
-
-LaTeX Warning: Command \textperiodcentered invalid in math mode on input line 1
-487.
-
-
-LaTeX Warning: Command \textperiodcentered invalid in math mode on input line 1
-487.
-
-Missing character: There is no · in font cmr10!
+Overfull \hbox (3.36713pt too wide) in paragraph at lines 1386--1387
+ [][] \OT1/ppl/m/n/10 Para ob-ter-mos a defini[][]ao das fun[][]oes alice e bob
+, []e ne-cess[]ario re-sol-ver-mos a equa[][]ao $[]\OT1/cmr/m/it/10 g[][] [] []
+[]\OML/cmm/m/it/10 ; [][]$
+ []
+
+[14] [15]
 \openout5 = `cp2122t.ptb'.
 
 \openout5 = `cp2122t.ptb'.
 
 \openout5 = `cp2122t.ptb'.
 
-[15] (./cp2122t.ind [16] [17
+\openout5 = `cp2122t.ptb'.
+
+ <xymatrix 2x2 232> [16]
+\openout5 = `cp2122t.ptb'.
+
+
+
+LaTeX Warning: Command \textperiodcentered invalid in math mode on input line 1
+583.
+
+
+LaTeX Warning: Command \textperiodcentered invalid in math mode on input line 1
+583.
+
+
+LaTeX Warning: Command \textperiodcentered invalid in math mode on input line 1
+583.
+
+
+LaTeX Warning: Command \textperiodcentered invalid in math mode on input line 1
+583.
+
+Missing character: There is no · in font cmr10!
+Missing character: There is no · in font cmr10!
+
+LaTeX Warning: Command \textperiodcentered invalid in math mode on input line 1
+583.
+
+
+LaTeX Warning: Command \textperiodcentered invalid in math mode on input line 1
+583.
+
+
+LaTeX Warning: Command \textperiodcentered invalid in math mode on input line 1
+583.
+
+
+LaTeX Warning: Command \textperiodcentered invalid in math mode on input line 1
+583.
+
+Missing character: There is no · in font cmr10!
+Missing character: There is no · in font cmr10!
+
+LaTeX Warning: Command \textperiodcentered invalid in math mode on input line 1
+583.
+
+
+LaTeX Warning: Command \textperiodcentered invalid in math mode on input line 1
+583.
+
+Missing character: There is no · in font cmr10!
+
+LaTeX Warning: Command \textperiodcentered invalid in math mode on input line 1
+583.
+
+
+LaTeX Warning: Command \textperiodcentered invalid in math mode on input line 1
+583.
+
+
+LaTeX Warning: Command \textperiodcentered invalid in math mode on input line 1
+583.
+
+
+LaTeX Warning: Command \textperiodcentered invalid in math mode on input line 1
+583.
+
+Missing character: There is no · in font cmr10!
+Missing character: There is no · in font cmr10!
+
+LaTeX Warning: Command \textperiodcentered invalid in math mode on input line 1
+583.
+
+
+LaTeX Warning: Command \textperiodcentered invalid in math mode on input line 1
+583.
+
+
+LaTeX Warning: Command \textperiodcentered invalid in math mode on input line 1
+583.
+
+
+LaTeX Warning: Command \textperiodcentered invalid in math mode on input line 1
+583.
+
+Missing character: There is no · in font cmr10!
+Missing character: There is no · in font cmr10!
+
+LaTeX Warning: Command \textperiodcentered invalid in math mode on input line 1
+583.
+
+
+LaTeX Warning: Command \textperiodcentered invalid in math mode on input line 1
+583.
+
+Missing character: There is no · in font cmr10!
+
+LaTeX Warning: Command \textperiodcentered invalid in math mode on input line 1
+583.
+
+
+LaTeX Warning: Command \textperiodcentered invalid in math mode on input line 1
+583.
+
+
+LaTeX Warning: Command \textperiodcentered invalid in math mode on input line 1
+583.
+
+
+LaTeX Warning: Command \textperiodcentered invalid in math mode on input line 1
+583.
+
+Missing character: There is no · in font cmr10!
+Missing character: There is no · in font cmr10!
+
+LaTeX Warning: Command \textperiodcentered invalid in math mode on input line 1
+583.
+
+
+LaTeX Warning: Command \textperiodcentered invalid in math mode on input line 1
+583.
+
+
+LaTeX Warning: Command \textperiodcentered invalid in math mode on input line 1
+583.
+
+
+LaTeX Warning: Command \textperiodcentered invalid in math mode on input line 1
+583.
+
+Missing character: There is no · in font cmr10!
+Missing character: There is no · in font cmr10!
+
+LaTeX Warning: Command \textperiodcentered invalid in math mode on input line 1
+583.
+
+
+LaTeX Warning: Command \textperiodcentered invalid in math mode on input line 1
+583.
+
+Missing character: There is no · in font cmr10!
+\openout5 = `cp2122t.ptb'.
+
+
+LaTeX Warning: Command \textperiodcentered invalid in math mode on input line 1
+606.
+
+
+LaTeX Warning: Command \textperiodcentered invalid in math mode on input line 1
+606.
+
+Missing character: There is no · in font cmr10!
+
+LaTeX Warning: Command \textperiodcentered invalid in math mode on input line 1
+606.
+
+
+LaTeX Warning: Command \textperiodcentered invalid in math mode on input line 1
+606.
+
+Missing character: There is no · in font cmr10!
+
+LaTeX Warning: Command \textperiodcentered invalid in math mode on input line 1
+606.
+
+
+LaTeX Warning: Command \textperiodcentered invalid in math mode on input line 1
+606.
+
+Missing character: There is no · in font cmr10!
+\openout5 = `cp2122t.ptb'.
+
+\openout5 = `cp2122t.ptb'.
+
+\openout5 = `cp2122t.ptb'.
+
+(./cp2122t.ind [17] [18
 
 
 ]) (./cp2122t.bbl)
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 1543.
- [18
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 1662.
+ [19
 
 ]
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 1543.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 1662.
  (./cp2122t.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 1543.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 1543.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 1662.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 1662.
 
 Package rerunfilecheck Info: File `cp2122t.out' has not changed.
 (rerunfilecheck)             Checksum: 52DE7DC0D96D565890C828A31E533207;598.
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 1543.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 1662.
  ) 
 Here is how much of TeX's memory you used:
- 13385 strings out of 483090
- 194608 string characters out of 5963929
- 536994 words of memory out of 5000000
- 27987 multiletter control sequences out of 15000+600000
- 576889 words of font info for 155 fonts, out of 8000000 for 9000
+ 13381 strings out of 483090
+ 194552 string characters out of 5963929
+ 545994 words of memory out of 5000000
+ 27981 multiletter control sequences out of 15000+600000
+ 576335 words of font info for 153 fonts, out of 8000000 for 9000
  61 hyphenation exceptions out of 8191
  48i,18n,77p,3290b,496s stack positions out of 5000i,500n,10000p,200000b,80000s
 pdfTeX warning (dest): name{section.3.17} has been referenced but does not ex
@@ -992,35 +1285,37 @@ ist, replaced by a fixed one
 
 {/usr/share/texlive/texmf-dist/fonts/enc/dvips/base/8r.enc}</usr/share/texlive/
 texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb></usr/share/texlive/texmf-
-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/share/texlive/texmf-dist/f
-onts/type1/public/amsfonts/cm/cmmi10.pfb></usr/share/texlive/texmf-dist/fonts/t
-ype1/public/amsfonts/cm/cmmi9.pfb></usr/share/texlive/texmf-dist/fonts/type1/pu
-blic/amsfonts/cm/cmr10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/am
-sfonts/cm/cmr7.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/c
-m/cmr9.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmss10
-.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmss8.pfb></
-usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/sh
-are/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy7.pfb></usr/share/tex
-live/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy9.pfb></usr/share/texlive/te
-xmf-dist/fonts/type1/public/amsfonts/cm/cmti10.pfb></usr/share/texlive/texmf-di
-st/fonts/type1/public/amsfonts/cm/cmti7.pfb></usr/share/texlive/texmf-dist/font
-s/type1/public/amsfonts/cm/cmti9.pfb></usr/share/texlive/texmf-dist/fonts/type1
-/public/amsfonts/latxfont/line10.pfb></usr/share/texlive/texmf-dist/fonts/type1
-/public/amsfonts/symbols/msam10.pfb></usr/share/texlive/texmf-dist/fonts/type1/
-public/amsfonts/symbols/msbm10.pfb></usr/share/texlive/texmf-dist/fonts/type1/p
-ublic/stmaryrd/stmary10.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/cour
-ier/ucrr8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/helvetic/uhvr8a.p
-fb></usr/share/texlive/texmf-dist/fonts/type1/urw/palatino/uplb8a.pfb></usr/sha
-re/texlive/texmf-dist/fonts/type1/urw/palatino/uplbi8a.pfb></usr/share/texlive/
-texmf-dist/fonts/type1/urw/palatino/uplr8a.pfb></usr/share/texlive/texmf-dist/f
-onts/type1/urw/palatino/uplr8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/u
-rw/palatino/uplri8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/xypic
-/xyatip10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/xypic/xybtip10.
-pfb>
-Output written on cp2122t.pdf (18 pages, 769200 bytes).
+dist/fonts/type1/public/amsfonts/cm/cmbx7.pfb></usr/share/texlive/texmf-dist/fo
+nts/type1/public/amsfonts/cm/cmex10.pfb></usr/share/texlive/texmf-dist/fonts/ty
+pe1/public/amsfonts/cmextra/cmex9.pfb></usr/share/texlive/texmf-dist/fonts/type
+1/public/amsfonts/cm/cmmi10.pfb></usr/share/texlive/texmf-dist/fonts/type1/publ
+ic/amsfonts/cm/cmmi7.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsf
+onts/cm/cmmi9.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm
+/cmr10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr7.p
+fb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr9.pfb></usr
+/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmss10.pfb></usr/share
+/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmss8.pfb></usr/share/texliv
+e/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/share/texlive/texm
+f-dist/fonts/type1/public/amsfonts/cm/cmsy7.pfb></usr/share/texlive/texmf-dist/
+fonts/type1/public/amsfonts/cm/cmsy9.pfb></usr/share/texlive/texmf-dist/fonts/t
+ype1/public/amsfonts/cm/cmti10.pfb></usr/share/texlive/texmf-dist/fonts/type1/p
+ublic/amsfonts/cm/cmti7.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/a
+msfonts/cm/cmti9.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts
+/latxfont/line10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts
+/symbols/msam10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/
+symbols/msbm10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/stmaryrd/s
+tmary10.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/courier/ucrr8a.pfb><
+/usr/share/texlive/texmf-dist/fonts/type1/urw/helvetic/uhvr8a.pfb></usr/share/t
+exlive/texmf-dist/fonts/type1/urw/palatino/uplb8a.pfb></usr/share/texlive/texmf
+-dist/fonts/type1/urw/palatino/uplbi8a.pfb></usr/share/texlive/texmf-dist/fonts
+/type1/urw/palatino/uplr8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/p
+alatino/uplr8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/palatino/uplr
+i8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/xypic/xyatip10.pfb></
+usr/share/texlive/texmf-dist/fonts/type1/public/xypic/xybtip10.pfb>
+Output written on cp2122t.pdf (19 pages, 801067 bytes).
 PDF statistics:
- 420 PDF objects out of 1000 (max. 8388607)
- 356 compressed objects within 4 object streams
- 64 named destinations out of 1000 (max. 500000)
+ 440 PDF objects out of 1000 (max. 8388607)
+ 372 compressed objects within 4 object streams
+ 67 named destinations out of 1000 (max. 500000)
  80 words of extra memory for PDF output out of 10000 (max. 10000000)
 

@@ -859,9 +859,9 @@ collect x = nub [ k |-> nub [ d' | (k',d') <- x , k'==k ] | (k,d) <- x ]
 \section{Soluções dos alunos}\label{sec:resolucao}
 \subsection*{Problema 1} \label{pg:P1}
 
+\paragraph{}
 Para resolver este problema, é necessário definir-mos as funções dadas no enunciado em pointfree.
 Comecemos, então, pela função q d.
-
 
 \begin{eqnarray*}
      \start
@@ -916,7 +916,7 @@ Comecemos, então, pela função q d.
              |lcbr(
                   (q d) . const(0) = 0 
           )(
-               ((q d) . succ) = uncurry(+) . (split (q d) ((0 ==) . (cd) ==> const(1), const(0))) 
+               (q d) . succ = uncurry(+) . (split (q d) ((0 ==) . (cd) ==> const(1), const(0))) 
           )|
      %
      \just\equiv{Def condicional de McCarthy (30)}
@@ -924,8 +924,17 @@ Comecemos, então, pela função q d.
                |lcbr(
                     (q d) . const(0) = 0 
               )(
-                  ((q d) . succ) = uncurry(+) . (split (q d) ((either (const 1) (const 0)) . ((0 ==) . (cd)) ?)) 
+                  (q d) . succ = uncurry(+) . (split (q d) ((either (const 1) (const 0)) . ((0 ==) . (cd)) ?)) 
               )|
+     %
+     \just\equiv{Eq - + (27)}
+     %
+               | (either ((q d) . const(0)) ( (q d) . succ) ) = (either (0) (uncurry(+) . (split (q d) ((either (const 1) (const 0)) . ((0 ==) . (cd)) ?)) ))|
+     %
+     \just\equiv{Fusão - + (20)}
+     %
+               | (q d) . (either (const(0)) (succ)) = (either (0) (uncurry(+) . (split (q d) ((either (const 1) (const 0)) . ((0 ==) . (cd)) ?)) ))|
+     %
      \qed
 \end{eqnarray*}
 
@@ -956,7 +965,7 @@ Procederemos à obtenção de uma definição alternativa da função (r d).
      %
      \just\equiv{Uncurry (84), Def-comp (72)}
      %
-                  |lcbr(
+               |lcbr(
                     (r d) . const(0) n = const(0) n
                )(
                     ((r d) . succ) n =  if ((0 ==) . (c d)) n then const (0) n else uncurry(+) (const(1) n, (r d) n)
@@ -964,15 +973,15 @@ Procederemos à obtenção de uma definição alternativa da função (r d).
      %
      \just\equiv{Def-split (76)}
      %
-                  |lcbr(
+               |lcbr(
                     (r d) . const(0) n = const(0) n
                )(
                     ((r d) . succ) n =  if ((0 ==) . (c d)) n then const (0) n else uncurry(+) . (split (const (1)) (r d)) n
-                )|
+               )|
      %
      \just\equiv{Def-cond (78)}
      %
-                  |lcbr(
+               |lcbr(
                     (r d) . const(0) n = const(0) n
                )(
                     ((r d) . succ) n  = (((0 ==) . (c d)) ==> const (0), uncurry(+) . (split (const (1)) (r d)) ) n
@@ -980,10 +989,10 @@ Procederemos à obtenção de uma definição alternativa da função (r d).
      %
      \just\equiv{Igualdade extensional (71)}
      %
-                  |lcbr(
+               |lcbr(
                     (r d) . const(0) = const(0) 
                )(
-                    ((r d) . succ) = (((0 ==) . (c d))  ==>  const (0), uncurry(+) . (split (const (1)) (r d)) ) 
+                    (r d) . succ = (((0 ==) . (c d))  ==>  const (0), uncurry(+) . (split (const (1)) (r d)) ) 
                )|
      %
      \just\equiv{Def condicional de McCarthy (30)}
@@ -991,8 +1000,17 @@ Procederemos à obtenção de uma definição alternativa da função (r d).
                |lcbr(
                     (r d) . const(0) = 0 
               )(
-                  ((r d) . succ) = (either (const 0) (uncurry(+) . (split (const (1)) (r d)) )) . ((0 ==) . (c d)) ?
+                  (r d) . succ = (either (const 0) (uncurry(+) . (split (const (1)) (r d)) )) . ((0 ==) . (c d)) ?
               )|
+     %
+     \just\equiv{Eq - + (27)}
+     %
+              | (either ((r d) . const(0)) ( (r d) . succ) ) = (either (0) ((either (const 0) (uncurry(+) . (split (const (1)) (r d)) )) . ((0 ==) . (c d)) ?))|
+     %
+     \just\equiv{Fusão - + (20)}
+     %
+               | (r d) . (either (const(0)) (succ)) = (either (0) ((either (const 0) (uncurry(+) . (split (const (1)) (r d)) )) . ((0 ==) . (c d)) ?))|
+     %
      \qed
 \end{eqnarray*}
 
@@ -1000,7 +1018,7 @@ Finalmente, aplicaremos o mesmo processo para a função (c d).
 
 \begin{eqnarray*}
      \start
-                 |lcbr(
+               |lcbr(
                     (c d) 0 = d
                )(
                     (c d) (n+1) = if x == 0 then d else x-1 where x = (c d) n
@@ -1008,23 +1026,23 @@ Finalmente, aplicaremos o mesmo processo para a função (c d).
      %
      \just\equiv{Def succ dada nas aulas}
      %
-                  |lcbr(
+               |lcbr(
                       (c d) 0 = d
                )(
                     (c d) (succ n) = if (c d) n == 0 then d else (c d) n - 1
                )|
      %
-     \just\equiv{Def-const (74), $\forall \ x \  (c \ d) \ x |==| 0 \  \equiv \  \forall \ x \ (c \ d) \ x \ (|==| 0) \  \equiv \ \forall \ x \ (0 |==|) \ . \ (c \ d) \ x \ \equiv \ \forall \ x \ ((0 |==|) \ . \ (c \ d))$}
+     \just\equiv{Def-const (74), $\forall \ x \  (c \ d) \ x |==| 0 \  \equiv \  \forall \ x \ (c \ d) \ x \ (|==| 0) \  \equiv \ \forall \ x \ (0 |==|) \ . \ (c \ d) \ x \ \equiv \ \forall \ x \ ((0 |==|) \ . \ (c \ d))$ }
      %
-                  |lcbr(
-                       (c d) ((const(0)) n) = const(d) n
+               |lcbr(
+                    (c d) ((const (0)) n) = const(d) n
                )(
                     (c d) (succ n) =  if ((0 ==) . (c d)) n then const(d) n else (c d) n - ((const(1)) n)
                )|
      %
      \just\equiv{Uncurry (84), Def-comp (72)}
      %
-                  |lcbr(
+               |lcbr(
                     (c d) . const(0) n = const(d) n
                )(
                     ((c d) . succ) n =  if ((0 ==) . (c d)) n then const(d) n else uncurry(-) ((c d) n, const(1) n)
@@ -1032,15 +1050,15 @@ Finalmente, aplicaremos o mesmo processo para a função (c d).
      %
      \just\equiv{Def-split (76)}
      %
-                  |lcbr(
+               |lcbr(
                     (c d) . const(0) n = const(d) n
                )(
                     ((c d) . succ) n =  if ((0 ==) . (c d)) n then const (d) n else uncurry(-) . (split ((c d)) (const(1))) n
-                )|
+               )|
      %
      \just\equiv{Def-cond (78)}
      %
-                  |lcbr(
+               |lcbr(
                     (c d) . const(0) n = const(d) n
                )(
                     ((r d) . succ) n  = (((0 ==) . (c d)) ==> const (d), uncurry(-) . (split ((c d)) (const(1)) )) n
@@ -1048,10 +1066,10 @@ Finalmente, aplicaremos o mesmo processo para a função (c d).
      %
      \just\equiv{Igualdade extensional (71)}
      %
-                  |lcbr(
+               |lcbr(
                     (c d) . const(0) = const(d) 
                )(
-                    ((c d) . succ) = (((0 ==) . (c d))  ==>  const (d), uncurry(-) . (split ((c d)) (const(1))) ) 
+                    (c d) . succ = (((0 ==) . (c d))  ==>  const (d), uncurry(-) . (split ((c d)) (const(1))) ) 
                )|
      %
      \just\equiv{Def condicional de McCarthy (30)}
@@ -1059,291 +1077,377 @@ Finalmente, aplicaremos o mesmo processo para a função (c d).
                |lcbr(
                     (c d) . const(0) = 0 
               )(
-                  ((c d) . succ) = (either (const d) (uncurry(-) . (split ((c d)) (const(1))) )) . ((0 ==) . (c d)) ?
+                  (c d) . succ = (either (const d) (uncurry(-) . (split ((c d)) (const(1))) )) . ((0 ==) . (c d)) ?
               )|
+     %
+     \just\equiv{Eq - + (27)}
+     %
+               | (either ((c d) . const(0)) ( (c d) . succ) ) = (either (0) ((either (const d) (uncurry(-) . (split ((c d)) (const(1))) )) . ((0 ==) . (c d)) ?))|
+     %
+     \just\equiv{Fusão - + (20)}
+     %
+                | (c d) . (either (const(0)) (succ)) = (either (0) ((either (const d) (uncurry(-) . (split ((c d)) (const(1))) )) . ((0 ==) . (c d)) ?))|
+     %
      \qed
-     
 \end{eqnarray*}
+
+%format (cases3 (x)(y)(z)) = "\begin{lcbr}" x "\\" y "\\" z "\end{lcbr}"
+%format (cases4 (x)(y)(z)(w)) = "\begin{lcbr}" x "\\" y "\\" z "\\" w "\end{lcbr}"
+%format l2 = "l_2 "
 
 Por aplicação da lei de recursividade mútua em aux temos: 
 \begin{eqnarray*}
      \start
-     \just\equiv{fokkinga (52)}
-
-               |lcbr(
-                    (q d) . in = h . F<q d,<r d, c d>> 
+     %
+     \just\equiv{Fokkinga (52)}
+     %
+               |cases3(
+                    (q d) . in = h . F (split (q d) (split (r d) (c d)))
               )(
-                    (r d) . in = k . F<q d,<r d, c d>> 
-              )(
-                    (c d) . in = l . F<q d,<r d, c d>> 
+                    (r d) . in = k . F (split (q d) (split (r d) (c d)))
+              )( 
+                    (c d) . in = l . F (split (q d) (split (r d) (c d)))
               )|
-
-     \just\equiv{def in, F<q d,<r d, c d>>}
-
-               |lcbr(
-                    (q d) . [const(0),succ] = h . (id + <q d, <r d, c d>>)
+     %
+     \just\equiv{Def in, |F (split ((q d)) (split ((r d)) ((c d))))|}
+     %
+               |cases3(
+                    (q d) . (either ( (const 0) ) (succ))  = h . (id + (split (q d) (split (r d) (c d))))
               )(
-                    (r d) . [const(0),succ]  = k . (id + <q d, <r d, c d>>)
+                    (r d) . (either ( (const 0)) (succ))  = k . (id + (split (q d) (split (r d) (c d))))
               )(
-                    (c d) . [const(0),succ]   = l . (id + <q d, <r d, c d>>)
+                    (c d) . (either ( (const 0)) (succ))  = l . (id + (split (q d) (split (r d) (c d))))
               )|
-
+     %
      \just\equiv{Fusão-+ (20)}
-
-               |lcbr(
-                    [q d .const(0),q d . succ] = [h_1,h_2] . (id + <q d, <r d, c d>>)
+     %
+               |cases3(
+                    (either ((q d) . (const 0)) ((q d) . succ)) = (either (h1) (h2)) . (id + (split ((q d)) (split ((r d)) ((c d)))))
               )(
-                    [r d .const(0),r d . succ]  = [k_1,k_2] . (id + <q d, <r d, c d>>)
+                    (either ((r d) . (const 0)) ((r d) . succ))  = (either (k1) (k2)) . (id + (split ((q d)) (split ((r d)) ((c d)))))
               )(
-                    [c d .const(0),c d . succ]  = [l_1,l_2] . (id + <q d, <r d, c d>>) 
+                    (either ((c d) . (const 0)) ((c d) . succ))  = (either (l1) (l2)) . (id + (split ((q d)) (split ((r d)) ((c d))))) 
               )|
-
-     \just\equiv{Absorção-+ (22),natural-id(1)}
-
-               |lcbr(
-                    [q d .const(0),q d . succ] = [h_1,h_2 . <q d, <r d, c d>>]
+     %
+     \just\equiv{Absorção-+ (22), Natural-id(1)}
+     %
+               |cases3(
+                    (either ((q d) . (const 0)) ((q d) . succ))  = (either (h1) (h2 . (split ((q d)) (split ((r d)) ((c d))))) )
               )(
-                    [r d .const(0),r d . succ]  = [k_1,k_2 . <q d, <r d, c d>>]
+                    (either ((r d) . (const 0)) ((r d) . succ))  = (either (k1) (k2 . (split ((q d)) (split ((r d)) ((c d))))) ) 
               )(
-                    [c d .const(0),c d . succ]  = [l_1,l_2 . <q d, <r d, c d>>]
+                    (either ((c d) . (const 0)) ((c d) . succ))  = (either (l1) (l2 . (split ((q d)) (split ((r d)) ((c d))))) )
               )|
-     \qed
-
+     %
 \end{eqnarray*}
 
-Vamos pegar em cada ramo do sistema de cada vez para facilitar a resolução da questao.
-
-O primeiro ramo: 
+Consideremos apenas um ramo do sistema de cada vez, com o intuito de facilitar a resolução da questao. Assim sendo, no primeiro ramo temos que: 
 \begin{eqnarray*}
      \start
+          |(either ((q d) . (const 0)) ((q d) . succ))  = (either (h1) (h2 . (split ((q d)) (split ((r d)) ((c d))))) )|
+     %
+     \just\equiv{Eq - +}
+     %
                |lcbr(
-                    (q d) . const(0) = h_1 
+                    (q d) . (const 0) = h1 
               )(
-                    (q d) . succ = h_2 . <q d, <r d, c d>>
+                    (q d) . succ =  h2 . (split (q d) (split (r d) (c d)))
               )|
-
-     \just\equiv{Como foi provado em cima, (q d) . const(0) = 0, Igualdade extensional(71),Def-comp(72),
-     def-split(76)}
-
+     %
+     \just\equiv{Como foi provado em cima, |(q d) .(const 0) = 0|, Igualdade extensional(71), Def-comp(72), Def-split(76)}
+     %
                |lcbr(
-                    const(0) = h_1 
+                    (const 0) = h1 
               )(
-                    (q d) succ (x) = h_2 (q d x, (r d x, c d x))
+                    (q d) (succ x) = h2 (q d x, (r d x, c d x))
               )|
-
-     \just\equiv{Como foi provado em cima, (q d) . scc = uncurry(+) . (split (q d) ((either (const 1) (const 0)) . ((0 ==) . (cd)) ?))}   
-          
+     %
+     \just\equiv{Como foi provado em cima, |(q d) . scc = uncurry(+) . ( split (q d) ((either (const 1) (const 0)) . ((0 ==) . (cd)) ?) )|}   
+     %  
           |lcbr(
-                    const(0) = h_1 
-              )(
-                    uncurry(+) . (split (q d) ((either (const 1) (const 0)) . ((0 ==) . (cd)) ?)) = h_2 (q d x, (r d x, c d x))
-              )|  
-\newpage
-%format (cases3 (x)(y)(z)) = "\begin{lcbr}" x "\\" y "\\" z "\end{lcbr}"
+               (const 0) = h1 
+          )(
+               uncurry(+) . (split (q d) ( (either (const 1) (const 0)) . ((0 ==) . (cd)) ? ) ) = h2 (q d x, (r d x, c d x))
+          )|
+     %
+     \qed
+\end{eqnarray*}
+
 \subsection*{Problema 2}
 
-Para obtermos a definição das funções alice e bob, é necessário resolvermos a seguinte equação:
+\begin{eqnarray*}
+     \xymatrix@@C=2cm{
+         |Ltree Int|
+                \ar[r]^{|out|}
+                \ar[d]_-{|cataNat g|}
+     &
+         |1 + Int >< Ltree Int|
+                \ar[d]^{|id + id >< g|}
+                \ar[l]_-{|in|}
+     \\
+          |Int >< Int|
+     &
+          |1 + Int >< Int|
+                \ar[l]^-{|(either (g11) (g12))|}
+     }
+     \end{eqnarray*}
 
+\begin{code}
+     both :: Ord d => LTree d -> (d, d)
+     both = cataLTree g
+     g = either g11 g12
+     g11 x = (x,x)
+     g12 ((a,b),(c,d)) = (a+c,b+d)
+\end{code}
+\paragraph{}
+Para obtermos a definição das funções alice e bob, é necessário resolvermos a equação |(cata (g)) = (split (alice) (bob))| aplicando a lei da Recursividade Mútua. No entanto, primeiramente, é necessário transformar a nossa definição de g num split. Ora, 
 \begin{eqnarray*}
      \start
-            |(cata (g))| = |(split (alice) (bob))|
+          |g|
      %
-     \just\equiv{Universal-cata (45)}
+     \just\equiv{Natural - id (1)}
      %
-            g . F |(split (alice) (bob))| = |(split (alice) (bob))| . in
+          |id . g|
      %
-     \just\equiv{Base-cata (49)}
+     \just\equiv{Reflexão - |><| (8)}
      %
-            g . B (id,|(split (alice) (bob))|) = |(split (alice) (bob))| . in
+          |(split (p1) (p2)) . g|
      %
-     \just\equiv{Definição de g}
+     \just\equiv{Fusão - |><| (9)}
      %
-           |(either (g11) (g12))|  . B (id,|(split (alice) (bob))|) = |(split (alice) (bob))| . in
+          |(split (p1 . g) (p2 . g))|
      %
-     \just\equiv{B(id,|(split (alice) (bob))|) = id + id |><| |(split (alice) (bob))|}
+\end{eqnarray*}
+
+Assim sendo,
+\begin{eqnarray*}
+     \start
+            |(cata (g)) = (split (alice) (bob))|
      %
-           |(either (g11) (g12)) | . (id + id \times |(split (alice) (bob))|) = |(split (alice) (bob))| . in
+     \just\equiv{Fokkinga (52)}
      %
-     \just\equiv{Absorção-+ (22)}
-     %
-           |(either (g11 . id) ((g12 . id) >< (split (alice) (bob))) )|= |(split (alice) (bob))| . in
-     %
-     \just\equiv{Natural-id (1)}
-     %
-           |(either (g11) (g12  >< (split (alice) (bob)) ) )|  = |(split (alice) (bob))| . in
-     %
-     \just\equiv{ Fusão-$\times$ (9) }
-     %
-           |(either (g11) (g12 >< (split (alice) (bob)) ) )| = |(split (alice . in) (bob . in))|
-     %
-     \just\equiv{ Definição do in de Ltree : |(either (Leaf) (Fork))|}
-     %
-           |(either (g11) (g12 >< (split (alice) (bob)) ) )| = |(split (alice . (either (Leaf) (Fork)) ) (bob . (either (Leaf) (Fork))))|
-     %
-     \just\equiv{Fusão-+ (20)}
-     %
-           |(either (g11) (g12 >< (split (alice) (bob)) ) )| = 
-           |(split (either (alice . Leaf) (alice . Fork)) (either (bob . Leaf) (bob . Fork)))|
-     %
-     \just\equiv{Lei da Troca (28)}
-     %
-            |(either (g11) (g12 >< (split (alice) (bob)) ) )| = 
-            |(either (split (alice . Leaf) (alice . Fork)) (split (bob . Leaf) (bob . Fork)))|
-     %
-     \just\equiv{Def - $\times$ (10)}
-     %
-            |(either (g11) (split (g12 . p1) ((split (alice) (bob)) . p2) ))| = 
-            |(either (split (alice . Leaf) (alice . Fork)) (split (bob . Leaf) (bob . Fork)))|
-     %
-      %
-      \just\equiv{Fusão- $\times$ (10)}
-      %
-             |(either (g11) (split (g12 . p1) (split (alice . p2) (bob . p2))))| = 
-             |(either (split (alice . Leaf) (alice . Fork)) (split (bob . Leaf) (bob . Fork)))|
-      %
-     \just\equiv{Eq-+ (27)}
-     %
-            |lcbr(
-                 g11 = (split (alice . Leaf) (alice. Fork))
-              )(
-                   (split (g12 . p1) (split (alice . p2) (bob . p2))) = (split (bob . Leaf) (bob . Fork ))
-               )| 
-     %
-     \just\equiv{Eq-x (16)}
-     %
-               |cases3(
-                    g11 = (split (alice . Leaf) (bob . Leaf) ) 
+          |lcbr(
+               alice  = (p1 . g) . F (split (alice) (bob)) 
           )(
-               g12 . p1 = bob . Leaf
-          )(
-               (split (alice . p2) (bob . p2)) = bob . Fork 
+               bob = (p2 . g) . F (split (alice) (bob)) 
           )|
      %
-     \just\equiv{Universal-x (6) aplicada no primeiro e no último ramo, sendo que neste consideramos k := bob . Fork}
+     \just\equiv{Base - Cata (49)}
      %
-               |cases3(
-                    lcbr(
-                         p1 . g11 = alice . Leaf 
-                    )(
-                         p2 . g11 = bob . Leaf 
-                    )
+          |lcbr(
+               alice  = (p1 . g) . B (id, (split (alice) (bob)))
           )(
-               g12 . p1 = bob . Leaf
-          )(
-                    lcbr(
-                         p1 . bob . Fork = alice . p2
-                    )(
-                         p2 . bob . Fork = bob . p2
-                    )
+               bob = (p2 . g) .  B (id, (split (alice) (bob)))
           )|
      %
-     \just\equiv{Igualdade extensional (71) }
+     \just\equiv{|B (id, (split (alice) (bob)))  = id + (split (alice) (bob)) >< (split (alice) (bob))|}
      %
-               |cases3(
-                    lcbr(
-                         (p1 . g11) x = (alice . Leaf) x
-                    )(
-                         (p2 . g11) x = (bob . Leaf) x
-                    )
+          |lcbr(
+               alice  = (p1 . g) . (id + (split (alice) (bob)) ><  (split (alice) (bob)))
           )(
-               (g12 . p1) x = (bob . Leaf) x
-          )(
-                    lcbr(
-                         (p1 . bob . Fork) x = (alice . p2) x
-                    )(
-                         (p2 . bob . Fork) x = (bob . p2) x
-                    )
+               bob = (p2 . g) . (id + (split (alice) (bob)) >< (split (alice) (bob)))
           )|
      %
-     \just\equiv{Def-comp (72) }
+     \just\equiv{Def - + (21), Natural - id (1)}
      %
-               |cases3(
-                    lcbr(
-                         p1(g11 x) = alice (Leaf x)
-                    )(
-                         p2 (g11 x) = bob (Leaf x)
-                    )
+          |lcbr(
+               alice  = (p1 . g) . (either (i1) (i2 . ((split (alice) (bob)) >< (split (alice) (bob)))))
           )(
-               g12 (p1 x) = bob (Leaf x)
-          )(
-                    lcbr(
-                         p1 (bob . Fork) x = alice(p2 x)
-                    )(
-                         p2 (bob . Fork) x = bob (p2 x)
-                    )
+               bob = (p2 . g) . (either (i1) (i2 . ((split (alice) (bob)) ><  (split (alice) (bob)))))
           )|
      %
-     \just\equiv{Def-comp (72) }
+     \just\equiv{Fusão - + (20)}
      %
-               |cases3(
-                    lcbr(
-                         p1(g11 x) = alice (Leaf x)
-                    )(
-                         p2 (g11 x) = bob (Leaf x)
-                    )
+          |lcbr(
+               alice  = (either ((p1 . g) . i1) ((p1 . g) . (i2 . ((split (alice) (bob)) >< (split (alice) (bob))))))
           )(
-               g12 (p1 x) = bob (Leaf x)
-          )(
-                    lcbr(
-                         p1 (bob (Fork x)) = alice(p2 x)
-                    )(
-                         p2 (bob (Fork x)) = bob (p2 x)
-                    )
+               bob = (either ((p2 . g) . i1) ((p2 . g) . (i2 . ((split (alice) (bob)) ><  (split (alice) (bob))))))
           )|
      %
-     \just\equiv{Definição de g11}
+     \just\equiv{ Assoc - comp (2)}
      %
-               |cases3(
-                    lcbr(
-                         p1 (x,x) = alice (Leaf x)
-                    )(
-                         p2 (x,x) = bob (Leaf x)
-                    )
+          |lcbr(
+               alice  = (either (p1 . (g . i1)) ((p1 . g) . (i2 . ((split (alice) (bob)) >< (split (alice) (bob))))))
           )(
-               g12 (p1 x) = bob (Leaf x)
-          )(
-                    lcbr(
-                         p1 (bob (Fork x)) = alice(p2 x)
-                    )(
-                         p2 (bob (Fork x)) = bob (p2 x)
-                    )
+               bob = (either (p2 . (g . i1)) ((p2 . g) . (i2 . ((split (alice) (bob)) ><  (split (alice) (bob))))))
           )|
      %
-     \just\equiv{Mudança de variável no 2º e 3º ramo, x:=(y,z), dado que p1 e p2 recebem como argumentos pares}
+     \just\equiv{ Universal - + (17)}
      %
-               |cases3(
-                    lcbr(
-                         p1 (x,x) = alice (Leaf x)
-                    )(
-                         p2 (x,x) = bob (Leaf x)
-                    )
+          |lcbr(
+               lcbr(
+                    alice . i1  = p1 . (g . i1) 
+               )(
+                    alice . i2  = (p1 . g) . (i2 . ((split (alice) (bob)) >< (split (alice) (bob))))
+               )
           )(
-               g12 (p1 (y,z)) = bob (Leaf (y,z))
+               lcbr(
+                    bob  . i1 = p2 . (g . i1) 
+               )(
+                    bob  . i2 = (p2 . g) . (i2 . ((split (alice) (bob)) ><  (split (alice) (bob))))
+               )
+          )|
+     %
+     \just\equiv{ Assoc - comp (2)}
+     %
+          |lcbr(
+               lcbr(
+                    alice . i1  = p1 . (g . i1) 
+               )(
+                    alice . i2  = p1 . (g . (i2 . ((split (alice) (bob)) >< (split (alice) (bob)))))
+               )
           )(
-                    lcbr(
-                         p1 (bob (Fork (y,z))) = alice(p2 (y,z))
-                    )(
-                         p2 (bob (Fork (y,z))) = bob (p2 (y,z))
-                    )
+               lcbr(
+                    bob  . i1 = p2 . (g . i1) 
+               )(
+                    bob  . i2 = p2 . (g . (i2 . ((split (alice) (bob)) ><  (split (alice) (bob)))))
+               )
+          )|
+     %
+     \just\equiv{ Assoc - comp (2)}
+     %
+          |lcbr(
+               lcbr(
+                    alice . i1  = p1 . (g . i1) 
+               )(
+                    alice . i2  = p1 . ((g . i2) . ((split (alice) (bob)) >< (split (alice) (bob))))
+               )
+          )(
+               lcbr(
+                    bob  . i1 = p2 . (g . i1) 
+               )(
+                    bob  . i2 = p2 . ((g . i2) . ((split (alice) (bob)) ><  (split (alice) (bob))))
+               )
+          )|
+     %
+     \just\equiv{Definição de g : |g = (either (g11) (g12))|, Cancelamento - + (18)}
+     %
+          |lcbr(
+               lcbr(
+                    alice . i1  = p1 . g11
+               )(
+                    alice . i2  = p1 . (g12. ((split (alice) (bob)) >< (split (alice) (bob))))
+               )
+          )(
+               lcbr(
+                    bob  . i1 = p2 . g11 
+               )(
+                    bob  . i2 = p2 . (g12 . ((split (alice) (bob)) ><  (split (alice) (bob))))
+               )
+          )|
+     %
+     \just\equiv{ Igualdade Extensional (71)}
+     %
+          |lcbr(
+               lcbr(
+                    (alice . i1) z  = (p1 . g11) z
+               )(
+                    (alice . i2) w = (p1 . (g12 . ((split (alice) (bob)) >< (split (alice) (bob))))) w
+               )
+          )(
+               lcbr(
+                    (bob  . i1) z = (p2 . g11) z
+               )(
+                    (bob  . i2) w = (p2 . (g12 . ((split (alice) (bob)) ><  (split (alice) (bob))))) w
+               )
+          )|
+     %
+     \just\equiv{Def-comp (72)}
+     %
+          |lcbr(
+               lcbr(
+                    alice (i1 z)  = p1 (g11 z)
+               )(
+                    alice (i2 w)  = (p1 (g12 . ((split (alice) (bob)) >< (split (alice) (bob)))) w)
+               )
+          )(
+               lcbr(
+                    bob (i1 z) = p2 (g11 z)
+               )(
+                    bob (i2 w) = (p2 (g12 . ((split (alice) (bob)) ><  (split (alice) (bob)))) w)
+               )
+          )|
+     %
+     \just\equiv{Def-comp (72)}
+     %
+          |lcbr(
+               lcbr(
+                    alice (i1 z)  = p1 (g11 z)
+               )(
+                    alice (i2 w)  = p1 (g12 (((split (alice) (bob)) >< (split (alice) (bob)))w))
+               )
+          )(
+               lcbr(
+                    bob (i1 z) = p2 (g11 z)
+               )(
+                    bob (i2 w) = p2 (g12 (((split (alice) (bob)) ><  (split (alice) (bob))) w))
+               )
+          )|
+     %
+     \just\equiv{Mudança de variável w : = (x,y), Def- |><| (72)}
+     %
+          |lcbr(
+               lcbr(
+                    alice (i1 z)  = p1 (g11 z)
+               )(
+                    alice (i2 (x,y))  = p1 (g12 ((split (alice) (bob)) x , (split (alice) (bob)) y))
+               )
+          )(
+               lcbr(
+                    bob (i1 z) = p2 (g11 z)
+               )(
+                    bob (i2 (x,y)) = p2 (g12 ((split (alice) (bob)) x , (split (alice) (bob)) y))
+               )
+          )|
+     %
+     \just\equiv{Def-split (77)}
+     %
+          |lcbr(
+               lcbr(
+                    alice (i1 z)  = p1 (g11 z)
+               )(
+                    alice (i2 (x,y))  = p1 (g12 ((alice x, bob x), ( alice y, bob y)))
+               )
+          )(
+               lcbr(
+                    bob (i1 z) = p2 (g11 z)
+               )(
+                    bob (i2 (x,y)) = p2 (g12 ((alice x, bob x), (alice y, bob y)))
+               )
+          )|
+     %
+     \just\equiv{ Definição de g11 : |g11 x = (x,x)|, Definição de g12 : |g12 ((a,b),(c,d)) = ( a + c, b + d)|}
+     %
+          |lcbr(
+               lcbr(
+                    alice (i1 z)  = p1 (z,z)
+               )(
+                    alice (i2 (x,y))  = p1 ((alice x) + (alice y), (bob x) + (bob y))
+               )
+          )(
+               lcbr(
+                    bob (i1 z) = p2 (z,z)
+               )(
+                    bob (i2 (x,y)) = p2 ((alice x) + (alice y), (bob x) + (bob y))
+               )
           )|
      %
      \just\equiv{Def-proj (79)}
      %
-               |cases3(
-                    lcbr(
-                         x = alice (Leaf x)
-                    )(
-                         x = bob (Leaf x)
-                    )
+          |lcbr(
+               lcbr(
+                    alice (i1 z)  = z
+               )(
+                    alice (i2 (x,y))  = (alice x) + (alice y)
+               )
           )(
-               g12 (y) = bob (Leaf (y,z))
-          )(
-                    lcbr(
-                         p1 (bob (Fork (y,z))) = alice(z)
-                    )(
-                         p2 (bob (Fork (y,z))) = bob (z)
-                    )
+               lcbr(
+                    bob (i1 z) = z
+               )(
+                    bob (i2 (x,y)) = (bob x) + (bob y)
+               )
           )|
+     %
      \qed
 \end{eqnarray*}
 
@@ -1352,13 +1456,7 @@ alice :: Ord c => LTree c -> c
 alice = undefined
 
 bob :: Ord c => LTree c -> c
-bob   = undefined    
-
-both :: Ord d => LTree d -> (d, d)
-both = cataLTree g
-g = either g11 g12
-g11 x = (x,x)
-g12 ((a,b),(c,d)) = (a+c,b+d)
+bob = undefined
 \end{code}
 
 \subsection*{Problema 3}
@@ -1372,11 +1470,11 @@ Ora, sabendo que outLTree3 é o isomorfismo de inLTree3, temos então que outLTr
 
 \begin{eqnarray*}
      \start
-           outLTree3 |.| inLTree3 = id
+           |outLTree3 . inLTree3 = id|
      %
      \just\equiv{Definição de inLTree3 : |(either (Tri) (Nodo))|}
      %
-          outLTree3 |.| |(either (Tri) (Nodo))| = id
+          |outLTree3 . (either (Tri) (Nodo))| = id
      %
      \just\equiv{Fusão-+ (20)}
      %
@@ -1410,12 +1508,36 @@ Ora, sabendo que outLTree3 é o isomorfismo de inLTree3, temos então que outLTr
 
 \begin{code}
 outLTree3 (Tri x) = i1 x
-outLTree3 (Nodo t y z) =  i1 t y z
+outLTree3 (Nodo t y z) =  i2 t y z
 
 baseLTree3 f g =  g + f * (f * f)
+\end{code}
 
+
+Pela propriedade de Base-cata, temos que recLTree3 f =  baseLTree3 id f = id + f * (f * f).
+
+\begin{code}
 recLTree3 f = id + f * (f*f)
+\end{code}
 
+\begin{eqnarray*}
+     \xymatrix@@C=2cm{
+         |Ltree3 A|
+                \ar[r]^{|out|}
+                \ar[d]_-{|cataLTree3 f|}
+     &
+         |1 + A >< Ltree3 A|
+                \ar[d]^{|recLTree3 (cataLtree3 f)|}
+                \ar[l]_-{|in|}
+     \\
+          |A|
+     &
+          |1 + A >< A|
+                \ar[l]^-{|f|}
+     }
+     \end{eqnarray*}
+
+\begin{code}
 cataLTree3 f = f · (recLTree3 (cataLTree3 f)) · outLTree3
 
 anaLTree3 f = inLTree3 · (recLTree3 (anaLTree3 f )) · f
@@ -1426,8 +1548,7 @@ hyloLTree3 f g = cataLTree3 f · anaLTree3 g
 Genes do hilomorfismo |sierpinski|:
 
 \begin{code}
-
-g1 = (singl 'either' (conc · (id * conc))) where conc' (l1,(l2,l3)) = l1++l2++l3
+g1 = (singl either (conc · (id * conc))) where conc (l1,(l2,l3)) = l1++l2++l3
 
 g2 (t,0) = i1 t 
 g2 (((x,y),s),n+1) = i2((t1,t2),t3) where
@@ -1456,7 +1577,6 @@ A função |bflip3|, a programar a seguir, deverá estender |bflip| aos três bi
 \begin{code}
 bflip3 :: Bit3 -> Dist Bit3
 bflip3(a,b,c) = do { undefined } 
-
 \end{code}
 
 %----------------- Índice remissivo (exige makeindex) -------------------------%
