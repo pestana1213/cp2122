@@ -1112,11 +1112,11 @@ Por aplicação da lei de recursividade mútua em aux temos:
      \just\equiv{Def in, |F (split ((q d)) (split ((r d)) ((c d))))|}
      %
                |cases3(
-                    (q d) . (either ( (const 0) ) (succ))  = h . (id + (split (q d) (split (r d) (c d))))
+                    (q d) . (either (const 0) (succ))  = h . (id + (split (q d) (split (r d) (c d))))
               )(
-                    (r d) . (either ( (const 0)) (succ))  = k . (id + (split (q d) (split (r d) (c d))))
+                    (r d) . (either (const 0) (succ))  = k . (id + (split (q d) (split (r d) (c d))))
               )(
-                    (c d) . (either ( (const 0)) (succ))  = l . (id + (split (q d) (split (r d) (c d))))
+                    (c d) . (either (const 0) (succ))  = l . (id + (split (q d) (split (r d) (c d))))
               )|
      %
      \just\equiv{Fusão-+ (20)}
@@ -1176,22 +1176,21 @@ Consideremos apenas um ramo do sistema de cada vez, com o intuito de facilitar a
 \subsection*{Problema 2}
 
 \begin{eqnarray*}
-     \xymatrix@@C=2cm{
+     \xymatrix@@C=1cm@@R=2cm{
          |Ltree Int|
-                \ar[r]^{|out|}
-                \ar[d]_-{|cataNat g|}
+         \ar[d]_{|cataLTree g|}\ar@@/^1.5pc/[rr]^(0.5){out} 
+     & 
+          \cong
      &
-         |1 + Int >< Ltree Int|
-                \ar[d]^{|id + id >< g|}
-                \ar[l]_-{|in|}
+         |Int + Ltree Int >< Ltree Int|
+                \ar[d]^{|id + g >< g|}
+                \ar@@/^1.5pc/[ll]^(0.5){in}
      \\
-          |Int >< Int|
-     &
-          |1 + Int >< Int|
-                \ar[l]^-{|(either (g11) (g12))|}
+          |Int >< Int| && |Int + Int >< Int| 
+                \ar[ll]^{ g  = |(either (g11) (g12))|}
      }
-     \end{eqnarray*}
-
+\end{eqnarray*}
+Assim sendo, pelo diagrama anterior podemos retirar a seguinte definição de g.
 \begin{code}
      both :: Ord d => LTree d -> (d, d)
      both = cataLTree g
@@ -1199,6 +1198,7 @@ Consideremos apenas um ramo do sistema de cada vez, com o intuito de facilitar a
      g11 x = (x,x)
      g12 ((a,b),(c,d)) = (a+c,b+d)
 \end{code}
+
 \paragraph{}
 Para obtermos a definição das funções alice e bob, é necessário resolvermos a equação |(cata (g)) = (split (alice) (bob))| aplicando a lei da Recursividade Mútua. No entanto, primeiramente, é necessário transformar a nossa definição de g num split. Ora, 
 \begin{eqnarray*}
@@ -1521,21 +1521,20 @@ recLTree3 f = id + f * (f*f)
 \end{code}
 
 \begin{eqnarray*}
-     \xymatrix@@C=2cm{
+     \xymatrix@@C=1cm@@R=2cm{
          |Ltree3 A|
-                \ar[r]^{|out|}
-                \ar[d]_-{|cataLTree3 f|}
+         \ar[d]_{|cataLTree f|}\ar@@/^1.5pc/[rr]^(0.5){out} 
+     & 
+          \cong
      &
-         |1 + A >< Ltree3 A|
-                \ar[d]^{|recLTree3 (cataLtree3 f)|}
-                \ar[l]_-{|in|}
+         |A + Ltree3 A >< Ltree3 A|
+                \ar[d]^{recLTree3 (cataLtree3 f)}
+                \ar@@/^1.5pc/[ll]^(0.5){in}
      \\
-          |A|
-     &
-          |1 + A >< A|
-                \ar[l]^-{|f|}
+          |A| && |A + A >< A|
+          \ar[ll]^{|f|}
      }
-     \end{eqnarray*}
+\end{eqnarray*}
 
 \begin{code}
 cataLTree3 f = f · (recLTree3 (cataLTree3 f)) · outLTree3
@@ -1562,8 +1561,8 @@ g2 (((x,y),s),n+1) = i2((t1,t2),t3) where
 \begin{code}
 propagate :: Monad m => (t -> m a) -> [t] -> m [a]
 propagate f = cataList (g f) where
-   g f = either undefined (g2 f)
-   g2 f (a,b) = undefined
+   g f = either (return.nil) (g2 f)
+   g2 f (a,b) = do{ h <- f a; t <- b; return (cons(h,t))}
 \end{code}
 
 \begin{code}

@@ -1316,7 +1316,7 @@ Por aplicação da lei de recursividade mútua em aux temos:
      %
      \just\equiv{Def in, \ensuremath{\Conid{F}\;\conj{(\Varid{q}\;\Varid{d})}{\conj{(\Varid{r}\;\Varid{d})}{(\Varid{c}\;\Varid{d})}}}}
      %
-               \ensuremath{\begin{lcbr}(\Varid{q}\;\Varid{d})\comp \alt{(\underline{\mathrm{0}})}{\succ }\mathrel{=}\Varid{h}\comp (\Varid{id}\mathbin{+}\conj{\Varid{q}\;\Varid{d}}{\conj{\Varid{r}\;\Varid{d}}{\Varid{c}\;\Varid{d}}})\\(\Varid{r}\;\Varid{d})\comp \alt{(\underline{\mathrm{0}})}{\succ }\mathrel{=}\Varid{k}\comp (\Varid{id}\mathbin{+}\conj{\Varid{q}\;\Varid{d}}{\conj{\Varid{r}\;\Varid{d}}{\Varid{c}\;\Varid{d}}})\\(\Varid{c}\;\Varid{d})\comp \alt{(\underline{\mathrm{0}})}{\succ }\mathrel{=}\Varid{l}\comp (\Varid{id}\mathbin{+}\conj{\Varid{q}\;\Varid{d}}{\conj{\Varid{r}\;\Varid{d}}{\Varid{c}\;\Varid{d}}})\end{lcbr}}
+               \ensuremath{\begin{lcbr}(\Varid{q}\;\Varid{d})\comp \alt{\underline{\mathrm{0}}}{\succ }\mathrel{=}\Varid{h}\comp (\Varid{id}\mathbin{+}\conj{\Varid{q}\;\Varid{d}}{\conj{\Varid{r}\;\Varid{d}}{\Varid{c}\;\Varid{d}}})\\(\Varid{r}\;\Varid{d})\comp \alt{\underline{\mathrm{0}}}{\succ }\mathrel{=}\Varid{k}\comp (\Varid{id}\mathbin{+}\conj{\Varid{q}\;\Varid{d}}{\conj{\Varid{r}\;\Varid{d}}{\Varid{c}\;\Varid{d}}})\\(\Varid{c}\;\Varid{d})\comp \alt{\underline{\mathrm{0}}}{\succ }\mathrel{=}\Varid{l}\comp (\Varid{id}\mathbin{+}\conj{\Varid{q}\;\Varid{d}}{\conj{\Varid{r}\;\Varid{d}}{\Varid{c}\;\Varid{d}}})\end{lcbr}}
      %
      \just\equiv{Fusão-+ (20)}
      %
@@ -1351,22 +1351,21 @@ Consideremos apenas um ramo do sistema de cada vez, com o intuito de facilitar a
 \subsection*{Problema 2}
 
 \begin{eqnarray*}
-     \xymatrix@C=2cm{
+     \xymatrix@C=1cm@R=2cm{
          \ensuremath{\Conid{Ltree}\;\Conid{Int}}
-                \ar[r]^{\ensuremath{\Varid{out}}}
-                \ar[d]_-{\ensuremath{\cataNat{\Varid{g}}}}
+         \ar[d]_{\ensuremath{\llparenthesis\, \Varid{g}\,\rrparenthesis}}\ar@/^1.5pc/[rr]^(0.5){out} 
+     & 
+          \cong
      &
-         \ensuremath{\mathrm{1}\mathbin{+}\Conid{Int}\times\Conid{Ltree}\;\Conid{Int}}
-                \ar[d]^{\ensuremath{\Varid{id}\mathbin{+}\Varid{id}\times\Varid{g}}}
-                \ar[l]_-{\ensuremath{\mathbf{in}}}
+         \ensuremath{\Conid{Int}\mathbin{+}\Conid{Ltree}\;\Conid{Int}\times\Conid{Ltree}\;\Conid{Int}}
+                \ar[d]^{\ensuremath{\Varid{id}\mathbin{+}\Varid{g}\times\Varid{g}}}
+                \ar@/^1.5pc/[ll]^(0.5){in}
      \\
-          \ensuremath{\Conid{Int}\times\Conid{Int}}
-     &
-          \ensuremath{\mathrm{1}\mathbin{+}\Conid{Int}\times\Conid{Int}}
-                \ar[l]^-{\ensuremath{\alt{\Varid{g11}}{\Varid{g12}}}}
+          \ensuremath{\Conid{Int}\times\Conid{Int}} && \ensuremath{\Conid{Int}\mathbin{+}\Conid{Int}\times\Conid{Int}} 
+                \ar[ll]^{ g  = \ensuremath{\alt{\Varid{g11}}{\Varid{g12}}}}
      }
-     \end{eqnarray*}
-
+\end{eqnarray*}
+Assim sendo, pelo diagrama anterior podemos retirar a seguinte definição de g.
 \begin{hscode}\SaveRestoreHook
 \column{B}{@{}>{\hspre}l<{\hspost}@{}}%
 \column{6}{@{}>{\hspre}l<{\hspost}@{}}%
@@ -1382,6 +1381,7 @@ Consideremos apenas um ramo do sistema de cada vez, com o intuito de facilitar a
 \>[6]{}\Varid{g12}\;((\Varid{a},\Varid{b}),(\Varid{c},\Varid{d}))\mathrel{=}(\Varid{a}\mathbin{+}\Varid{c},\Varid{b}\mathbin{+}\Varid{d}){}\<[E]%
 \ColumnHook
 \end{hscode}\resethooks
+
 \paragraph{}
 Para obtermos a definição das funções alice e bob, é necessário resolvermos a equação \ensuremath{\cata{\Varid{g}}\mathrel{=}\conj{\Varid{alice}}{\Varid{bob}}} aplicando a lei da Recursividade Mútua. No entanto, primeiramente, é necessário transformar a nossa definição de g num split. Ora, 
 \begin{eqnarray*}
@@ -1555,21 +1555,20 @@ Pela propriedade de Base-cata, temos que recLTree3 f =  baseLTree3 id f = id + f
 \end{hscode}\resethooks
 
 \begin{eqnarray*}
-     \xymatrix@C=2cm{
+     \xymatrix@C=1cm@R=2cm{
          \ensuremath{\Conid{Ltree3}\;\Conid{A}}
-                \ar[r]^{\ensuremath{\Varid{out}}}
-                \ar[d]_-{\ensuremath{\Varid{cataLTree3}\;\Varid{f}}}
+         \ar[d]_{\ensuremath{\llparenthesis\, \Varid{f}\,\rrparenthesis}}\ar@/^1.5pc/[rr]^(0.5){out} 
+     & 
+          \cong
      &
-         \ensuremath{\mathrm{1}\mathbin{+}\Conid{A}\times\Conid{Ltree3}\;\Conid{A}}
-                \ar[d]^{\ensuremath{\Varid{recLTree3}\;(\Varid{cataLtree3}\;\Varid{f})}}
-                \ar[l]_-{\ensuremath{\mathbf{in}}}
+         \ensuremath{\Conid{A}\mathbin{+}\Conid{Ltree3}\;\Conid{A}\times\Conid{Ltree3}\;\Conid{A}}
+                \ar[d]^{recLTree3 (cataLtree3 f)}
+                \ar@/^1.5pc/[ll]^(0.5){in}
      \\
-          \ensuremath{\Conid{A}}
-     &
-          \ensuremath{\mathrm{1}\mathbin{+}\Conid{A}\times\Conid{A}}
-                \ar[l]^-{\ensuremath{\Varid{f}}}
+          \ensuremath{\Conid{A}} && \ensuremath{\Conid{A}\mathbin{+}\Conid{A}\times\Conid{A}}
+          \ar[ll]^{\ensuremath{\Varid{f}}}
      }
-     \end{eqnarray*}
+\end{eqnarray*}
 
 \begin{hscode}\SaveRestoreHook
 \column{B}{@{}>{\hspre}l<{\hspost}@{}}%
@@ -1616,10 +1615,10 @@ Genes do hilomorfismo \ensuremath{\Varid{sierpinski}}:
 \>[B]{}\Varid{propagate}\;\Varid{f}\mathrel{=}\cataList{\Varid{g}\;\Varid{f}}\;\mathbf{where}{}\<[E]%
 \\
 \>[B]{}\hsindent{4}{}\<[4]%
-\>[4]{}\Varid{g}\;\Varid{f}\mathrel{=}\alt{\bot }{g_2 \;\Varid{f}}{}\<[E]%
+\>[4]{}\Varid{g}\;\Varid{f}\mathrel{=}\alt{\Varid{return}\comp \Varid{nil}}{g_2 \;\Varid{f}}{}\<[E]%
 \\
 \>[B]{}\hsindent{4}{}\<[4]%
-\>[4]{}g_2 \;\Varid{f}\;(\Varid{a},\Varid{b})\mathrel{=}\bot {}\<[E]%
+\>[4]{}g_2 \;\Varid{f}\;(\Varid{a},\Varid{b})\mathrel{=}\mathbf{do}\;\{\mskip1.5mu \Varid{h}\leftarrow \Varid{f}\;\Varid{a};\Varid{t}\leftarrow \Varid{b};\Varid{return}\;(\Varid{cons}\;(\Varid{h},\Varid{t}))\mskip1.5mu\}{}\<[E]%
 \ColumnHook
 \end{hscode}\resethooks
 
