@@ -1322,10 +1322,11 @@ Por aplicação da lei de recursividade mútua em aux temos:
      %
                \ensuremath{\begin{lcbr}\alt{(\Varid{q}\;\Varid{d})\comp \underline{\mathrm{0}}}{(\Varid{q}\;\Varid{d})\comp \succ }\mathrel{=}\alt{h_1 }{h_2 }\comp (\Varid{id}\mathbin{+}\conj{(\Varid{q}\;\Varid{d})}{\conj{(\Varid{r}\;\Varid{d})}{(\Varid{c}\;\Varid{d})}})\\\alt{(\Varid{r}\;\Varid{d})\comp \underline{\mathrm{0}}}{(\Varid{r}\;\Varid{d})\comp \succ }\mathrel{=}\alt{k_1 }{k_2 }\comp (\Varid{id}\mathbin{+}\conj{(\Varid{q}\;\Varid{d})}{\conj{(\Varid{r}\;\Varid{d})}{(\Varid{c}\;\Varid{d})}})\\\alt{(\Varid{c}\;\Varid{d})\comp \underline{\mathrm{0}}}{(\Varid{c}\;\Varid{d})\comp \succ }\mathrel{=}\alt{l_1 }{l_2 }\comp (\Varid{id}\mathbin{+}\conj{(\Varid{q}\;\Varid{d})}{\conj{(\Varid{r}\;\Varid{d})}{(\Varid{c}\;\Varid{d})}})\end{lcbr}}
      %
-     \just\equiv{Absorção-+ (22), Natural-id(1)}
+     \just\equiv{Absorção-+ (22), Natural-id (1)}
      %
                \ensuremath{\begin{lcbr}\alt{(\Varid{q}\;\Varid{d})\comp \underline{\mathrm{0}}}{(\Varid{q}\;\Varid{d})\comp \succ }\mathrel{=}\alt{h_1 }{h_2 \comp \conj{(\Varid{q}\;\Varid{d})}{\conj{(\Varid{r}\;\Varid{d})}{(\Varid{c}\;\Varid{d})}}}\\\alt{(\Varid{r}\;\Varid{d})\comp \underline{\mathrm{0}}}{(\Varid{r}\;\Varid{d})\comp \succ }\mathrel{=}\alt{k_1 }{k_2 \comp \conj{(\Varid{q}\;\Varid{d})}{\conj{(\Varid{r}\;\Varid{d})}{(\Varid{c}\;\Varid{d})}}}\\\alt{(\Varid{c}\;\Varid{d})\comp \underline{\mathrm{0}}}{(\Varid{c}\;\Varid{d})\comp \succ }\mathrel{=}\alt{l_1 }{l_2 \comp \conj{(\Varid{q}\;\Varid{d})}{\conj{(\Varid{r}\;\Varid{d})}{(\Varid{c}\;\Varid{d})}}}\end{lcbr}}
      %
+     \qed
 \end{eqnarray*}
 
 Consideremos apenas um ramo do sistema de cada vez, com o intuito de facilitar a resolução da questao. Assim sendo, no primeiro ramo temos que: 
@@ -1333,17 +1334,71 @@ Consideremos apenas um ramo do sistema de cada vez, com o intuito de facilitar a
      \start
           \ensuremath{\alt{(\Varid{q}\;\Varid{d})\comp \underline{\mathrm{0}}}{(\Varid{q}\;\Varid{d})\comp \succ }\mathrel{=}\alt{h_1 }{h_2 \comp \conj{(\Varid{q}\;\Varid{d})}{\conj{(\Varid{r}\;\Varid{d})}{(\Varid{c}\;\Varid{d})}}}}
      %
-     \just\equiv{Eq - +}
+     \just\equiv{Eq - + (27)}
      %
                \ensuremath{\begin{lcbr}(\Varid{q}\;\Varid{d})\comp \underline{\mathrm{0}}\mathrel{=}h_1 \\(\Varid{q}\;\Varid{d})\comp \succ \mathrel{=}h_2 \comp \conj{\Varid{q}\;\Varid{d}}{\conj{\Varid{r}\;\Varid{d}}{\Varid{c}\;\Varid{d}}}\end{lcbr}}
      %
-     \just\equiv{Como foi provado em cima, \ensuremath{(\Varid{q}\;\Varid{d})\comp \underline{\mathrm{0}}\mathrel{=}\mathrm{0}}, Igualdade extensional(71), Def-comp(72), Def-split(76)}
+     \just\equiv{Como foi provado em cima, \ensuremath{(\Varid{q}\;\Varid{d})\comp \underline{\mathrm{0}}\mathrel{=}\mathrm{0}}, Igualdade extensional (71), Def-comp (72), Def-split (76)}
      %
                \ensuremath{\begin{lcbr}\underline{\mathrm{0}}\mathrel{=}h_1 \\(\Varid{q}\;\Varid{d})\;(\succ \;\Varid{x})\mathrel{=}h_2 \;(\Varid{q}\;\Varid{d}\;\Varid{x},(\Varid{r}\;\Varid{d}\;\Varid{x},\Varid{c}\;\Varid{d}\;\Varid{x}))\end{lcbr}}
      %
      \just\equiv{Como foi provado em cima, \ensuremath{(\Varid{q}\;\Varid{d})\comp \Varid{scc}\mathrel{=}\uncurry{(\mathbin{+})}\comp \conj{\Varid{q}\;\Varid{d}}{\alt{\underline{\mathrm{1}}}{\underline{\mathrm{0}}}\comp ((\mathrm{0}\equiv )\comp (\Varid{cd}))\mathbin{?}}}}   
      %  
           \ensuremath{\begin{lcbr}\underline{\mathrm{0}}\mathrel{=}h_1 \\\uncurry{(\mathbin{+})}\comp \conj{\Varid{q}\;\Varid{d}}{\alt{\underline{\mathrm{1}}}{\underline{\mathrm{0}}}\comp ((\mathrm{0}\equiv )\comp (\Varid{cd}))\mathbin{?}}\mathrel{=}h_2 \;(\Varid{q}\;\Varid{d}\;\Varid{x},(\Varid{r}\;\Varid{d}\;\Varid{x},\Varid{c}\;\Varid{d}\;\Varid{x}))\end{lcbr}}
+     %
+     \just\equiv{Eq - + (27), Fusao - + (20)}
+     %
+          \ensuremath{\Varid{h}\comp \alt{\underline{\mathrm{0}}}{\succ }\mathrel{=}\alt{\underline{\mathrm{0}}}{\uncurry{(\mathbin{+})}\comp \conj{\Varid{q}\;\Varid{d}}{\alt{\underline{\mathrm{1}}}{\underline{\mathrm{0}}}\comp ((\mathrm{0}\equiv )\comp (\Varid{cd}))\mathbin{?}}}}
+     %
+     \qed
+\end{eqnarray*}
+
+Para o segundo ramo temos que:
+
+\begin{eqnarray*}
+     \start
+          \ensuremath{\alt{(\Varid{r}\;\Varid{d})\comp \underline{\mathrm{0}}}{(\Varid{r}\;\Varid{d})\comp \succ }\mathrel{=}\alt{k_1 }{k_2 \comp \conj{(\Varid{q}\;\Varid{d})}{\conj{(\Varid{r}\;\Varid{d})}{(\Varid{c}\;\Varid{d})}}}}
+     %
+     \just\equiv{Eq - +(27)}
+     %
+               \ensuremath{\begin{lcbr}(\Varid{r}\;\Varid{d})\comp \underline{\mathrm{0}}\mathrel{=}k_1 \\(\Varid{r}\;\Varid{d})\comp \succ \mathrel{=}k_2 \comp \conj{\Varid{q}\;\Varid{d}}{\conj{\Varid{r}\;\Varid{d}}{\Varid{c}\;\Varid{d}}}\end{lcbr}}
+     %
+     \just\equiv{Como foi provado em cima, \ensuremath{(\Varid{r}\;\Varid{d})\comp \underline{\mathrm{0}}\mathrel{=}\mathrm{0}}, Igualdade extensional (71), Def-comp (72), Def-split (76)}
+     %
+               \ensuremath{\begin{lcbr}\underline{\mathrm{0}}\mathrel{=}k_1 \\(\Varid{r}\;\Varid{d})\;(\succ \;\Varid{x})\mathrel{=}k_2 \;(\Varid{q}\;\Varid{d}\;\Varid{x},(\Varid{r}\;\Varid{d}\;\Varid{x},\Varid{c}\;\Varid{d}\;\Varid{x}))\end{lcbr}}
+     %
+     \just\equiv{Como foi provado em cima, \ensuremath{(\Varid{r}\;\Varid{d})\comp \succ \mathrel{=}\alt{\underline{\mathrm{0}}}{\uncurry{(\mathbin{+})}\comp \conj{\underline{\mathrm{1}}}{\Varid{r}\;\Varid{d}}}\comp ((\mathrm{0}\equiv )\comp (\Varid{c}\;\Varid{d}))\mathbin{?}}}   
+     %  
+          \ensuremath{\begin{lcbr}\underline{\mathrm{0}}\mathrel{=}k_1 \\\alt{\underline{\mathrm{0}}}{\uncurry{(\mathbin{+})}\comp \conj{\underline{\mathrm{1}}}{\Varid{r}\;\Varid{d}}}\comp ((\mathrm{0}\equiv )\comp (\Varid{c}\;\Varid{d}))\mathbin{?}\mathrel{=}k_2 \;(\Varid{q}\;\Varid{d}\;\Varid{x},(\Varid{r}\;\Varid{d}\;\Varid{x},\Varid{c}\;\Varid{d}\;\Varid{x}))\end{lcbr}}
+     %
+     \just\equiv{Eq - + (27), Fusao - + (20)}
+     %
+          \ensuremath{\Varid{k}\comp \alt{\underline{\mathrm{0}}}{\succ }\mathrel{=}\alt{\underline{\mathrm{0}}}{\alt{\underline{\mathrm{0}}}{\uncurry{(\mathbin{+})}\comp \conj{\underline{\mathrm{1}}}{\Varid{r}\;\Varid{d}}}\comp ((\mathrm{0}\equiv )\comp (\Varid{c}\;\Varid{d}))\mathbin{?}}}
+     %
+     \qed
+\end{eqnarray*}
+
+Finalmente, para o terceiro ramo: 
+
+\begin{eqnarray*}
+     \start
+          \ensuremath{\alt{(\Varid{c}\;\Varid{d})\comp \underline{\mathrm{0}}}{(\Varid{c}\;\Varid{d})\comp \succ }\mathrel{=}\alt{l_1 }{l_2 \comp \conj{(\Varid{q}\;\Varid{d})}{\conj{(\Varid{r}\;\Varid{d})}{(\Varid{c}\;\Varid{d})}}}}
+     %
+     \just\equiv{Eq - + (27)}
+     %
+               \ensuremath{\begin{lcbr}(\Varid{c}\;\Varid{d})\comp \underline{\mathrm{0}}\mathrel{=}l_1 \\(\Varid{c}\;\Varid{d})\comp \succ \mathrel{=}l_2 \comp \conj{\Varid{q}\;\Varid{d}}{\conj{\Varid{r}\;\Varid{d}}{\Varid{c}\;\Varid{d}}}\end{lcbr}}
+     %
+     \just\equiv{Como foi provado em cima, \ensuremath{(\Varid{c}\;\Varid{d})\comp \underline{\mathrm{0}}\mathrel{=}\mathrm{0}}, Igualdade extensional (71), Def-comp (72), Def-split (76)}
+     %
+               \ensuremath{\begin{lcbr}\underline{\mathrm{0}}\mathrel{=}l_1 \\(\Varid{r}\;\Varid{d})\;(\succ \;\Varid{x})\mathrel{=}l_2 \;(\Varid{q}\;\Varid{d}\;\Varid{x},(\Varid{r}\;\Varid{d}\;\Varid{x},\Varid{c}\;\Varid{d}\;\Varid{x}))\end{lcbr}}
+     %
+     \just\equiv{Como foi provado em cima, \ensuremath{(\Varid{c}\;\Varid{d})\comp \succ \mathrel{=}\alt{\underline{\Varid{d}}}{\uncurry{(\mathbin{-})}\comp \conj{(\Varid{c}\;\Varid{d})}{\underline{\mathrm{1}}}}\comp ((\mathrm{0}\equiv )\comp (\Varid{c}\;\Varid{d}))\mathbin{?}}}   
+     %  
+          \ensuremath{\begin{lcbr}\underline{\mathrm{0}}\mathrel{=}l_1 \\\alt{\underline{\Varid{d}}}{\uncurry{(\mathbin{-})}\comp \conj{(\Varid{c}\;\Varid{d})}{\underline{\mathrm{1}}}}\comp ((\mathrm{0}\equiv )\comp (\Varid{c}\;\Varid{d}))\mathbin{?}\mathrel{=}l_2 \;(\Varid{q}\;\Varid{d}\;\Varid{x},(\Varid{r}\;\Varid{d}\;\Varid{x},\Varid{c}\;\Varid{d}\;\Varid{x}))\end{lcbr}}
+     %
+     \just\equiv{Eq - + (27),Fusao - + (20)}
+     %
+          \ensuremath{\Varid{l}\comp \alt{\underline{\mathrm{0}}}{\succ }\mathrel{=}\alt{\underline{\mathrm{0}}}{\alt{\underline{\Varid{d}}}{\uncurry{(\mathbin{-})}\comp \conj{(\Varid{c}\;\Varid{d})}{\underline{\mathrm{1}}}}}\comp ((\mathrm{0}\equiv )\comp (\Varid{c}\;\Varid{d}))\mathbin{?}}
      %
      \qed
 \end{eqnarray*}
