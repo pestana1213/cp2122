@@ -1584,10 +1584,12 @@ Assim sendo,
 
 \begin{code}
 alice :: Ord c => LTree c -> c
-alice = undefined
+alice (i1 z) = z
+alice (i2 (x,y)) = (alice x) + (alice y)
 
 bob :: Ord c => LTree c -> c
-bob = undefined
+bob (i1 z) = z
+bob (i2 (x,y)) = (bob x) + (bob y)
 \end{code}
 
 \subsection*{Problema 3}
