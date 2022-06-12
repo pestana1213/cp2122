@@ -1261,16 +1261,26 @@ Logo,
      %
      \just\equiv{Lei da troca (28)}
      %
-          | (split ((q d)) (split ((r d)) ((c d)))) = cata (split (h) (either ((split (const 0) (const d)) (split (k2) (l2)))))| 
+          | (split ((q d)) (split ((r d)) ((c d)))) = cata (split (h) (either ((split (const 0) ((const d))) (split (k2) (l2)))))| 
      %
      \just\equiv{Lei da troca (28)}
      %
-          |(split ((q d)) (split ((r d)) ((c d)))) = cata either (split (const 0) (split (const 0) (const d))) ((split (h2) (split (k2) (l2)))) |
+          |(split ((q d)) (split ((r d)) ((c d)))) = cata (either (split (const 0) (split (const 0) (const d))) ((split (h2) (split (k2) (l2))))) |
      %
      \just\equiv{for b i = | cata (either (const i) (b))|}
      %
           |for ((h2, (k2,l2))) ((0,(0,d))) |
      %
+     \qed
+\end{eqnarray*}
+Obter-se-á: 
+\begin{eqnarray*}
+     \start
+
+     | for (g d) (0,(0,d)) where 
+          (g d) (q,(r,0)) = 
+          (g d) (q,(r,c + 1)) = 
+     |
      \qed
 \end{eqnarray*}
 \subsection*{Problema 2}
