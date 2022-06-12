@@ -1269,7 +1269,7 @@ Logo,
      %
      \just\equiv{for b i = | cata (either (const i) (b))|}
      %
-          |for ((h2, (k2,l2))) (0,(0,d)) |
+          |for ((h2, (k2,l2))) ((0,(0,d))) |
      %
      \qed
 \end{eqnarray*}

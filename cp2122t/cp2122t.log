@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017/Debian) (preloaded format=pdflatex 2022.6.5)  12 JUN 2022 12:01
+This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017/Debian) (preloaded format=pdflatex 2022.6.5)  12 JUN 2022 12:05
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -829,18 +829,7 @@ LaTeX Warning: Label `eq:fokkinga' multiply defined.
 \openout6 = `cp2122t.idx'.
 
 Writing index file cp2122t.idx
-(./cp2122t.aux
-
-! Package babel Error: You haven't defined the language portuguese yet.
-
-See the babel package documentation for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.22 \babel@aux{portuguese}{}
-                             
-? 
-)
+(./cp2122t.aux)
 \openout1 = `cp2122t.aux'.
 
 LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 306.
@@ -1729,25 +1718,15 @@ Package atveryend Info: Empty hook `AfterLastShipout' on input line 1737.
 Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 1737.
 Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 1737.
 
-
-
-Package rerunfilecheck Warning: File `cp2122t.out' has changed.
-(rerunfilecheck)                Rerun to get outlines right
-(rerunfilecheck)                or use package `bookmark'.
-
-Package rerunfilecheck Info: Checksums for `cp2122t.out':
-(rerunfilecheck)             Before: 38DB496D850EE3520FB5415B46F3EE51;606
-(rerunfilecheck)             After:  52DE7DC0D96D565890C828A31E533207;598.
-
-LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
-
+Package rerunfilecheck Info: File `cp2122t.out' has not changed.
+(rerunfilecheck)             Checksum: 52DE7DC0D96D565890C828A31E533207;598.
 Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 1737.
  ) 
 Here is how much of TeX's memory you used:
- 12304 strings out of 494847
- 174095 string characters out of 6179081
+ 12300 strings out of 494847
+ 174034 string characters out of 6179081
  344561 words of memory out of 5000000
- 15255 multiletter control sequences out of 15000+600000
+ 15251 multiletter control sequences out of 15000+600000
  48342 words of font info for 145 fonts, out of 8000000 for 9000
  59 hyphenation exceptions out of 8191
  42i,24n,77p,3290b,788s stack positions out of 5000i,500n,10000p,200000b,80000s
@@ -1784,7 +1763,7 @@ rw/palatino/uplr8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/palatino/
 uplr8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/palatino/uplri8a.pfb>
 </usr/share/texlive/texmf-dist/fonts/type1/public/xypic/xyatip10.pfb></usr/shar
 e/texlive/texmf-dist/fonts/type1/public/xypic/xybtip10.pfb>
-Output written on cp2122t.pdf (20 pages, 807771 bytes).
+Output written on cp2122t.pdf (20 pages, 807781 bytes).
 PDF statistics:
  448 PDF objects out of 1000 (max. 8388607)
  378 compressed objects within 4 object streams
