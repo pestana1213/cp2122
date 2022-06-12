@@ -1229,10 +1229,10 @@ Finalmente, para o terceiro ramo:
                     (c d) . succ =   l2 . (split (q d) (split (r d) (c d)))
               )|
      %
-     \just\equiv{Como foi provado em cima, |(c d) .(const 0) = 0|, Igualdade extensional (71), Def-comp (72), Def-split (76)}
+     \just\equiv{Como foi provado em cima, |(c d) .(const 0) = (const d)|, Igualdade extensional (71), Def-comp (72), Def-split (76)}
      %
                |lcbr(
-                    (const 0) = l1 
+                    (const d) = l1 
               )(
                     (r d) (succ x) = l2 (q d x, (r d x, c d x))
               )|
@@ -1240,18 +1240,45 @@ Finalmente, para o terceiro ramo:
      \just\equiv{Como foi provado em cima, |(c d) . succ = (either (const d) (uncurry(-) . (split ((c d)) (const(1))) )) . ((0 ==) . (c d)) ?|}   
      %  
           |lcbr(
-               (const 0) = l1 
+              (const d) = l1 
           )(
                (either (const d) (uncurry(-) . (split ((c d)) (const 1)) )) . ((0 ==) . (c d)) ? = l2 (q d x, (r d x, c d x))
           )|
      %
      \just\equiv{Eq - + (27),Fusao - + (20)}
      %
-          | l . (either(const 0) (succ)) = either (const 0) (either (const d) (uncurry(-) . (split ((c d)) (const 1))) ) . ((0 ==) . (c d)) ?|
+          | l . (either(const 0) (succ)) = either (const d) (either (const d) (uncurry(-) . (split ((c d)) (const 1))) ) . ((0 ==) . (c d)) ?|
      %
      \qed
 \end{eqnarray*}
 
+Logo, 
+\begin{eqnarray*}
+     \start
+     \just\equiv{Fokkinga (52)}
+     
+     |  (split ((q d)) (split ((r d)) ((c d)))) = | cata (split ((h)) (split ((k)) ((l))))| 
+
+     %
+     \just\equiv{Lei da troca (28)}
+     
+     |  (split ((q d)) (split ((r d)) ((c d)))) = | cata (split ((h)) either ( (split (const 0) (const d)) 
+     (split (k2) (l2))))| 
+
+     %
+     \just\equiv{Lei da troca (28)}
+     
+     |  (split ((q d)) (split ((r d)) ((c d)))) = | cata either (split (const 0) (split (const 0) (const d)))
+     ((split (h2) (split (k2) (l2)))) |
+
+     %
+     \just\equiv{for b i = | cata either (const i) (b)}
+     
+     | for ((h2, (k2,l2))) (0,(0,d))
+
+     %
+     \qed
+\end{eqnarray*}
 \subsection*{Problema 2}
 
 \begin{eqnarray*}
