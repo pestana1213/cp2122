@@ -1358,64 +1358,80 @@ Assim sendo,
      \just\equiv{Fokkinga (52)}
      %
           |lcbr(
-               alice  = (p1 . g) . F (split (alice) (bob)) 
+               alice . in = (p1 . g) . F (split (alice) (bob)) 
           )(
-               bob = (p2 . g) . F (split (alice) (bob)) 
+               bob . in = (p2 . g) . F (split (alice) (bob)) 
           )|
      %
      \just\equiv{Base - Cata (49)}
      %
           |lcbr(
-               alice  = (p1 . g) . B (id, (split (alice) (bob)))
+               alice . in = (p1 . g) . B (id, (split (alice) (bob)))
           )(
-               bob = (p2 . g) .  B (id, (split (alice) (bob)))
+               bob . in = (p2 . g) .  B (id, (split (alice) (bob)))
           )|
      %
      \just\equiv{|B (id, (split (alice) (bob)))  = id + (split (alice) (bob)) >< (split (alice) (bob))|}
      %
           |lcbr(
-               alice  = (p1 . g) . (id + (split (alice) (bob)) ><  (split (alice) (bob)))
+               alice . in  = (p1 . g) . (id + (split (alice) (bob)) ><  (split (alice) (bob)))
           )(
-               bob = (p2 . g) . (id + (split (alice) (bob)) >< (split (alice) (bob)))
+               bob . in = (p2 . g) . (id + (split (alice) (bob)) >< (split (alice) (bob)))
           )|
      %
      \just\equiv{Def - + (21), Natural - id (1)}
      %
           |lcbr(
-               alice  = (p1 . g) . (either (i1) (i2 . ((split (alice) (bob)) >< (split (alice) (bob)))))
+               alice . in  = (p1 . g) . (either (i1) (i2 . ((split (alice) (bob)) >< (split (alice) (bob)))))
           )(
-               bob = (p2 . g) . (either (i1) (i2 . ((split (alice) (bob)) ><  (split (alice) (bob)))))
+               bob . in = (p2 . g) . (either (i1) (i2 . ((split (alice) (bob)) ><  (split (alice) (bob)))))
           )|
      %
      \just\equiv{Fusão - + (20)}
      %
           |lcbr(
-               alice  = (either ((p1 . g) . i1) ((p1 . g) . (i2 . ((split (alice) (bob)) >< (split (alice) (bob))))))
+               alice . in = (either ((p1 . g) . i1) ((p1 . g) . (i2 . ((split (alice) (bob)) >< (split (alice) (bob))))))
           )(
-               bob = (either ((p2 . g) . i1) ((p2 . g) . (i2 . ((split (alice) (bob)) ><  (split (alice) (bob))))))
+               bob . in = (either ((p2 . g) . i1) ((p2 . g) . (i2 . ((split (alice) (bob)) ><  (split (alice) (bob))))))
           )|
      %
-     \just\equiv{ Assoc - comp (2)}
+     \just\equiv{ Assoc - comp (2), Definição do in}
      %
           |lcbr(
-               alice  = (either (p1 . (g . i1)) ((p1 . g) . (i2 . ((split (alice) (bob)) >< (split (alice) (bob))))))
+               alice . [Leaf, Fork]= (either (p1 . (g . i1)) ((p1 . g) . (i2 . ((split (alice) (bob)) >< (split (alice) (bob))))))
           )(
-               bob = (either (p2 . (g . i1)) ((p2 . g) . (i2 . ((split (alice) (bob)) ><  (split (alice) (bob))))))
+               bob . [Leaf, Fork] = (either (p2 . (g . i1)) ((p2 . g) . (i2 . ((split (alice) (bob)) ><  (split (alice) (bob))))))
           )|
      %
      \just\equiv{ Universal - + (17)}
      %
           |lcbr(
                lcbr(
-                    alice . i1  = p1 . (g . i1) 
+                    alice .  [Leaf, Fork] . i1  = p1 . (g . i1) 
                )(
-                    alice . i2  = (p1 . g) . (i2 . ((split (alice) (bob)) >< (split (alice) (bob))))
+                    alice .  [Leaf, Fork] . i2  = (p1 . g) . (i2 . ((split (alice) (bob)) >< (split (alice) (bob))))
                )
           )(
                lcbr(
-                    bob  . i1 = p2 . (g . i1) 
+                    bob  .  [Leaf, Fork] . i1 = p2 . (g . i1) 
                )(
-                    bob  . i2 = (p2 . g) . (i2 . ((split (alice) (bob)) ><  (split (alice) (bob))))
+                    bob  .  [Leaf, Fork] . i2 = (p2 . g) . (i2 . ((split (alice) (bob)) ><  (split (alice) (bob))))
+               )
+          )|
+     %
+     \just\equiv{ Assoc - comp (2), Cancelamento - + (18)}
+     %
+          |lcbr(
+               lcbr(
+                    alice . Leaf  = p1 . (g . i1) 
+               )(
+                    alice . Fork  = p1 . (g . (i2 . ((split (alice) (bob)) >< (split (alice) (bob)))))
+               )
+          )(
+               lcbr(
+                    bob  . Leaf = p2 . (g . i1) 
+               )(
+                    bob  . Fork = p2 . (g . (i2 . ((split (alice) (bob)) ><  (split (alice) (bob)))))
                )
           )|
      %
@@ -1423,31 +1439,15 @@ Assim sendo,
      %
           |lcbr(
                lcbr(
-                    alice . i1  = p1 . (g . i1) 
+                    alice . Leaf   = p1 . (g . i1) 
                )(
-                    alice . i2  = p1 . (g . (i2 . ((split (alice) (bob)) >< (split (alice) (bob)))))
+                    alice . Fork  = p1 . ((g . i2) . ((split (alice) (bob)) >< (split (alice) (bob))))
                )
           )(
                lcbr(
-                    bob  . i1 = p2 . (g . i1) 
+                    bob  . Leaf  = p2 . (g . i1) 
                )(
-                    bob  . i2 = p2 . (g . (i2 . ((split (alice) (bob)) ><  (split (alice) (bob)))))
-               )
-          )|
-     %
-     \just\equiv{ Assoc - comp (2)}
-     %
-          |lcbr(
-               lcbr(
-                    alice . i1  = p1 . (g . i1) 
-               )(
-                    alice . i2  = p1 . ((g . i2) . ((split (alice) (bob)) >< (split (alice) (bob))))
-               )
-          )(
-               lcbr(
-                    bob  . i1 = p2 . (g . i1) 
-               )(
-                    bob  . i2 = p2 . ((g . i2) . ((split (alice) (bob)) ><  (split (alice) (bob))))
+                    bob  . Fork = p2 . ((g . i2) . ((split (alice) (bob)) ><  (split (alice) (bob))))
                )
           )|
      %
@@ -1455,15 +1455,15 @@ Assim sendo,
      %
           |lcbr(
                lcbr(
-                    alice . i1  = p1 . g11
+                    alice . Leaf  = p1 . g11
                )(
-                    alice . i2  = p1 . (g12. ((split (alice) (bob)) >< (split (alice) (bob))))
+                    alice . Fork  = p1 . (g12. ((split (alice) (bob)) >< (split (alice) (bob))))
                )
           )(
                lcbr(
-                    bob  . i1 = p2 . g11 
+                    bob  . Leaf = p2 . g11 
                )(
-                    bob  . i2 = p2 . (g12 . ((split (alice) (bob)) ><  (split (alice) (bob))))
+                    bob  . Fork = p2 . (g12 . ((split (alice) (bob)) ><  (split (alice) (bob))))
                )
           )|
      %
@@ -1471,15 +1471,15 @@ Assim sendo,
      %
           |lcbr(
                lcbr(
-                    (alice . i1) z  = (p1 . g11) z
+                    (alice . Leaf) z  = (p1 . g11) z
                )(
-                    (alice . i2) w = (p1 . (g12 . ((split (alice) (bob)) >< (split (alice) (bob))))) w
+                    (alice . Fork) w = (p1 . (g12 . ((split (alice) (bob)) >< (split (alice) (bob))))) w
                )
           )(
                lcbr(
-                    (bob  . i1) z = (p2 . g11) z
+                    (bob  . Leaf) z = (p2 . g11) z
                )(
-                    (bob  . i2) w = (p2 . (g12 . ((split (alice) (bob)) ><  (split (alice) (bob))))) w
+                    (bob  . Fork) w = (p2 . (g12 . ((split (alice) (bob)) ><  (split (alice) (bob))))) w
                )
           )|
      %
@@ -1487,15 +1487,15 @@ Assim sendo,
      %
           |lcbr(
                lcbr(
-                    alice (i1 z)  = p1 (g11 z)
+                    alice (Leaf z)  = p1 (g11 z)
                )(
-                    alice (i2 w)  = (p1 (g12 . ((split (alice) (bob)) >< (split (alice) (bob)))) w)
+                    alice (Fork w)  = (p1 (g12 . ((split (alice) (bob)) >< (split (alice) (bob)))) w)
                )
           )(
                lcbr(
-                    bob (i1 z) = p2 (g11 z)
+                    bob (Leaf z) = p2 (g11 z)
                )(
-                    bob (i2 w) = (p2 (g12 . ((split (alice) (bob)) ><  (split (alice) (bob)))) w)
+                    bob (Fork w) = (p2 (g12 . ((split (alice) (bob)) ><  (split (alice) (bob)))) w)
                )
           )|
      %
@@ -1503,31 +1503,31 @@ Assim sendo,
      %
           |lcbr(
                lcbr(
-                    alice (i1 z)  = p1 (g11 z)
+                    alice (Leaf z)  = p1 (g11 z)
                )(
-                    alice (i2 w)  = p1 (g12 (((split (alice) (bob)) >< (split (alice) (bob)))w))
+                    alice (Fork w)  = p1 (g12 (((split (alice) (bob)) >< (split (alice) (bob)))w))
                )
           )(
                lcbr(
-                    bob (i1 z) = p2 (g11 z)
+                    bob (Leaf z) = p2 (g11 z)
                )(
-                    bob (i2 w) = p2 (g12 (((split (alice) (bob)) ><  (split (alice) (bob))) w))
+                    bob (Fork w) = p2 (g12 (((split (alice) (bob)) ><  (split (alice) (bob))) w))
                )
           )|
      %
-     \just\equiv{Mudança de variável w : = (x,y), Def- |><| (72)}
+     \just\equiv{Como w é do tipo Fork, temos que rescrever w : = (x,y), Def- |><| (72)}
      %
           |lcbr(
                lcbr(
-                    alice (i1 z)  = p1 (g11 z)
+                    alice (Leaf z)  = p1 (g11 z)
                )(
-                    alice (i2 (x,y))  = p1 (g12 ((split (alice) (bob)) x , (split (alice) (bob)) y))
+                    alice (Fork (x,y))  = p1 (g12 ((split (alice) (bob)) x , (split (alice) (bob)) y))
                )
           )(
                lcbr(
-                    bob (i1 z) = p2 (g11 z)
+                    bob (Leaf z) = p2 (g11 z)
                )(
-                    bob (i2 (x,y)) = p2 (g12 ((split (alice) (bob)) x , (split (alice) (bob)) y))
+                    bob (Fork (x,y)) = p2 (g12 ((split (alice) (bob)) x , (split (alice) (bob)) y))
                )
           )|
      %
@@ -1535,15 +1535,15 @@ Assim sendo,
      %
           |lcbr(
                lcbr(
-                    alice (i1 z)  = p1 (g11 z)
+                    alice (Leaf z)  = p1 (g11 z)
                )(
-                    alice (i2 (x,y))  = p1 (g12 ((alice x, bob x), ( alice y, bob y)))
+                    alice (Fork (x,y))  = p1 (g12 ((alice x, bob x), ( alice y, bob y)))
                )
           )(
                lcbr(
-                    bob (i1 z) = p2 (g11 z)
+                    bob (Leaf z) = p2 (g11 z)
                )(
-                    bob (i2 (x,y)) = p2 (g12 ((alice x, bob x), (alice y, bob y)))
+                    bob (Fork (x,y)) = p2 (g12 ((alice x, bob x), (alice y, bob y)))
                )
           )|
      %
@@ -1551,15 +1551,15 @@ Assim sendo,
      %
           |lcbr(
                lcbr(
-                    alice (i1 z)  = p1 (z,z)
+                    alice (Leaf z)  = p1 (z,z)
                )(
-                    alice (i2 (x,y))  = p1 ((alice x) + (alice y), (bob x) + (bob y))
+                    alice (Fork (x,y))  = p1 ((alice x) + (alice y), (bob x) + (bob y))
                )
           )(
                lcbr(
-                    bob (i1 z) = p2 (z,z)
+                    bob (Leaf z) = p2 (z,z)
                )(
-                    bob (i2 (x,y)) = p2 ((alice x) + (alice y), (bob x) + (bob y))
+                    bob (Fork (x,y)) = p2 ((alice x) + (alice y), (bob x) + (bob y))
                )
           )|
      %
@@ -1567,15 +1567,15 @@ Assim sendo,
      %
           |lcbr(
                lcbr(
-                    alice (i1 z)  = z
+                    alice (Leaf z)  = z
                )(
-                    alice (i2 (x,y))  = (alice x) + (alice y)
+                    alice (Fork (x,y))  = (alice x) + (alice y)
                )
           )(
                lcbr(
-                    bob (i1 z) = z
+                    bob (Leaf z) = z
                )(
-                    bob (i2 (x,y)) = (bob x) + (bob y)
+                    bob (Fork (x,y)) = (bob x) + (bob y)
                )
           )|
      %
@@ -1584,12 +1584,12 @@ Assim sendo,
 
 \begin{code}
 alice :: Ord c => LTree c -> c
-alice (i1 z) = z
-alice (i2 (x,y)) = (alice x) + (alice y)
+alice (Leaf z) = z
+alice (Fork (x,y)) = (alice x) + (alice y)
 
 bob :: Ord c => LTree c -> c
-bob (i1 z) = z
-bob (i2 (x,y)) = (bob x) + (bob y)
+bob (Leaf z) = z
+bob (Fork (x,y)) = (bob x) + (bob y)
 \end{code}
 
 \subsection*{Problema 3}

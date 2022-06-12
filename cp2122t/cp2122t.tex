@@ -1514,71 +1514,71 @@ Assim sendo,
      %
      \just\equiv{Fokkinga (52)}
      %
-          \ensuremath{\begin{lcbr}\Varid{alice}\mathrel{=}(\p1\comp \Varid{g})\comp \Conid{F}\;\conj{\Varid{alice}}{\Varid{bob}}\\\Varid{bob}\mathrel{=}(\p2\comp \Varid{g})\comp \Conid{F}\;\conj{\Varid{alice}}{\Varid{bob}}\end{lcbr}}
+          \ensuremath{\begin{lcbr}\Varid{alice}\comp \mathbf{in}\mathrel{=}(\p1\comp \Varid{g})\comp \Conid{F}\;\conj{\Varid{alice}}{\Varid{bob}}\\\Varid{bob}\comp \mathbf{in}\mathrel{=}(\p2\comp \Varid{g})\comp \Conid{F}\;\conj{\Varid{alice}}{\Varid{bob}}\end{lcbr}}
      %
      \just\equiv{Base - Cata (49)}
      %
-          \ensuremath{\begin{lcbr}\Varid{alice}\mathrel{=}(\p1\comp \Varid{g})\comp \mathit B\;(\Varid{id},\conj{\Varid{alice}}{\Varid{bob}})\\\Varid{bob}\mathrel{=}(\p2\comp \Varid{g})\comp \mathit B\;(\Varid{id},\conj{\Varid{alice}}{\Varid{bob}})\end{lcbr}}
+          \ensuremath{\begin{lcbr}\Varid{alice}\comp \mathbf{in}\mathrel{=}(\p1\comp \Varid{g})\comp \mathit B\;(\Varid{id},\conj{\Varid{alice}}{\Varid{bob}})\\\Varid{bob}\comp \mathbf{in}\mathrel{=}(\p2\comp \Varid{g})\comp \mathit B\;(\Varid{id},\conj{\Varid{alice}}{\Varid{bob}})\end{lcbr}}
      %
      \just\equiv{\ensuremath{\mathit B\;(\Varid{id},\conj{\Varid{alice}}{\Varid{bob}})\mathrel{=}\Varid{id}\mathbin{+}\conj{\Varid{alice}}{\Varid{bob}}\times\conj{\Varid{alice}}{\Varid{bob}}}}
      %
-          \ensuremath{\begin{lcbr}\Varid{alice}\mathrel{=}(\p1\comp \Varid{g})\comp (\Varid{id}\mathbin{+}\conj{\Varid{alice}}{\Varid{bob}}\times\conj{\Varid{alice}}{\Varid{bob}})\\\Varid{bob}\mathrel{=}(\p2\comp \Varid{g})\comp (\Varid{id}\mathbin{+}\conj{\Varid{alice}}{\Varid{bob}}\times\conj{\Varid{alice}}{\Varid{bob}})\end{lcbr}}
+          \ensuremath{\begin{lcbr}\Varid{alice}\comp \mathbf{in}\mathrel{=}(\p1\comp \Varid{g})\comp (\Varid{id}\mathbin{+}\conj{\Varid{alice}}{\Varid{bob}}\times\conj{\Varid{alice}}{\Varid{bob}})\\\Varid{bob}\comp \mathbf{in}\mathrel{=}(\p2\comp \Varid{g})\comp (\Varid{id}\mathbin{+}\conj{\Varid{alice}}{\Varid{bob}}\times\conj{\Varid{alice}}{\Varid{bob}})\end{lcbr}}
      %
      \just\equiv{Def - + (21), Natural - id (1)}
      %
-          \ensuremath{\begin{lcbr}\Varid{alice}\mathrel{=}(\p1\comp \Varid{g})\comp \alt{i_1}{i_2\comp (\conj{\Varid{alice}}{\Varid{bob}}\times\conj{\Varid{alice}}{\Varid{bob}})}\\\Varid{bob}\mathrel{=}(\p2\comp \Varid{g})\comp \alt{i_1}{i_2\comp (\conj{\Varid{alice}}{\Varid{bob}}\times\conj{\Varid{alice}}{\Varid{bob}})}\end{lcbr}}
+          \ensuremath{\begin{lcbr}\Varid{alice}\comp \mathbf{in}\mathrel{=}(\p1\comp \Varid{g})\comp \alt{i_1}{i_2\comp (\conj{\Varid{alice}}{\Varid{bob}}\times\conj{\Varid{alice}}{\Varid{bob}})}\\\Varid{bob}\comp \mathbf{in}\mathrel{=}(\p2\comp \Varid{g})\comp \alt{i_1}{i_2\comp (\conj{\Varid{alice}}{\Varid{bob}}\times\conj{\Varid{alice}}{\Varid{bob}})}\end{lcbr}}
      %
      \just\equiv{Fusão - + (20)}
      %
-          \ensuremath{\begin{lcbr}\Varid{alice}\mathrel{=}\alt{(\p1\comp \Varid{g})\comp i_1}{(\p1\comp \Varid{g})\comp (i_2\comp (\conj{\Varid{alice}}{\Varid{bob}}\times\conj{\Varid{alice}}{\Varid{bob}}))}\\\Varid{bob}\mathrel{=}\alt{(\p2\comp \Varid{g})\comp i_1}{(\p2\comp \Varid{g})\comp (i_2\comp (\conj{\Varid{alice}}{\Varid{bob}}\times\conj{\Varid{alice}}{\Varid{bob}}))}\end{lcbr}}
+          \ensuremath{\begin{lcbr}\Varid{alice}\comp \mathbf{in}\mathrel{=}\alt{(\p1\comp \Varid{g})\comp i_1}{(\p1\comp \Varid{g})\comp (i_2\comp (\conj{\Varid{alice}}{\Varid{bob}}\times\conj{\Varid{alice}}{\Varid{bob}}))}\\\Varid{bob}\comp \mathbf{in}\mathrel{=}\alt{(\p2\comp \Varid{g})\comp i_1}{(\p2\comp \Varid{g})\comp (i_2\comp (\conj{\Varid{alice}}{\Varid{bob}}\times\conj{\Varid{alice}}{\Varid{bob}}))}\end{lcbr}}
      %
-     \just\equiv{ Assoc - comp (2)}
+     \just\equiv{ Assoc - comp (2), Definição do in}
      %
-          \ensuremath{\begin{lcbr}\Varid{alice}\mathrel{=}\alt{\p1\comp (\Varid{g}\comp i_1)}{(\p1\comp \Varid{g})\comp (i_2\comp (\conj{\Varid{alice}}{\Varid{bob}}\times\conj{\Varid{alice}}{\Varid{bob}}))}\\\Varid{bob}\mathrel{=}\alt{\p2\comp (\Varid{g}\comp i_1)}{(\p2\comp \Varid{g})\comp (i_2\comp (\conj{\Varid{alice}}{\Varid{bob}}\times\conj{\Varid{alice}}{\Varid{bob}}))}\end{lcbr}}
+          \ensuremath{\begin{lcbr}\Varid{alice}\comp [\mskip1.5mu \Conid{Leaf},\Conid{Fork}\mskip1.5mu]\mathrel{=}\alt{\p1\comp (\Varid{g}\comp i_1)}{(\p1\comp \Varid{g})\comp (i_2\comp (\conj{\Varid{alice}}{\Varid{bob}}\times\conj{\Varid{alice}}{\Varid{bob}}))}\\\Varid{bob}\comp [\mskip1.5mu \Conid{Leaf},\Conid{Fork}\mskip1.5mu]\mathrel{=}\alt{\p2\comp (\Varid{g}\comp i_1)}{(\p2\comp \Varid{g})\comp (i_2\comp (\conj{\Varid{alice}}{\Varid{bob}}\times\conj{\Varid{alice}}{\Varid{bob}}))}\end{lcbr}}
      %
      \just\equiv{ Universal - + (17)}
      %
-          \ensuremath{\begin{lcbr}\begin{lcbr}\Varid{alice}\comp i_1\mathrel{=}\p1\comp (\Varid{g}\comp i_1)\\\Varid{alice}\comp i_2\mathrel{=}(\p1\comp \Varid{g})\comp (i_2\comp (\conj{\Varid{alice}}{\Varid{bob}}\times\conj{\Varid{alice}}{\Varid{bob}}))\end{lcbr}\\\begin{lcbr}\Varid{bob}\comp i_1\mathrel{=}\p2\comp (\Varid{g}\comp i_1)\\\Varid{bob}\comp i_2\mathrel{=}(\p2\comp \Varid{g})\comp (i_2\comp (\conj{\Varid{alice}}{\Varid{bob}}\times\conj{\Varid{alice}}{\Varid{bob}}))\end{lcbr}\end{lcbr}}
+          \ensuremath{\begin{lcbr}\begin{lcbr}\Varid{alice}\comp [\mskip1.5mu \Conid{Leaf},\Conid{Fork}\mskip1.5mu]\comp i_1\mathrel{=}\p1\comp (\Varid{g}\comp i_1)\\\Varid{alice}\comp [\mskip1.5mu \Conid{Leaf},\Conid{Fork}\mskip1.5mu]\comp i_2\mathrel{=}(\p1\comp \Varid{g})\comp (i_2\comp (\conj{\Varid{alice}}{\Varid{bob}}\times\conj{\Varid{alice}}{\Varid{bob}}))\end{lcbr}\\\begin{lcbr}\Varid{bob}\comp [\mskip1.5mu \Conid{Leaf},\Conid{Fork}\mskip1.5mu]\comp i_1\mathrel{=}\p2\comp (\Varid{g}\comp i_1)\\\Varid{bob}\comp [\mskip1.5mu \Conid{Leaf},\Conid{Fork}\mskip1.5mu]\comp i_2\mathrel{=}(\p2\comp \Varid{g})\comp (i_2\comp (\conj{\Varid{alice}}{\Varid{bob}}\times\conj{\Varid{alice}}{\Varid{bob}}))\end{lcbr}\end{lcbr}}
+     %
+     \just\equiv{ Assoc - comp (2), Cancelamento - + (18)}
+     %
+          \ensuremath{\begin{lcbr}\begin{lcbr}\Varid{alice}\comp \Conid{Leaf}\mathrel{=}\p1\comp (\Varid{g}\comp i_1)\\\Varid{alice}\comp \Conid{Fork}\mathrel{=}\p1\comp (\Varid{g}\comp (i_2\comp (\conj{\Varid{alice}}{\Varid{bob}}\times\conj{\Varid{alice}}{\Varid{bob}})))\end{lcbr}\\\begin{lcbr}\Varid{bob}\comp \Conid{Leaf}\mathrel{=}\p2\comp (\Varid{g}\comp i_1)\\\Varid{bob}\comp \Conid{Fork}\mathrel{=}\p2\comp (\Varid{g}\comp (i_2\comp (\conj{\Varid{alice}}{\Varid{bob}}\times\conj{\Varid{alice}}{\Varid{bob}})))\end{lcbr}\end{lcbr}}
      %
      \just\equiv{ Assoc - comp (2)}
      %
-          \ensuremath{\begin{lcbr}\begin{lcbr}\Varid{alice}\comp i_1\mathrel{=}\p1\comp (\Varid{g}\comp i_1)\\\Varid{alice}\comp i_2\mathrel{=}\p1\comp (\Varid{g}\comp (i_2\comp (\conj{\Varid{alice}}{\Varid{bob}}\times\conj{\Varid{alice}}{\Varid{bob}})))\end{lcbr}\\\begin{lcbr}\Varid{bob}\comp i_1\mathrel{=}\p2\comp (\Varid{g}\comp i_1)\\\Varid{bob}\comp i_2\mathrel{=}\p2\comp (\Varid{g}\comp (i_2\comp (\conj{\Varid{alice}}{\Varid{bob}}\times\conj{\Varid{alice}}{\Varid{bob}})))\end{lcbr}\end{lcbr}}
-     %
-     \just\equiv{ Assoc - comp (2)}
-     %
-          \ensuremath{\begin{lcbr}\begin{lcbr}\Varid{alice}\comp i_1\mathrel{=}\p1\comp (\Varid{g}\comp i_1)\\\Varid{alice}\comp i_2\mathrel{=}\p1\comp ((\Varid{g}\comp i_2)\comp (\conj{\Varid{alice}}{\Varid{bob}}\times\conj{\Varid{alice}}{\Varid{bob}}))\end{lcbr}\\\begin{lcbr}\Varid{bob}\comp i_1\mathrel{=}\p2\comp (\Varid{g}\comp i_1)\\\Varid{bob}\comp i_2\mathrel{=}\p2\comp ((\Varid{g}\comp i_2)\comp (\conj{\Varid{alice}}{\Varid{bob}}\times\conj{\Varid{alice}}{\Varid{bob}}))\end{lcbr}\end{lcbr}}
+          \ensuremath{\begin{lcbr}\begin{lcbr}\Varid{alice}\comp \Conid{Leaf}\mathrel{=}\p1\comp (\Varid{g}\comp i_1)\\\Varid{alice}\comp \Conid{Fork}\mathrel{=}\p1\comp ((\Varid{g}\comp i_2)\comp (\conj{\Varid{alice}}{\Varid{bob}}\times\conj{\Varid{alice}}{\Varid{bob}}))\end{lcbr}\\\begin{lcbr}\Varid{bob}\comp \Conid{Leaf}\mathrel{=}\p2\comp (\Varid{g}\comp i_1)\\\Varid{bob}\comp \Conid{Fork}\mathrel{=}\p2\comp ((\Varid{g}\comp i_2)\comp (\conj{\Varid{alice}}{\Varid{bob}}\times\conj{\Varid{alice}}{\Varid{bob}}))\end{lcbr}\end{lcbr}}
      %
      \just\equiv{Definição de g : \ensuremath{\Varid{g}\mathrel{=}\alt{\Varid{g11}}{\Varid{g12}}}, Cancelamento - + (18)}
      %
-          \ensuremath{\begin{lcbr}\begin{lcbr}\Varid{alice}\comp i_1\mathrel{=}\p1\comp \Varid{g11}\\\Varid{alice}\comp i_2\mathrel{=}\p1\comp (\Varid{g12}\comp (\conj{\Varid{alice}}{\Varid{bob}}\times\conj{\Varid{alice}}{\Varid{bob}}))\end{lcbr}\\\begin{lcbr}\Varid{bob}\comp i_1\mathrel{=}\p2\comp \Varid{g11}\\\Varid{bob}\comp i_2\mathrel{=}\p2\comp (\Varid{g12}\comp (\conj{\Varid{alice}}{\Varid{bob}}\times\conj{\Varid{alice}}{\Varid{bob}}))\end{lcbr}\end{lcbr}}
+          \ensuremath{\begin{lcbr}\begin{lcbr}\Varid{alice}\comp \Conid{Leaf}\mathrel{=}\p1\comp \Varid{g11}\\\Varid{alice}\comp \Conid{Fork}\mathrel{=}\p1\comp (\Varid{g12}\comp (\conj{\Varid{alice}}{\Varid{bob}}\times\conj{\Varid{alice}}{\Varid{bob}}))\end{lcbr}\\\begin{lcbr}\Varid{bob}\comp \Conid{Leaf}\mathrel{=}\p2\comp \Varid{g11}\\\Varid{bob}\comp \Conid{Fork}\mathrel{=}\p2\comp (\Varid{g12}\comp (\conj{\Varid{alice}}{\Varid{bob}}\times\conj{\Varid{alice}}{\Varid{bob}}))\end{lcbr}\end{lcbr}}
      %
      \just\equiv{ Igualdade Extensional (71)}
      %
-          \ensuremath{\begin{lcbr}\begin{lcbr}(\Varid{alice}\comp i_1)\;\Varid{z}\mathrel{=}(\p1\comp \Varid{g11})\;\Varid{z}\\(\Varid{alice}\comp i_2)\;\Varid{w}\mathrel{=}(\p1\comp (\Varid{g12}\comp (\conj{\Varid{alice}}{\Varid{bob}}\times\conj{\Varid{alice}}{\Varid{bob}})))\;\Varid{w}\end{lcbr}\\\begin{lcbr}(\Varid{bob}\comp i_1)\;\Varid{z}\mathrel{=}(\p2\comp \Varid{g11})\;\Varid{z}\\(\Varid{bob}\comp i_2)\;\Varid{w}\mathrel{=}(\p2\comp (\Varid{g12}\comp (\conj{\Varid{alice}}{\Varid{bob}}\times\conj{\Varid{alice}}{\Varid{bob}})))\;\Varid{w}\end{lcbr}\end{lcbr}}
+          \ensuremath{\begin{lcbr}\begin{lcbr}(\Varid{alice}\comp \Conid{Leaf})\;\Varid{z}\mathrel{=}(\p1\comp \Varid{g11})\;\Varid{z}\\(\Varid{alice}\comp \Conid{Fork})\;\Varid{w}\mathrel{=}(\p1\comp (\Varid{g12}\comp (\conj{\Varid{alice}}{\Varid{bob}}\times\conj{\Varid{alice}}{\Varid{bob}})))\;\Varid{w}\end{lcbr}\\\begin{lcbr}(\Varid{bob}\comp \Conid{Leaf})\;\Varid{z}\mathrel{=}(\p2\comp \Varid{g11})\;\Varid{z}\\(\Varid{bob}\comp \Conid{Fork})\;\Varid{w}\mathrel{=}(\p2\comp (\Varid{g12}\comp (\conj{\Varid{alice}}{\Varid{bob}}\times\conj{\Varid{alice}}{\Varid{bob}})))\;\Varid{w}\end{lcbr}\end{lcbr}}
      %
      \just\equiv{Def-comp (72)}
      %
-          \ensuremath{\begin{lcbr}\begin{lcbr}\Varid{alice}\;(i_1\;\Varid{z})\mathrel{=}\p1\;(\Varid{g11}\;\Varid{z})\\\Varid{alice}\;(i_2\;\Varid{w})\mathrel{=}(\p1\;(\Varid{g12}\comp (\conj{\Varid{alice}}{\Varid{bob}}\times\conj{\Varid{alice}}{\Varid{bob}}))\;\Varid{w})\end{lcbr}\\\begin{lcbr}\Varid{bob}\;(i_1\;\Varid{z})\mathrel{=}\p2\;(\Varid{g11}\;\Varid{z})\\\Varid{bob}\;(i_2\;\Varid{w})\mathrel{=}(\p2\;(\Varid{g12}\comp (\conj{\Varid{alice}}{\Varid{bob}}\times\conj{\Varid{alice}}{\Varid{bob}}))\;\Varid{w})\end{lcbr}\end{lcbr}}
+          \ensuremath{\begin{lcbr}\begin{lcbr}\Varid{alice}\;(\Conid{Leaf}\;\Varid{z})\mathrel{=}\p1\;(\Varid{g11}\;\Varid{z})\\\Varid{alice}\;(\Conid{Fork}\;\Varid{w})\mathrel{=}(\p1\;(\Varid{g12}\comp (\conj{\Varid{alice}}{\Varid{bob}}\times\conj{\Varid{alice}}{\Varid{bob}}))\;\Varid{w})\end{lcbr}\\\begin{lcbr}\Varid{bob}\;(\Conid{Leaf}\;\Varid{z})\mathrel{=}\p2\;(\Varid{g11}\;\Varid{z})\\\Varid{bob}\;(\Conid{Fork}\;\Varid{w})\mathrel{=}(\p2\;(\Varid{g12}\comp (\conj{\Varid{alice}}{\Varid{bob}}\times\conj{\Varid{alice}}{\Varid{bob}}))\;\Varid{w})\end{lcbr}\end{lcbr}}
      %
      \just\equiv{Def-comp (72)}
      %
-          \ensuremath{\begin{lcbr}\begin{lcbr}\Varid{alice}\;(i_1\;\Varid{z})\mathrel{=}\p1\;(\Varid{g11}\;\Varid{z})\\\Varid{alice}\;(i_2\;\Varid{w})\mathrel{=}\p1\;(\Varid{g12}\;((\conj{\Varid{alice}}{\Varid{bob}}\times\conj{\Varid{alice}}{\Varid{bob}})\;\Varid{w}))\end{lcbr}\\\begin{lcbr}\Varid{bob}\;(i_1\;\Varid{z})\mathrel{=}\p2\;(\Varid{g11}\;\Varid{z})\\\Varid{bob}\;(i_2\;\Varid{w})\mathrel{=}\p2\;(\Varid{g12}\;((\conj{\Varid{alice}}{\Varid{bob}}\times\conj{\Varid{alice}}{\Varid{bob}})\;\Varid{w}))\end{lcbr}\end{lcbr}}
+          \ensuremath{\begin{lcbr}\begin{lcbr}\Varid{alice}\;(\Conid{Leaf}\;\Varid{z})\mathrel{=}\p1\;(\Varid{g11}\;\Varid{z})\\\Varid{alice}\;(\Conid{Fork}\;\Varid{w})\mathrel{=}\p1\;(\Varid{g12}\;((\conj{\Varid{alice}}{\Varid{bob}}\times\conj{\Varid{alice}}{\Varid{bob}})\;\Varid{w}))\end{lcbr}\\\begin{lcbr}\Varid{bob}\;(\Conid{Leaf}\;\Varid{z})\mathrel{=}\p2\;(\Varid{g11}\;\Varid{z})\\\Varid{bob}\;(\Conid{Fork}\;\Varid{w})\mathrel{=}\p2\;(\Varid{g12}\;((\conj{\Varid{alice}}{\Varid{bob}}\times\conj{\Varid{alice}}{\Varid{bob}})\;\Varid{w}))\end{lcbr}\end{lcbr}}
      %
-     \just\equiv{Mudança de variável w : = (x,y), Def- \ensuremath{\times} (72)}
+     \just\equiv{Como w é do tipo Fork, temos que rescrever w : = (x,y), Def- \ensuremath{\times} (72)}
      %
-          \ensuremath{\begin{lcbr}\begin{lcbr}\Varid{alice}\;(i_1\;\Varid{z})\mathrel{=}\p1\;(\Varid{g11}\;\Varid{z})\\\Varid{alice}\;(i_2\;(\Varid{x},\Varid{y}))\mathrel{=}\p1\;(\Varid{g12}\;(\conj{\Varid{alice}}{\Varid{bob}}\;\Varid{x},\conj{\Varid{alice}}{\Varid{bob}}\;\Varid{y}))\end{lcbr}\\\begin{lcbr}\Varid{bob}\;(i_1\;\Varid{z})\mathrel{=}\p2\;(\Varid{g11}\;\Varid{z})\\\Varid{bob}\;(i_2\;(\Varid{x},\Varid{y}))\mathrel{=}\p2\;(\Varid{g12}\;(\conj{\Varid{alice}}{\Varid{bob}}\;\Varid{x},\conj{\Varid{alice}}{\Varid{bob}}\;\Varid{y}))\end{lcbr}\end{lcbr}}
+          \ensuremath{\begin{lcbr}\begin{lcbr}\Varid{alice}\;(\Conid{Leaf}\;\Varid{z})\mathrel{=}\p1\;(\Varid{g11}\;\Varid{z})\\\Varid{alice}\;(\Conid{Fork}\;(\Varid{x},\Varid{y}))\mathrel{=}\p1\;(\Varid{g12}\;(\conj{\Varid{alice}}{\Varid{bob}}\;\Varid{x},\conj{\Varid{alice}}{\Varid{bob}}\;\Varid{y}))\end{lcbr}\\\begin{lcbr}\Varid{bob}\;(\Conid{Leaf}\;\Varid{z})\mathrel{=}\p2\;(\Varid{g11}\;\Varid{z})\\\Varid{bob}\;(\Conid{Fork}\;(\Varid{x},\Varid{y}))\mathrel{=}\p2\;(\Varid{g12}\;(\conj{\Varid{alice}}{\Varid{bob}}\;\Varid{x},\conj{\Varid{alice}}{\Varid{bob}}\;\Varid{y}))\end{lcbr}\end{lcbr}}
      %
      \just\equiv{Def-split (77)}
      %
-          \ensuremath{\begin{lcbr}\begin{lcbr}\Varid{alice}\;(i_1\;\Varid{z})\mathrel{=}\p1\;(\Varid{g11}\;\Varid{z})\\\Varid{alice}\;(i_2\;(\Varid{x},\Varid{y}))\mathrel{=}\p1\;(\Varid{g12}\;((\Varid{alice}\;\Varid{x},\Varid{bob}\;\Varid{x}),(\Varid{alice}\;\Varid{y},\Varid{bob}\;\Varid{y})))\end{lcbr}\\\begin{lcbr}\Varid{bob}\;(i_1\;\Varid{z})\mathrel{=}\p2\;(\Varid{g11}\;\Varid{z})\\\Varid{bob}\;(i_2\;(\Varid{x},\Varid{y}))\mathrel{=}\p2\;(\Varid{g12}\;((\Varid{alice}\;\Varid{x},\Varid{bob}\;\Varid{x}),(\Varid{alice}\;\Varid{y},\Varid{bob}\;\Varid{y})))\end{lcbr}\end{lcbr}}
+          \ensuremath{\begin{lcbr}\begin{lcbr}\Varid{alice}\;(\Conid{Leaf}\;\Varid{z})\mathrel{=}\p1\;(\Varid{g11}\;\Varid{z})\\\Varid{alice}\;(\Conid{Fork}\;(\Varid{x},\Varid{y}))\mathrel{=}\p1\;(\Varid{g12}\;((\Varid{alice}\;\Varid{x},\Varid{bob}\;\Varid{x}),(\Varid{alice}\;\Varid{y},\Varid{bob}\;\Varid{y})))\end{lcbr}\\\begin{lcbr}\Varid{bob}\;(\Conid{Leaf}\;\Varid{z})\mathrel{=}\p2\;(\Varid{g11}\;\Varid{z})\\\Varid{bob}\;(\Conid{Fork}\;(\Varid{x},\Varid{y}))\mathrel{=}\p2\;(\Varid{g12}\;((\Varid{alice}\;\Varid{x},\Varid{bob}\;\Varid{x}),(\Varid{alice}\;\Varid{y},\Varid{bob}\;\Varid{y})))\end{lcbr}\end{lcbr}}
      %
      \just\equiv{ Definição de g11 : \ensuremath{\Varid{g11}\;\Varid{x}\mathrel{=}(\Varid{x},\Varid{x})}, Definição de g12 : \ensuremath{\Varid{g12}\;((\Varid{a},\Varid{b}),(\Varid{c},\Varid{d}))\mathrel{=}(\Varid{a}\mathbin{+}\Varid{c},\Varid{b}\mathbin{+}\Varid{d})}}
      %
-          \ensuremath{\begin{lcbr}\begin{lcbr}\Varid{alice}\;(i_1\;\Varid{z})\mathrel{=}\p1\;(\Varid{z},\Varid{z})\\\Varid{alice}\;(i_2\;(\Varid{x},\Varid{y}))\mathrel{=}\p1\;((\Varid{alice}\;\Varid{x})\mathbin{+}(\Varid{alice}\;\Varid{y}),(\Varid{bob}\;\Varid{x})\mathbin{+}(\Varid{bob}\;\Varid{y}))\end{lcbr}\\\begin{lcbr}\Varid{bob}\;(i_1\;\Varid{z})\mathrel{=}\p2\;(\Varid{z},\Varid{z})\\\Varid{bob}\;(i_2\;(\Varid{x},\Varid{y}))\mathrel{=}\p2\;((\Varid{alice}\;\Varid{x})\mathbin{+}(\Varid{alice}\;\Varid{y}),(\Varid{bob}\;\Varid{x})\mathbin{+}(\Varid{bob}\;\Varid{y}))\end{lcbr}\end{lcbr}}
+          \ensuremath{\begin{lcbr}\begin{lcbr}\Varid{alice}\;(\Conid{Leaf}\;\Varid{z})\mathrel{=}\p1\;(\Varid{z},\Varid{z})\\\Varid{alice}\;(\Conid{Fork}\;(\Varid{x},\Varid{y}))\mathrel{=}\p1\;((\Varid{alice}\;\Varid{x})\mathbin{+}(\Varid{alice}\;\Varid{y}),(\Varid{bob}\;\Varid{x})\mathbin{+}(\Varid{bob}\;\Varid{y}))\end{lcbr}\\\begin{lcbr}\Varid{bob}\;(\Conid{Leaf}\;\Varid{z})\mathrel{=}\p2\;(\Varid{z},\Varid{z})\\\Varid{bob}\;(\Conid{Fork}\;(\Varid{x},\Varid{y}))\mathrel{=}\p2\;((\Varid{alice}\;\Varid{x})\mathbin{+}(\Varid{alice}\;\Varid{y}),(\Varid{bob}\;\Varid{x})\mathbin{+}(\Varid{bob}\;\Varid{y}))\end{lcbr}\end{lcbr}}
      %
      \just\equiv{Def-proj (79)}
      %
-          \ensuremath{\begin{lcbr}\begin{lcbr}\Varid{alice}\;(i_1\;\Varid{z})\mathrel{=}\Varid{z}\\\Varid{alice}\;(i_2\;(\Varid{x},\Varid{y}))\mathrel{=}(\Varid{alice}\;\Varid{x})\mathbin{+}(\Varid{alice}\;\Varid{y})\end{lcbr}\\\begin{lcbr}\Varid{bob}\;(i_1\;\Varid{z})\mathrel{=}\Varid{z}\\\Varid{bob}\;(i_2\;(\Varid{x},\Varid{y}))\mathrel{=}(\Varid{bob}\;\Varid{x})\mathbin{+}(\Varid{bob}\;\Varid{y})\end{lcbr}\end{lcbr}}
+          \ensuremath{\begin{lcbr}\begin{lcbr}\Varid{alice}\;(\Conid{Leaf}\;\Varid{z})\mathrel{=}\Varid{z}\\\Varid{alice}\;(\Conid{Fork}\;(\Varid{x},\Varid{y}))\mathrel{=}(\Varid{alice}\;\Varid{x})\mathbin{+}(\Varid{alice}\;\Varid{y})\end{lcbr}\\\begin{lcbr}\Varid{bob}\;(\Conid{Leaf}\;\Varid{z})\mathrel{=}\Varid{z}\\\Varid{bob}\;(\Conid{Fork}\;(\Varid{x},\Varid{y}))\mathrel{=}(\Varid{bob}\;\Varid{x})\mathbin{+}(\Varid{bob}\;\Varid{y})\end{lcbr}\end{lcbr}}
      %
      \qed
 \end{eqnarray*}
@@ -1588,11 +1588,15 @@ Assim sendo,
 \column{E}{@{}>{\hspre}l<{\hspost}@{}}%
 \>[B]{}\Varid{alice}\mathbin{::}\Conid{Ord}\;\Varid{c}\Rightarrow {\LTree}\;\Varid{c}\to \Varid{c}{}\<[E]%
 \\
-\>[B]{}\Varid{alice}\mathrel{=}\bot {}\<[E]%
+\>[B]{}\Varid{alice}\;(\Conid{Leaf}\;\Varid{z})\mathrel{=}\Varid{z}{}\<[E]%
+\\
+\>[B]{}\Varid{alice}\;(\Conid{Fork}\;(\Varid{x},\Varid{y}))\mathrel{=}(\Varid{alice}\;\Varid{x})\mathbin{+}(\Varid{alice}\;\Varid{y}){}\<[E]%
 \\[\blanklineskip]%
 \>[B]{}\Varid{bob}\mathbin{::}\Conid{Ord}\;\Varid{c}\Rightarrow {\LTree}\;\Varid{c}\to \Varid{c}{}\<[E]%
 \\
-\>[B]{}\Varid{bob}\mathrel{=}\bot {}\<[E]%
+\>[B]{}\Varid{bob}\;(\Conid{Leaf}\;\Varid{z})\mathrel{=}\Varid{z}{}\<[E]%
+\\
+\>[B]{}\Varid{bob}\;(\Conid{Fork}\;(\Varid{x},\Varid{y}))\mathrel{=}(\Varid{bob}\;\Varid{x})\mathbin{+}(\Varid{bob}\;\Varid{y}){}\<[E]%
 \ColumnHook
 \end{hscode}\resethooks
 
@@ -1713,7 +1717,7 @@ Assim sendo, podemos inferir a seguinte definição:
 \begin{hscode}\SaveRestoreHook
 \column{B}{@{}>{\hspre}l<{\hspost}@{}}%
 \column{E}{@{}>{\hspre}l<{\hspost}@{}}%
-\>[B]{}\Varid{anaLTree3}\;\Varid{f}\mathrel{=}\Varid{inLTree3}\comp (\Varid{recLTree3}\;(\Varid{anaLTree3}\;\Varid{f}))\mathbin{·}\Varid{f}{}\<[E]%
+\>[B]{}\Varid{anaLTree3}\;\Varid{f}\mathrel{=}\Varid{inLTree3}\comp (\Varid{recLTree3}\;(\Varid{anaLTree3}\;\Varid{f}))\comp \Varid{f}{}\<[E]%
 \ColumnHook
 \end{hscode}\resethooks
 
@@ -1758,22 +1762,22 @@ Genes do hilomorfismo \ensuremath{\Varid{sierpinski}}:
 
 \begin{hscode}\SaveRestoreHook
 \column{B}{@{}>{\hspre}l<{\hspost}@{}}%
-\column{6}{@{}>{\hspre}l<{\hspost}@{}}%
+\column{32}{@{}>{\hspre}l<{\hspost}@{}}%
+\column{36}{@{}>{\hspre}l<{\hspost}@{}}%
+\column{42}{@{}>{\hspre}l<{\hspost}@{}}%
 \column{E}{@{}>{\hspre}l<{\hspost}@{}}%
-\>[B]{}g_1 \mathrel{=}(\Varid{singl}\mathbin{`\Varid{either}`}(\mathsf{conc}\comp (\Varid{id}\times\mathsf{conc})))\;\mathbf{where}\;\Varid{conc'}\;(l_1 ,(l_2 ,\Varid{l3}))\mathrel{=}l_1 \mathbin{+\!\!\!+}l_2 \mathbin{+\!\!\!+}\Varid{l3}{}\<[E]%
+\>[B]{}g_1 \mathrel{=}(\Varid{singl}\mathbin{`\Varid{either}`}(\mathsf{conc}\comp (\Varid{id}\times\mathsf{conc})))\mbox{\onelinecomment where conc' (l1,(l2,l3)) = l1++l2++l3}{}\<[E]%
 \\
-\>[B]{}g_2 \;(\Varid{t},\mathrm{0})\mathrel{=}i_1\;\Varid{t}{}\<[E]%
+\>[B]{}g_2 \;(((\Varid{x},\Varid{y}),\Varid{s}),\Varid{n})\mid \Varid{n}\equiv \mathrm{0}\mathrel{=}i_1\;((\Varid{x},\Varid{y}),\Varid{s}){}\<[E]%
 \\
-\>[B]{}g_2 \;(((\Varid{x},\Varid{y}),\Varid{s}),\Varid{n}\mathbin{+}\mathrm{1})\mathrel{=}i_2\;((\Varid{t1},\Varid{t2}),\Varid{t3})\;\mathbf{where}{}\<[E]%
+\>[B]{}\hsindent{32}{}\<[32]%
+\>[32]{}\mid \Varid{otherwise}\mathrel{=}i_2\;((((\Varid{x},\Varid{y}),\Varid{s'}),\Varid{n'}),((((\Varid{x}\mathbin{+}\Varid{s'},\Varid{y}),\Varid{s'}),\Varid{n'}),(((\Varid{x},\Varid{y}\mathbin{+}\Varid{s'}),\Varid{s'}),\Varid{n'}))){}\<[E]%
 \\
-\>[B]{}\hsindent{6}{}\<[6]%
-\>[6]{}\Varid{t1}\mathrel{=}(((\Varid{x},\Varid{y}),\Varid{s}\mathbin{/}\mathrm{2}),\Varid{n}){}\<[E]%
+\>[32]{}\hsindent{4}{}\<[36]%
+\>[36]{}\mathbf{where}\;\Varid{s'}\mathrel{=}\Varid{s}\div \mathrm{2}{}\<[E]%
 \\
-\>[B]{}\hsindent{6}{}\<[6]%
-\>[6]{}\Varid{t2}\mathrel{=}(((\Varid{x}\mathbin{+}\Varid{s}\mathbin{/}\mathrm{2},\Varid{y}),\Varid{s}\mathbin{/}\mathrm{2}),\Varid{n}){}\<[E]%
-\\
-\>[B]{}\hsindent{6}{}\<[6]%
-\>[6]{}\Varid{t3}\mathrel{=}(((\Varid{x},\Varid{y}\mathbin{+}\Varid{s}\mathbin{/}\mathrm{2}),\Varid{s}\mathbin{/}\mathrm{2}),\Varid{n}){}\<[E]%
+\>[36]{}\hsindent{6}{}\<[42]%
+\>[42]{}\Varid{n'}\mathrel{=}\Varid{pred}\;\Varid{n}{}\<[E]%
 \ColumnHook
 \end{hscode}\resethooks
 
