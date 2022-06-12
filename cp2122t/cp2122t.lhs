@@ -1646,7 +1646,7 @@ baseLTree3 g f = g -|- f >< (f><f)
 \end{code}
 
 
-Pela propriedade de Base-cata, temos que recLTree3 f =  baseLTree3 id f = id + f * (f * f).
+Pela propriedade de Base-cata, temos que recLTree3 |f =  baseLTree3 id f = id + f >< (f >< f)|.
 
 \begin{code}
 recLTree3 f = id -|- f >< (f><f)

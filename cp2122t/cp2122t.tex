@@ -604,7 +604,7 @@ abreviatura de \emph{Scalable Vector Graphics}, é um dialecto de \xml\ para
 computação gráfica. A biblioteca Svg.hs (fornecida) faz uma interface rudimentar
 entre \Haskell\ e \svg.}, onde \ensuremath{\Varid{desenha}} é uma função dada no anexo \ref{sec:codigo} que,
 para o argumento \ensuremath{\Varid{sierpinski}\;(\Varid{base},\mathrm{3})}, deverá produzir o triângulo colorido da 
-Fig.~\ref{fig:sierp1}.\footnote{O resultado é gravado no ficheiro \text{\tt \char95{}\char46{}html}, que pode 
+Fig.~\ref{fig:sierp1}.\footnote{O resultado é gravado no ficheiro \text{\ttfamily \char95{}\char46{}html}, que pode 
 ser visualizado num browser. Poderão ser feitos testes com outros níveis de produndidade.}
 \end{enumerate}
 
@@ -636,7 +636,7 @@ representadas por 5 bits cada uma segundo o esquema seguinte de codificação,
 \column{E}{@{}>{\hspre}l<{\hspost}@{}}%
 \>[B]{}\Varid{enc}\mathbin{::}\Conid{Char}\to \Conid{Bin}{}\<[E]%
 \\
-\>[B]{}\Varid{enc}\;\Varid{c}\mathrel{=}\Varid{tobin}\;(\Varid{ord}\;\Varid{c}\mathbin{-}\Varid{ord}\;\text{\tt 'A'}){}\<[E]%
+\>[B]{}\Varid{enc}\;\Varid{c}\mathrel{=}\Varid{tobin}\;(\Varid{ord}\;\Varid{c}\mathbin{-}\Varid{ord}\;\text{\ttfamily 'A'}){}\<[E]%
 \ColumnHook
 \end{hscode}\resethooks
 e descodificação,
@@ -645,19 +645,19 @@ e descodificação,
 \column{E}{@{}>{\hspre}l<{\hspost}@{}}%
 \>[B]{}\Varid{dec}\mathbin{::}\Conid{Bin}\to \Conid{Char}{}\<[E]%
 \\
-\>[B]{}\Varid{dec}\;\Varid{b}\mathrel{=}\Varid{chr}\;(\Varid{frombin}\;\Varid{b}\mathbin{+}\Varid{ord}\;\text{\tt 'A'}){}\<[E]%
+\>[B]{}\Varid{dec}\;\Varid{b}\mathrel{=}\Varid{chr}\;(\Varid{frombin}\;\Varid{b}\mathbin{+}\Varid{ord}\;\text{\ttfamily 'A'}){}\<[E]%
 \ColumnHook
 \end{hscode}\resethooks
 onde \ensuremath{\Varid{tobin}} e \ensuremath{\Varid{frombin}} são funções dadas no anexo \ref{sec:codigo}. Por exemplo,
 \begin{quote}
-\ensuremath{\Varid{enc}\;\text{\tt 'A'}\mathrel{=}[\mskip1.5mu \mathrm{0},\mathrm{0},\mathrm{0},\mathrm{0},\mathrm{0}\mskip1.5mu]}
+\ensuremath{\Varid{enc}\;\text{\ttfamily 'A'}\mathrel{=}[\mskip1.5mu \mathrm{0},\mathrm{0},\mathrm{0},\mathrm{0},\mathrm{0}\mskip1.5mu]}
 \\
-\ensuremath{\Varid{enc}\;\text{\tt 'B'}\mathrel{=}[\mskip1.5mu \mathrm{0},\mathrm{0},\mathrm{0},\mathrm{0},\mathrm{1}\mskip1.5mu]}
+\ensuremath{\Varid{enc}\;\text{\ttfamily 'B'}\mathrel{=}[\mskip1.5mu \mathrm{0},\mathrm{0},\mathrm{0},\mathrm{0},\mathrm{1}\mskip1.5mu]}
 \\ $\vdots$ \\
-\ensuremath{\Varid{enc}\;\text{\tt 'Z'}\mathrel{=}[\mskip1.5mu \mathrm{1},\mathrm{1},\mathrm{0},\mathrm{0},\mathrm{1}\mskip1.5mu]}
+\ensuremath{\Varid{enc}\;\text{\ttfamily 'Z'}\mathrel{=}[\mskip1.5mu \mathrm{1},\mathrm{1},\mathrm{0},\mathrm{0},\mathrm{1}\mskip1.5mu]}
 \end{quote}
-Embora \ensuremath{\Varid{dec}} e \ensuremath{\Varid{enc}} sejam inversas uma da outra, para o intervalo de \ensuremath{\text{\tt 'A'}}
-a \ensuremath{\text{\tt 'Z'}}, deixam de o ser quando, a meio da transmissão, acontecem bit-flips: 
+Embora \ensuremath{\Varid{dec}} e \ensuremath{\Varid{enc}} sejam inversas uma da outra, para o intervalo de \ensuremath{\text{\ttfamily 'A'}}
+a \ensuremath{\text{\ttfamily 'Z'}}, deixam de o ser quando, a meio da transmissão, acontecem bit-flips: 
 
 \begin{center}
 \unitlength=0.08ex
@@ -701,26 +701,26 @@ da transmissão:
 \>[B]{}\Varid{transmit}\mathrel{=}\Varid{dec'}\comp \Varid{propagate}\;\Varid{bflip}\comp \Varid{enc}{}\<[E]%
 \ColumnHook
 \end{hscode}\resethooks
-Por exemplo, \ensuremath{\Varid{transmit}\;\text{\tt 'H'}} irá dar a seguinte distribuição:
+Por exemplo, \ensuremath{\Varid{transmit}\;\text{\ttfamily 'H'}} irá dar a seguinte distribuição:
 \begin{quote}\small
-\begin{tabbing}\tt
-~~\char39{}H\char39{}~~67\char46{}2\char37{}\char13{}\\
-\tt ~~\char39{}D\char39{}~~~7\char46{}5\char37{}\char13{}\\
-\tt ~~\char39{}F\char39{}~~~7\char46{}5\char37{}\char13{}\\
-\tt ~~\char39{}G\char39{}~~~7\char46{}5\char37{}\char13{}\\
-\tt ~~\char39{}P\char39{}~~~2\char46{}8\char37{}\char13{}\\
-\tt ~~\char39{}X\char39{}~~~2\char46{}8\char37{}\char13{}\\
-\tt ~~\char39{}E\char39{}~~~0\char46{}8\char37{}\char13{}\\
-\tt ~~\char39{}B\char39{}~~~0\char46{}8\char37{}\char13{}\\
-\tt ~~\char39{}C\char39{}~~~0\char46{}8\char37{}\char13{}\\
-\tt ~~\char39{}L\char39{}~~~0\char46{}3\char37{}\char13{}\\
-\tt ~~\char39{}N\char39{}~~~0\char46{}3\char37{}\char13{}\\
-\tt ~~\char39{}O\char39{}~~~0\char46{}3\char37{}\char13{}\\
-\tt ~~\char39{}T\char39{}~~~0\char46{}3\char37{}\char13{}\\
-\tt ~~\char39{}V\char39{}~~~0\char46{}3\char37{}\char13{}\\
-\tt ~~\char39{}W\char39{}~~~0\char46{}3\char37{}\char13{}\\
-\tt ~~\char39{}\char96{}\char39{}~~~0\char46{}1\char37{}\char13{}\\
-\tt ~~\char39{}A\char39{}~~~0\char46{}1\char37{}\char13{}
+\begin{tabbing}\ttfamily
+~~\char39{}H\char39{}~~67\char46{}2\char37{}\\
+\ttfamily ~~\char39{}D\char39{}~~~7\char46{}5\char37{}\\
+\ttfamily ~~\char39{}F\char39{}~~~7\char46{}5\char37{}\\
+\ttfamily ~~\char39{}G\char39{}~~~7\char46{}5\char37{}\\
+\ttfamily ~~\char39{}P\char39{}~~~2\char46{}8\char37{}\\
+\ttfamily ~~\char39{}X\char39{}~~~2\char46{}8\char37{}\\
+\ttfamily ~~\char39{}E\char39{}~~~0\char46{}8\char37{}\\
+\ttfamily ~~\char39{}B\char39{}~~~0\char46{}8\char37{}\\
+\ttfamily ~~\char39{}C\char39{}~~~0\char46{}8\char37{}\\
+\ttfamily ~~\char39{}L\char39{}~~~0\char46{}3\char37{}\\
+\ttfamily ~~\char39{}N\char39{}~~~0\char46{}3\char37{}\\
+\ttfamily ~~\char39{}O\char39{}~~~0\char46{}3\char37{}\\
+\ttfamily ~~\char39{}T\char39{}~~~0\char46{}3\char37{}\\
+\ttfamily ~~\char39{}V\char39{}~~~0\char46{}3\char37{}\\
+\ttfamily ~~\char39{}W\char39{}~~~0\char46{}3\char37{}\\
+\ttfamily ~~\char39{}\char96{}\char39{}~~~0\char46{}1\char37{}\\
+\ttfamily ~~\char39{}A\char39{}~~~0\char46{}1\char37{}
 \end{tabbing}
 \end{quote}
 A saída 'H', que se esperava com \ensuremath{\mathrm{100}\mathbin{\%}} de certeza,
@@ -736,7 +736,7 @@ O que se pode fazer quanto a estes erros de transmissão? Os chamados códigos
 de repetição enviam cada bit um número impar de vezes, tipicamente \ensuremath{\mathrm{3}} vezes.
 Cada um desses três bits (que na origem são todos iguais) está sujeito
 a bit-flips. O que se faz é \emph{votar} no mais frequente --- ver função \ensuremath{v_3 } no anexo.
-Se agora a transmissão do \ensuremath{\text{\tt 'H'}} for feita em triplicado,
+Se agora a transmissão do \ensuremath{\text{\ttfamily 'H'}} for feita em triplicado,
 usando
 \begin{hscode}\SaveRestoreHook
 \column{B}{@{}>{\hspre}l<{\hspost}@{}}%
@@ -746,17 +746,17 @@ usando
 \end{hscode}\resethooks
 ter-se-á:
 \begin{quote}\small
-\begin{tabbing}\tt
-~Main\char62{}~transmit3~\char39{}H\char39{}\char13{}\\
-\tt ~~\char39{}H\char39{}~~91\char46{}0\char37{}\char13{}\\
-\tt ~~\char39{}F\char39{}~~~2\char46{}6\char37{}\char13{}\\
-\tt ~~\char39{}G\char39{}~~~2\char46{}6\char37{}\char13{}\\
-\tt ~~\char39{}D\char39{}~~~2\char46{}6\char37{}\char13{}\\
-\tt ~~\char39{}P\char39{}~~~0\char46{}4\char37{}\char13{}\\
-\tt ~~\char39{}X\char39{}~~~0\char46{}4\char37{}\char13{}\\
-\tt ~~\char39{}B\char39{}~~~0\char46{}1\char37{}\char13{}\\
-\tt ~~\char39{}C\char39{}~~~0\char46{}1\char37{}\char13{}\\
-\tt ~~\char39{}E\char39{}~~~0\char46{}1\char37{}\char13{}
+\begin{tabbing}\ttfamily
+~Main\char62{}~transmit3~\char39{}H\char39{}\\
+\ttfamily ~~\char39{}H\char39{}~~91\char46{}0\char37{}\\
+\ttfamily ~~\char39{}F\char39{}~~~2\char46{}6\char37{}\\
+\ttfamily ~~\char39{}G\char39{}~~~2\char46{}6\char37{}\\
+\ttfamily ~~\char39{}D\char39{}~~~2\char46{}6\char37{}\\
+\ttfamily ~~\char39{}P\char39{}~~~0\char46{}4\char37{}\\
+\ttfamily ~~\char39{}X\char39{}~~~0\char46{}4\char37{}\\
+\ttfamily ~~\char39{}B\char39{}~~~0\char46{}1\char37{}\\
+\ttfamily ~~\char39{}C\char39{}~~~0\char46{}1\char37{}\\
+\ttfamily ~~\char39{}E\char39{}~~~0\char46{}1\char37{}
 \end{tabbing}
 \end{quote}
 Vê-se que a probabilidade da resposta certa aumentou muito, para \ensuremath{\mathrm{91}\mathbin{\%}},
@@ -815,9 +815,9 @@ o ``kit'' básico, escrito em \Haskell, para realizar o trabalho. Basta executar
 \noindent Abra o ficheiro \texttt{cp2122t.lhs} no seu editor de texto preferido
 e verifique que assim é: todo o texto que se encontra dentro do ambiente
 \begin{quote}\small\tt
-\text{\tt \char92{}begin\char123{}code\char125{}}
+\text{\ttfamily \char92{}begin\char123{}code\char125{}}
 \\ ... \\
-\text{\tt \char92{}end\char123{}code\char125{}}
+\text{\ttfamily \char92{}end\char123{}code\char125{}}
 \end{quote}
 é seleccionado pelo \GHCi\ para ser executado.
 
@@ -997,7 +997,7 @@ será representada pela distribuição
 \column{E}{@{}>{\hspre}l<{\hspost}@{}}%
 \>[B]{}d_1 \mathbin{::}\fun{Dist}\;\Conid{Char}{}\<[E]%
 \\
-\>[B]{}d_1 \mathrel{=}\Conid{D}\;[\mskip1.5mu (\text{\tt 'A'},\mathrm{0.02}),(\text{\tt 'B'},\mathrm{0.12}),(\text{\tt 'C'},\mathrm{0.29}),(\text{\tt 'D'},\mathrm{0.35}),(\text{\tt 'E'},\mathrm{0.22})\mskip1.5mu]{}\<[E]%
+\>[B]{}d_1 \mathrel{=}\Conid{D}\;[\mskip1.5mu (\text{\ttfamily 'A'},\mathrm{0.02}),(\text{\ttfamily 'B'},\mathrm{0.12}),(\text{\ttfamily 'C'},\mathrm{0.29}),(\text{\ttfamily 'D'},\mathrm{0.35}),(\text{\ttfamily 'E'},\mathrm{0.22})\mskip1.5mu]{}\<[E]%
 \ColumnHook
 \end{hscode}\resethooks
 que o \GHCi\ mostrará assim:
@@ -1012,7 +1012,7 @@ que o \GHCi\ mostrará assim:
 \begin{hscode}\SaveRestoreHook
 \column{B}{@{}>{\hspre}l<{\hspost}@{}}%
 \column{E}{@{}>{\hspre}l<{\hspost}@{}}%
-\>[B]{}d_2 \mathrel{=}\Varid{uniform}\;(\Varid{words}\;\text{\tt \char34 Uma~frase~de~cinco~palavras\char34}){}\<[E]%
+\>[B]{}d_2 \mathrel{=}\Varid{uniform}\;(\Varid{words}\;\text{\ttfamily \char34 Uma~frase~de~cinco~palavras\char34}){}\<[E]%
 \ColumnHook
 \end{hscode}\resethooks
 isto é
@@ -1329,26 +1329,26 @@ Por aplicação da lei de recursividade mútua em aux temos:
      \qed
 \end{eqnarray*}
 
-Consideremos apenas um ramo do sistema de cada vez, com o intuito de facilitar a resolução da questao. Assim sendo, no primeiro ramo temos que: 
+Consideremos apenas um ramo do sistema de cada vez, com o intuito de facilitar a resolução da questão. Assim sendo, no primeiro ramo temos que: 
 \begin{eqnarray*}
      \start
-          \ensuremath{\alt{(\Varid{q}\;\Varid{d})\comp \underline{\mathrm{0}}}{(\Varid{q}\;\Varid{d})\comp \succ }\mathrel{=}\alt{h_1 \;\Varid{d}}{h_2 \;\Varid{d}\comp \conj{(\Varid{q}\;\Varid{d})}{\conj{(\Varid{r}\;\Varid{d})}{(\Varid{c}\;\Varid{d})}}}}
+          \ensuremath{\alt{(\Varid{q}\;\Varid{d})\comp \underline{\mathrm{0}}}{(\Varid{q}\;\Varid{d})\comp \succ }\mathrel{=}\alt{h_1 }{h_2 \comp \conj{(\Varid{q}\;\Varid{d})}{\conj{(\Varid{r}\;\Varid{d})}{(\Varid{c}\;\Varid{d})}}}}
      %
      \just\equiv{Eq - + (27)}
      %
-               \ensuremath{\begin{lcbr}(\Varid{q}\;\Varid{d})\comp \underline{\mathrm{0}}\mathrel{=}h_1 \;\Varid{d}\\(\Varid{q}\;\Varid{d})\comp \succ \mathrel{=}h_2 \;\Varid{d}\comp \conj{\Varid{q}\;\Varid{d}}{\conj{\Varid{r}\;\Varid{d}}{\Varid{c}\;\Varid{d}}}\end{lcbr}}
+               \ensuremath{\begin{lcbr}(\Varid{q}\;\Varid{d})\comp \underline{\mathrm{0}}\mathrel{=}h_1 \\(\Varid{q}\;\Varid{d})\comp \succ \mathrel{=}h_2 \comp \conj{\Varid{q}\;\Varid{d}}{\conj{\Varid{r}\;\Varid{d}}{\Varid{c}\;\Varid{d}}}\end{lcbr}}
      %
      \just\equiv{Como foi provado em cima, \ensuremath{(\Varid{q}\;\Varid{d})\comp \underline{\mathrm{0}}\mathrel{=}\underline{\mathrm{0}}}, Igualdade extensional (71), Def-comp (72), Def-split (76)}
      %
-               \ensuremath{\begin{lcbr}\underline{\mathrm{0}}\mathrel{=}h_1 \;\Varid{d}\\(\Varid{q}\;\Varid{d})\;(\succ \;\Varid{x})\mathrel{=}h_2 \;\Varid{d}\;(\Varid{q}\;\Varid{d}\;\Varid{x},(\Varid{r}\;\Varid{d}\;\Varid{x},\Varid{c}\;\Varid{d}\;\Varid{x}))\end{lcbr}}
+               \ensuremath{\begin{lcbr}\underline{\mathrm{0}}\mathrel{=}h_1 \\(\Varid{q}\;\Varid{d})\;(\succ \;\Varid{x})\mathrel{=}h_2 \;(\Varid{q}\;\Varid{d}\;\Varid{x},(\Varid{r}\;\Varid{d}\;\Varid{x},\Varid{c}\;\Varid{d}\;\Varid{x}))\end{lcbr}}
      %
      \just\equiv{Como foi provado em cima, \ensuremath{(\Varid{q}\;\Varid{d})\comp \succ \mathrel{=}\uncurry{(\mathbin{+})}\comp \conj{\Varid{q}\;\Varid{d}}{\alt{\underline{\mathrm{1}}}{\underline{\mathrm{0}}}\comp ((\mathrm{0}\equiv )\comp (\Varid{cd}))\mathbin{?}}}}   
      %  
-          \ensuremath{\begin{lcbr}\underline{\mathrm{0}}\mathrel{=}h_1 \;\Varid{d}\\\uncurry{(\mathbin{+})}\comp \conj{\Varid{q}\;\Varid{d}}{\Varid{d}}\;(\alt{\underline{\mathrm{1}}}{\underline{\mathrm{0}}}\comp ((\mathrm{0}\equiv )\comp (\Varid{cd}))\mathbin{?})\mathrel{=}h_2 \;\Varid{d}\;(\Varid{q}\;\Varid{d}\;\Varid{x},(\Varid{r}\;\Varid{d}\;\Varid{x},\Varid{c}\;\Varid{d}\;\Varid{x}))\end{lcbr}}
+          \ensuremath{\begin{lcbr}\underline{\mathrm{0}}\mathrel{=}h_1 \\\uncurry{(\mathbin{+})}\comp \conj{\Varid{q}\;\Varid{d}}{\alt{\underline{\mathrm{1}}}{\underline{\mathrm{0}}}\comp ((\mathrm{0}\equiv )\comp (\Varid{cd}))\mathbin{?}}\mathrel{=}h_2 \;(\Varid{q}\;\Varid{d}\;\Varid{x},(\Varid{r}\;\Varid{d}\;\Varid{x},\Varid{c}\;\Varid{d}\;\Varid{x}))\end{lcbr}}
      %
      \just\equiv{Eq - + (27), Fusao - + (20)}
      %
-          \ensuremath{\Varid{h}\;\Varid{d}\comp \alt{\underline{\mathrm{0}}}{\succ }\mathrel{=}\alt{\underline{\mathrm{0}}}{\uncurry{(\mathbin{+})}\comp \conj{\Varid{q}\;\Varid{d}}{\alt{\underline{\mathrm{1}}}{\underline{\mathrm{0}}}\comp ((\mathrm{0}\equiv )\comp (\Varid{cd}))\mathbin{?}}}}
+          \ensuremath{\Varid{h}\comp \alt{\underline{\mathrm{0}}}{\succ }\mathrel{=}\alt{\underline{\mathrm{0}}}{\uncurry{(\mathbin{+})}\comp \conj{\Varid{q}\;\Varid{d}}{\alt{\underline{\mathrm{1}}}{\underline{\mathrm{0}}}\comp ((\mathrm{0}\equiv )\comp (\Varid{cd}))\mathbin{?}}}}
      %
      \qed
 \end{eqnarray*}
@@ -1357,23 +1357,23 @@ Para o segundo ramo temos que:
 
 \begin{eqnarray*}
      \start
-          \ensuremath{\alt{(\Varid{r}\;\Varid{d})\comp \underline{\mathrm{0}}}{(\Varid{r}\;\Varid{d})\comp \succ }\mathrel{=}\alt{k_1 \;\Varid{d}}{k_2 \;\Varid{d}\comp \conj{(\Varid{q}\;\Varid{d})}{\conj{(\Varid{r}\;\Varid{d})}{(\Varid{c}\;\Varid{d})}}}}
+          \ensuremath{\alt{(\Varid{r}\;\Varid{d})\comp \underline{\mathrm{0}}}{(\Varid{r}\;\Varid{d})\comp \succ }\mathrel{=}\alt{k_1 }{k_2 \comp \conj{(\Varid{q}\;\Varid{d})}{\conj{(\Varid{r}\;\Varid{d})}{(\Varid{c}\;\Varid{d})}}}}
      %
      \just\equiv{Eq - +(27)}
      %
-               \ensuremath{\begin{lcbr}(\Varid{r}\;\Varid{d})\comp \underline{\mathrm{0}}\mathrel{=}k_1 \;\Varid{d}\\(\Varid{r}\;\Varid{d})\comp \succ \mathrel{=}k_2 \;\Varid{d}\comp \conj{\Varid{q}\;\Varid{d}}{\conj{\Varid{r}\;\Varid{d}}{\Varid{c}\;\Varid{d}}}\end{lcbr}}
+               \ensuremath{\begin{lcbr}(\Varid{r}\;\Varid{d})\comp \underline{\mathrm{0}}\mathrel{=}k_1 \\(\Varid{r}\;\Varid{d})\comp \succ \mathrel{=}k_2 \comp \conj{\Varid{q}\;\Varid{d}}{\conj{\Varid{r}\;\Varid{d}}{\Varid{c}\;\Varid{d}}}\end{lcbr}}
      %
      \just\equiv{Como foi provado em cima, \ensuremath{(\Varid{r}\;\Varid{d})\comp \underline{\mathrm{0}}\mathrel{=}\underline{\mathrm{0}}}, Igualdade extensional (71), Def-comp (72), Def-split (76)}
      %
-               \ensuremath{\begin{lcbr}\underline{\mathrm{0}}\mathrel{=}k_1 \;\Varid{d}\\(\Varid{r}\;\Varid{d})\;(\succ \;\Varid{x})\mathrel{=}k_2 \;\Varid{d}\;(\Varid{q}\;\Varid{d}\;\Varid{x},(\Varid{r}\;\Varid{d}\;\Varid{x},\Varid{c}\;\Varid{d}\;\Varid{x}))\end{lcbr}}
+               \ensuremath{\begin{lcbr}\underline{\mathrm{0}}\mathrel{=}k_1 \\(\Varid{r}\;\Varid{d})\;(\succ \;\Varid{x})\mathrel{=}k_2 \;(\Varid{q}\;\Varid{d}\;\Varid{x},(\Varid{r}\;\Varid{d}\;\Varid{x},\Varid{c}\;\Varid{d}\;\Varid{x}))\end{lcbr}}
      %
      \just\equiv{Como foi provado em cima, \ensuremath{(\Varid{r}\;\Varid{d})\comp \succ \mathrel{=}\alt{\underline{\mathrm{0}}}{\uncurry{(\mathbin{+})}\comp \conj{\underline{\mathrm{1}}}{\Varid{r}\;\Varid{d}}}\comp ((\mathrm{0}\equiv )\comp (\Varid{c}\;\Varid{d}))\mathbin{?}}}   
      %  
-          \ensuremath{\begin{lcbr}\underline{\mathrm{0}}\mathrel{=}k_1 \;\Varid{d}\\\alt{\underline{\mathrm{0}}}{\uncurry{(\mathbin{+})}\comp \conj{\underline{\mathrm{1}}}{\Varid{r}\;\Varid{d}}}\comp ((\mathrm{0}\equiv )\comp (\Varid{c}\;\Varid{d}))\mathbin{?}\mathrel{=}k_2 \;\Varid{d}\;(\Varid{q}\;\Varid{d}\;\Varid{x},(\Varid{r}\;\Varid{d}\;\Varid{x},\Varid{c}\;\Varid{d}\;\Varid{x}))\end{lcbr}}
+          \ensuremath{\begin{lcbr}\underline{\mathrm{0}}\mathrel{=}k_1 \\\alt{\underline{\mathrm{0}}}{\uncurry{(\mathbin{+})}\comp \conj{\underline{\mathrm{1}}}{\Varid{r}\;\Varid{d}}}\comp ((\mathrm{0}\equiv )\comp (\Varid{c}\;\Varid{d}))\mathbin{?}\mathrel{=}k_2 \;(\Varid{q}\;\Varid{d}\;\Varid{x},(\Varid{r}\;\Varid{d}\;\Varid{x},\Varid{c}\;\Varid{d}\;\Varid{x}))\end{lcbr}}
      %
      \just\equiv{Eq - + (27), Fusao - + (20)}
      %
-          \ensuremath{\Varid{k}\;\Varid{d}\comp \alt{\underline{\mathrm{0}}}{\succ }\mathrel{=}\alt{\underline{\mathrm{0}}}{\alt{\underline{\mathrm{0}}}{\uncurry{(\mathbin{+})}\comp \conj{\underline{\mathrm{1}}}{\Varid{r}\;\Varid{d}}}\comp ((\mathrm{0}\equiv )\comp (\Varid{c}\;\Varid{d}))\mathbin{?}}}
+          \ensuremath{\Varid{k}\comp \alt{\underline{\mathrm{0}}}{\succ }\mathrel{=}\alt{\underline{\mathrm{0}}}{\alt{\underline{\mathrm{0}}}{\uncurry{(\mathbin{+})}\comp \conj{\underline{\mathrm{1}}}{\Varid{r}\;\Varid{d}}}\comp ((\mathrm{0}\equiv )\comp (\Varid{c}\;\Varid{d}))\mathbin{?}}}
      %
      \qed
 \end{eqnarray*}
@@ -1382,23 +1382,23 @@ Finalmente, para o terceiro ramo:
 
 \begin{eqnarray*}
      \start
-          \ensuremath{\alt{(\Varid{c}\;\Varid{d})\comp \underline{\mathrm{0}}}{(\Varid{c}\;\Varid{d})\comp \succ }\mathrel{=}\alt{l_1 \;\Varid{d}}{l_2 \;\Varid{d}\comp \conj{(\Varid{q}\;\Varid{d})}{\conj{(\Varid{r}\;\Varid{d})}{(\Varid{c}\;\Varid{d})}}}}
+          \ensuremath{\alt{(\Varid{c}\;\Varid{d})\comp \underline{\mathrm{0}}}{(\Varid{c}\;\Varid{d})\comp \succ }\mathrel{=}\alt{l_1 }{l_2 \comp \conj{(\Varid{q}\;\Varid{d})}{\conj{(\Varid{r}\;\Varid{d})}{(\Varid{c}\;\Varid{d})}}}}
      %
      \just\equiv{Eq - + (27)}
      %
-               \ensuremath{\begin{lcbr}(\Varid{c}\;\Varid{d})\comp \underline{\mathrm{0}}\mathrel{=}l_1 \;\Varid{d}\\(\Varid{c}\;\Varid{d})\comp \succ \mathrel{=}l_2 \;\Varid{d}\comp \conj{\Varid{q}\;\Varid{d}}{\conj{\Varid{r}\;\Varid{d}}{\Varid{c}\;\Varid{d}}}\end{lcbr}}
+               \ensuremath{\begin{lcbr}(\Varid{c}\;\Varid{d})\comp \underline{\mathrm{0}}\mathrel{=}l_1 \\(\Varid{c}\;\Varid{d})\comp \succ \mathrel{=}l_2 \comp \conj{\Varid{q}\;\Varid{d}}{\conj{\Varid{r}\;\Varid{d}}{\Varid{c}\;\Varid{d}}}\end{lcbr}}
      %
      \just\equiv{Como foi provado em cima, \ensuremath{(\Varid{c}\;\Varid{d})\comp \underline{\mathrm{0}}\mathrel{=}\underline{\Varid{d}}}, Igualdade extensional (71), Def-comp (72), Def-split (76)}
      %
-               \ensuremath{\begin{lcbr}\underline{\Varid{d}}\mathrel{=}l_1 \;\Varid{d}\\(\Varid{r}\;\Varid{d})\;(\succ \;\Varid{x})\mathrel{=}l_2 \;\Varid{d}\;(\Varid{q}\;\Varid{d}\;\Varid{x},(\Varid{r}\;\Varid{d}\;\Varid{x},\Varid{c}\;\Varid{d}\;\Varid{x}))\end{lcbr}}
+               \ensuremath{\begin{lcbr}\underline{\Varid{d}}\mathrel{=}l_1 \\(\Varid{r}\;\Varid{d})\;(\succ \;\Varid{x})\mathrel{=}l_2 \;(\Varid{q}\;\Varid{d}\;\Varid{x},(\Varid{r}\;\Varid{d}\;\Varid{x},\Varid{c}\;\Varid{d}\;\Varid{x}))\end{lcbr}}
      %
      \just\equiv{Como foi provado em cima, \ensuremath{(\Varid{c}\;\Varid{d})\comp \succ \mathrel{=}\alt{\underline{\Varid{d}}}{\uncurry{(\mathbin{-})}\comp \conj{(\Varid{c}\;\Varid{d})}{\underline{\mathrm{1}}}}\comp ((\mathrm{0}\equiv )\comp (\Varid{c}\;\Varid{d}))\mathbin{?}}}   
      %  
-          \ensuremath{\begin{lcbr}\underline{\Varid{d}}\mathrel{=}l_1 \;\Varid{d}\\\alt{\underline{\Varid{d}}}{\uncurry{(\mathbin{-})}\comp \conj{(\Varid{c}\;\Varid{d})}{\underline{\mathrm{1}}}}\comp ((\mathrm{0}\equiv )\comp (\Varid{c}\;\Varid{d}))\mathbin{?}\mathrel{=}l_2 \;\Varid{d}\;(\Varid{q}\;\Varid{d}\;\Varid{x},(\Varid{r}\;\Varid{d}\;\Varid{x},\Varid{c}\;\Varid{d}\;\Varid{x}))\end{lcbr}}
+          \ensuremath{\begin{lcbr}\underline{\Varid{d}}\mathrel{=}l_1 \\\alt{\underline{\Varid{d}}}{\uncurry{(\mathbin{-})}\comp \conj{(\Varid{c}\;\Varid{d})}{\underline{\mathrm{1}}}}\comp ((\mathrm{0}\equiv )\comp (\Varid{c}\;\Varid{d}))\mathbin{?}\mathrel{=}l_2 \;(\Varid{q}\;\Varid{d}\;\Varid{x},(\Varid{r}\;\Varid{d}\;\Varid{x},\Varid{c}\;\Varid{d}\;\Varid{x}))\end{lcbr}}
      %
      \just\equiv{Eq - + (27),Fusao - + (20)}
      %
-          \ensuremath{\Varid{l}\;\Varid{d}\comp \alt{\underline{\mathrm{0}}}{\succ }\mathrel{=}\alt{\underline{\Varid{d}}}{\alt{\underline{\Varid{d}}}{\uncurry{(\mathbin{-})}\comp \conj{(\Varid{c}\;\Varid{d})}{\underline{\mathrm{1}}}}}\comp ((\mathrm{0}\equiv )\comp (\Varid{c}\;\Varid{d}))\mathbin{?}}
+          \ensuremath{\Varid{l}\comp \alt{\underline{\mathrm{0}}}{\succ }\mathrel{=}\alt{\underline{\Varid{d}}}{\alt{\underline{\Varid{d}}}{\uncurry{(\mathbin{-})}\comp \conj{(\Varid{c}\;\Varid{d})}{\underline{\mathrm{1}}}}}\comp ((\mathrm{0}\equiv )\comp (\Varid{c}\;\Varid{d}))\mathbin{?}}
      %
      \qed
 \end{eqnarray*}
@@ -1412,49 +1412,49 @@ Logo,
      %
      \just\equiv{Lei da troca (28)}
      %
-          \ensuremath{\conj{(\Varid{q}\;\Varid{d})}{\conj{(\Varid{r}\;\Varid{d})}{(\Varid{c}\;\Varid{d})}}\mathrel{=}\cata{\conj{\Varid{h}}{\alt{(\conj{\underline{\mathrm{0}}}{(\underline{\Varid{d}})}\;\conj{k_2 }{l_2 })}{\cdot }}}} 
+          \ensuremath{\conj{(\Varid{q}\;\Varid{d})}{\conj{(\Varid{r}\;\Varid{d})}{(\Varid{c}\;\Varid{d})}}\mathrel{=}\cata{\conj{\Varid{h}}{\alt{\conj{\underline{\mathrm{0}}}{\underline{\Varid{d}}}}{\conj{k_2 }{l_2 }}}}} 
      %
      \just\equiv{Lei da troca (28)}
      %
-          \ensuremath{\conj{(\Varid{q}\;\Varid{d})}{\conj{(\Varid{r}\;\Varid{d})}{(\Varid{c}\;\Varid{d})}}\mathrel{=}\cata{\alt{\conj{\underline{\mathrm{0}}}{\conj{\underline{\mathrm{0}}}{\underline{\Varid{d}}}}}{(\conj{h_2 }{\conj{k_2 }{l_2 }})}}}
+          \ensuremath{\conj{(\Varid{q}\;\Varid{d})}{\conj{(\Varid{r}\;\Varid{d})}{(\Varid{c}\;\Varid{d})}}\mathrel{=}\cata{\alt{\conj{\underline{\mathrm{0}}}{\conj{\underline{\mathrm{0}}}{\underline{\Varid{d}}}}}{\conj{h_2 }{\conj{k_2 }{l_2 }}}}}
      %
      \just\equiv{for b i = \ensuremath{\cata{\alt{\underline{\Varid{i}}}{\Varid{b}}}}}
      %
-          \ensuremath{\for{(h_2 \;\Varid{d},(k_2 \;\Varid{d},l_2 \;\Varid{d}))}\ {(\mathrm{0},(\mathrm{0},\Varid{d}))}}
+          \ensuremath{\conj{(\Varid{q}\;\Varid{d})}{\conj{(\Varid{r}\;\Varid{d})}{(\Varid{c}\;\Varid{d})}}\mathrel{=}\for{(h_2 \;\Varid{d},(k_2 \;\Varid{d},l_2 \;\Varid{d}))}\ {(\mathrm{0},(\mathrm{0},\Varid{d}))}}
      %
-     \qed
 \end{eqnarray*}
-Obter-se-á: 
-\begin{eqnarray*}
-     \start
+\paragraph{}
+Observando a linha anterior podemos concluir que \ensuremath{\Varid{aux}\;\Varid{d}\mathrel{=}\for{(h_2 \;\Varid{d},(k_2 \;\Varid{d},l_2 \;\Varid{d}))}\ {(\mathrm{0},(\mathrm{0},\Varid{d}))}}. Com o intuito de obter uma definição mais completa deste ciclo-for continuemos esta prova, assim sendo obtemos:
+\begin{tabbing}\ttfamily
+~\char60{}\char40{}q~d\char41{}\char44{}\char60{}\char40{}r~d\char41{}\char44{}\char40{}c~d\char41{}\char62{}\char62{}~\char61{}~for~\char40{}g~d\char41{}~\char40{}0\char44{}\char40{}0\char44{}d\char41{}\char41{}~where~\\
+\ttfamily ~~~~~~~~~~~\char40{}g~d\char41{}\char40{}q\char44{}\char40{}r\char44{}c\char41{}\char41{}~\char61{}~\char40{}h2~d~\char40{}q\char44{}\char40{}r\char44{}c\char41{}\char41{}~\char44{}~\char40{}k2~d~\char40{}q\char44{}\char40{}r\char44{}d\char41{}\char41{}\char44{}l2~d~\char40{}q\char44{}\char40{}r\char44{}c\char41{}\char41{}\char41{}\char41{}
+\end{tabbing}
+                    
 
-     \ensuremath{\for{\Varid{g}\;\Varid{d}}\ {\mathrm{0},(\mathrm{0},\Varid{d})}} where 
+Podemos verificar que vão existir dois casos, para valores de c = 0 e para c \ensuremath{\mathbin{>}} 0. Ora, para o primeiro caso, sabemos que:
 
-     \ensuremath{(\Varid{g}\;\Varid{d})\;(\Varid{q},(\Varid{r},\Varid{c}))\mathrel{=}(h_2 \;\Varid{d}\;(\Varid{q},(\Varid{r},\Varid{c})),(k_2 \;\Varid{d}\;(\Varid{q},(\Varid{r},\Varid{d})),l_2 \;\Varid{d}\;(\Varid{q},(\Varid{r},\Varid{c}))))}
+\begin{itemize}
+     \item \ensuremath{h_2 \;\Varid{d}\;(\Varid{q},(\Varid{r},\mathrm{0}))\mathrel{=}\Varid{q}\mathbin{+}\mathrm{1};}
+     \item \ensuremath{k_2 \;\Varid{d}\;(\Varid{q},(\Varid{r},\mathrm{0}))\mathrel{=}\mathrm{0};}
+     \item \ensuremath{l_2 \;\Varid{d}\;(\Varid{q},(\Varid{r},\mathrm{0}))\mathrel{=}\Varid{d}}.
+\end{itemize}
 
-     \qed
 
-\end{eqnarray*}
+Já para o segundo caso, temos que:
 
-Podemos verificar que vão existir dois casos: 
-Quando c = 0 e quando c \ensuremath{\mathbin{>}} 0. 
+\begin{itemize}
+     \item \ensuremath{h_2 \;\Varid{d}\;(\Varid{q},(\Varid{r},\Varid{c}))\mathrel{=}\Varid{q}\mathbin{+}\mathrm{1};}
+     \item \ensuremath{k_2 \;\Varid{d}\;(\Varid{q},(\Varid{r},\Varid{c}))\mathrel{=}\Varid{r}\mathbin{+}\mathrm{1};}
+     \item \ensuremath{l_2 \;\Varid{d}\;(\Varid{q},(\Varid{r},\Varid{c}))\mathrel{=}\Varid{c}}.
+\end{itemize}
 
-\begin{eqnarray*}
-     \start
 
-     \just\equiv{h2 d (q,(r,0)) = q+1; k2 d (q,(r,0)) = 0; l2 d (q,(r,0)) = d}
-
-     \just\equiv{h2 d (q,(r,c)) = q+1; k2 d (q,(r,c)) = r+1 ;l2 d (q,(r,c)) = c}
-
-     \ensuremath{\for{\Varid{g}\;\Varid{d}}\ {\mathrm{0},(\mathrm{0},\Varid{d})}}  where 
-
-     \ensuremath{(\Varid{g}\;\Varid{d})\;(\Varid{q},(\Varid{r},\mathrm{0}))\mathrel{=}(\Varid{q}\mathbin{+}\mathrm{1},(\mathrm{0},\Varid{d}))}
-
-     \ensuremath{(\Varid{g}\;\Varid{d})\;(\Varid{q},(\Varid{r},\Varid{c}\mathbin{+}\mathrm{1}))\mathrel{=}(\Varid{q},(\Varid{r}\mathbin{+}\mathrm{1},\Varid{c}))}
-
-     \qed
-
-\end{eqnarray*}
+O que nos leva à seguinte definição:
+\begin{tabbing}\ttfamily
+~~~~~~\char60{}\char40{}q~d\char41{}\char44{}\char60{}\char40{}r~d\char41{}\char44{}\char40{}c~d\char41{}\char62{}\char62{}~\char61{}~for~\char40{}g~d\char41{}~\char40{}0\char44{}\char40{}0\char44{}d\char41{}\char41{}~where~\\
+\ttfamily ~~~~~~~~~~~~~~~\char40{}g~d\char41{}~\char40{}q\char44{}\char40{}r\char44{}0\char41{}\char41{}~\char61{}~\char40{}q\char43{}1\char44{}~\char40{}0\char44{}d\char41{}\char41{}\\
+\ttfamily ~~~~~~~~~~~~~~~\char40{}g~d\char41{}~\char40{}q\char44{}\char40{}r\char44{}c\char43{}1\char41{}\char41{}~\char61{}~\char40{}q\char44{}~\char40{}r\char43{}1\char44{}c\char41{}\char41{}
+\end{tabbing}
 
 \subsection*{Problema 2}
 
@@ -1476,17 +1476,14 @@ Quando c = 0 e quando c \ensuremath{\mathbin{>}} 0.
 Assim sendo, pelo diagrama anterior podemos retirar a seguinte definição de g.
 \begin{hscode}\SaveRestoreHook
 \column{B}{@{}>{\hspre}l<{\hspost}@{}}%
-\column{6}{@{}>{\hspre}l<{\hspost}@{}}%
 \column{E}{@{}>{\hspre}l<{\hspost}@{}}%
-\>[6]{}\Varid{both}\mathbin{::}\Conid{Ord}\;\Varid{d}\Rightarrow {\LTree}\;\Varid{d}\to (\Varid{d},\Varid{d}){}\<[E]%
+\>[B]{}\Varid{both}\mathrel{=}\llparenthesis\, \Varid{g}\,\rrparenthesis{}\<[E]%
 \\
-\>[6]{}\Varid{both}\mathrel{=}\llparenthesis\, \Varid{g}\,\rrparenthesis{}\<[E]%
+\>[B]{}\Varid{g}\mathrel{=}\alt{\Varid{g11}}{\Varid{g12}}{}\<[E]%
 \\
-\>[6]{}\Varid{g}\mathrel{=}\alt{\Varid{g11}}{\Varid{g12}}{}\<[E]%
+\>[B]{}\Varid{g11}\;\Varid{x}\mathrel{=}(\Varid{x},\Varid{x}){}\<[E]%
 \\
-\>[6]{}\Varid{g11}\;\Varid{x}\mathrel{=}(\Varid{x},\Varid{x}){}\<[E]%
-\\
-\>[6]{}\Varid{g12}\;((\Varid{a},\Varid{b}),(\Varid{c},\Varid{d}))\mathrel{=}(\Varid{a}\mathbin{+}\Varid{c},\Varid{b}\mathbin{+}\Varid{d}){}\<[E]%
+\>[B]{}\Varid{g12}\;((\Varid{a},\Varid{b}),(\Varid{c},\Varid{d}))\mathrel{=}(\Varid{a}\mathbin{+}\Varid{c},\Varid{b}\mathbin{+}\Varid{d}){}\<[E]%
 \ColumnHook
 \end{hscode}\resethooks
 
@@ -1639,53 +1636,121 @@ Ora, sabendo que outLTree3 é o isomorfismo de inLTree3, temos então que outLTr
 
 \begin{hscode}\SaveRestoreHook
 \column{B}{@{}>{\hspre}l<{\hspost}@{}}%
-\column{19}{@{}>{\hspre}l<{\hspost}@{}}%
-\column{27}{@{}>{\hspre}l<{\hspost}@{}}%
 \column{E}{@{}>{\hspre}l<{\hspost}@{}}%
 \>[B]{}\Varid{outLTree3}\;(\Conid{Tri}\;\Varid{x})\mathrel{=}i_1\;\Varid{x}{}\<[E]%
 \\
-\>[B]{}\Varid{outLTree3}\;(\Conid{Nodo}\;\Varid{t}\;\Varid{y}\;\Varid{z})\mathrel{=}{}\<[27]%
-\>[27]{}i_2\;\Varid{t}\;\Varid{y}\;\Varid{z}{}\<[E]%
+\>[B]{}\Varid{outLTree3}\;(\Conid{Nodo}\;\Varid{t}\;\Varid{y}\;\Varid{z})\mathrel{=}i_2\;((\Varid{t},\Varid{y}),\Varid{z}){}\<[E]%
 \\[\blanklineskip]%
-\>[B]{}\Varid{baseLTree3}\;\Varid{f}\;\Varid{g}\mathrel{=}{}\<[19]%
-\>[19]{}\Varid{g}\mathbin{+}\Varid{f}\mathbin{*}(\Varid{f}\mathbin{*}\Varid{f}){}\<[E]%
+\>[B]{}\Varid{baseLTree3}\;\Varid{g}\;\Varid{f}\mathrel{=}\Varid{g}+\Varid{f}\times(\Varid{f}\times\Varid{f}){}\<[E]%
 \ColumnHook
 \end{hscode}\resethooks
 
 
-Pela propriedade de Base-cata, temos que recLTree3 f =  baseLTree3 id f = id + f * (f * f).
+Pela propriedade de Base-cata, temos que recLTree3 \ensuremath{\Varid{f}\mathrel{=}\Varid{baseLTree3}\;\Varid{id}\;\Varid{f}\mathrel{=}\Varid{id}\mathbin{+}\Varid{f}\times(\Varid{f}\times\Varid{f})}.
 
 \begin{hscode}\SaveRestoreHook
 \column{B}{@{}>{\hspre}l<{\hspost}@{}}%
 \column{E}{@{}>{\hspre}l<{\hspost}@{}}%
-\>[B]{}\Varid{recLTree3}\;\Varid{f}\mathrel{=}\Varid{id}\mathbin{+}\Varid{f}\mathbin{*}(\Varid{f}\mathbin{*}\Varid{f}){}\<[E]%
+\>[B]{}\Varid{recLTree3}\;\Varid{f}\mathrel{=}\Varid{id}+\Varid{f}\times(\Varid{f}\times\Varid{f}){}\<[E]%
 \ColumnHook
 \end{hscode}\resethooks
 
+Como \ensuremath{\Varid{folhasSierp}\mathrel{=}\llparenthesis\, g_1 \,\rrparenthesis}, o diagrama correspondente a esta função é o seguinte:
 \begin{eqnarray*}
      \xymatrix@C=1cm@R=2cm{
-         \ensuremath{\Conid{Ltree3}\;\Conid{A}}
-         \ar[d]_{\ensuremath{\llparenthesis\, \Varid{f}\,\rrparenthesis}}\ar@/^1.5pc/[rr]^(0.5){out} 
+         \ensuremath{\Conid{Ltree3}}
+         \ar[d]_{\ensuremath{\llparenthesis\, g_1 \,\rrparenthesis}}
+         \ar@/^1.5pc/[rr]^(0.5){out} 
      & 
           \cong
      &
-         \ensuremath{\Conid{A}\mathbin{+}\Conid{Ltree3}\;\Conid{A}\times\Conid{Ltree3}\;\Conid{A}}
-                \ar[d]^{recLTree3 (cataLtree3 f)}
+         \ensuremath{\Conid{Tri}\mathbin{+}\Conid{Ltree3}\times(\Conid{Ltree3}\times\Conid{Ltree3})}
+                \ar[d]^{recLTree3 (cataLtree3 g1)}
                 \ar@/^1.5pc/[ll]^(0.5){in}
      \\
-          \ensuremath{\Conid{A}} && \ensuremath{\Conid{A}\mathbin{+}\Conid{A}\times\Conid{A}}
-          \ar[ll]^{\ensuremath{\Varid{f}}}
+          Tri^* && \ensuremath{\Conid{Tri}\mathbin{+}\Conid{Tri}\times\Conid{Tri}\times\Conid{Tri}}
+          \ar[ll]^{\ensuremath{g_1 }}
      }
 \end{eqnarray*}
 
+
+Pelo que podemos concluir que a seguinte definição:
 \begin{hscode}\SaveRestoreHook
 \column{B}{@{}>{\hspre}l<{\hspost}@{}}%
 \column{E}{@{}>{\hspre}l<{\hspost}@{}}%
-\>[B]{}\Varid{cataLTree3}\;\Varid{f}\mathrel{=}\Varid{f}\mathbin{·}(\Varid{recLTree3}\;(\Varid{cataLTree3}\;\Varid{f}))\mathbin{·}\Varid{outLTree3}{}\<[E]%
-\\[\blanklineskip]%
-\>[B]{}\Varid{anaLTree3}\;\Varid{f}\mathrel{=}\Varid{inLTree3}\mathbin{·}(\Varid{recLTree3}\;(\Varid{anaLTree3}\;\Varid{f}))\mathbin{·}\Varid{f}{}\<[E]%
-\\[\blanklineskip]%
-\>[B]{}\Varid{hyloLTree3}\;\Varid{f}\;\Varid{g}\mathrel{=}\Varid{cataLTree3}\;\Varid{f}\mathbin{·}\Varid{anaLTree3}\;\Varid{g}{}\<[E]%
+\>[B]{}\Varid{cataLTree3}\;\Varid{f}\mathrel{=}\Varid{f}\comp (\Varid{recLTree3}\;(\Varid{cataLTree3}\;\Varid{f}))\comp \Varid{outLTree3}{}\<[E]%
+\ColumnHook
+\end{hscode}\resethooks
+
+
+Relativamente, à função \ensuremath{\Varid{geraSierp}\mathrel{=}\mathopen{[\!(}g_2 \mathclose{)\!]}}, o seu diagrama é o seguinte:
+
+\begin{eqnarray*}
+     \xymatrix@C=2cm@R=2cm{
+         \ensuremath{\Conid{Ltree3}}
+         \ar@/^1.5pc/[rr]^(0.5){out} 
+     & 
+          \cong
+     &
+         \ensuremath{\Conid{Tri}\mathbin{+}\Conid{Ltree3}\times(\Conid{Ltree3}\times\Conid{Ltree3})}
+         \ar@/^1.5pc/[ll]^(0.5){in}
+     \\
+          \ensuremath{\Conid{Tri}\times\N_0}
+          \ar[u]^{\ensuremath{\mathopen{[\!(}\Varid{g}\mathclose{)\!]}}} 
+          \ar[r]^(0.35){out_{\ensuremath{\N_0}}} 
+          \ar@/_1.5pc/[rr]_(0.5){g2} 
+     & 
+          \ensuremath{\Conid{Tri}\times\mathrm{1}\mathbin{+}\Conid{Tri}\times\N_0}
+          \ar[r]^{\ensuremath{\Varid{id}\mathbin{+}\Varid{f}\times\Varid{g}\times\Varid{h}}}
+     &
+          \ensuremath{\Conid{Tri}\mathbin{+}\Conid{Tri}\times\Conid{Tri}\times\Conid{Tri}}
+          \ar[u]_{recLTree3 (\ensuremath{\Varid{anaLtree3}\;\Varid{g}})}
+     }
+\end{eqnarray*}
+
+
+Assim sendo, podemos inferir a seguinte definição:
+\begin{hscode}\SaveRestoreHook
+\column{B}{@{}>{\hspre}l<{\hspost}@{}}%
+\column{E}{@{}>{\hspre}l<{\hspost}@{}}%
+\>[B]{}\Varid{anaLTree3}\;\Varid{f}\mathrel{=}\Varid{inLTree3}\comp (\Varid{recLTree3}\;(\Varid{anaLTree3}\;\Varid{f}))\mathbin{·}\Varid{f}{}\<[E]%
+\ColumnHook
+\end{hscode}\resethooks
+
+
+Ora, sabemos que um hilomorfismo é a composição de catamorfismo, após um anamorfismo. Logo, o hilomorfismo \ensuremath{\Varid{sierpinski}\mathrel{=}\Varid{folhasSierp}\mathbin{·}\Varid{geraSierp}}, caracteriza-se da seguinte forma:
+\begin{eqnarray*}
+     \xymatrix@C=2cm@R=2cm{
+         \ensuremath{\Conid{Tri}\times\N_0}
+         \ar[d]_{\ensuremath{\mathopen{[\!(}\Varid{g}\mathclose{)\!]}}}
+         \ar[rr]^{\ensuremath{g_2 }}
+     &&
+         \ensuremath{\Conid{Tri}\mathbin{+}\Conid{Tri}\times\Conid{Tri}\times\Conid{Tri}}
+         \ar[d]^{recLTree3 (\ensuremath{\Varid{anaLTree3}\;\Varid{g}})}
+     \\
+          \ensuremath{\Conid{Ltree3}}
+          \ar[d]_{\ensuremath{\llparenthesis\, \Varid{f}\,\rrparenthesis}}
+          \ar@/^1.5pc/[rr]^(0.5){out}
+     & 
+          \cong
+     &
+          \ensuremath{\Conid{Tri}\mathbin{+}\mathsf{LTree3}\times\Conid{Ltree3}\times\mathsf{LTree3}}
+          \ar[d]^{recLTree3 (\ensuremath{\Varid{cataLTree3}\;\Varid{g}})}
+          \ar@/^1.5pc/[ll]^(0.5){in}
+     \\
+         Tri^* 
+     && 
+         \ensuremath{\Conid{Tri}\mathbin{+}\Conid{Tri}\times\Conid{Tri}\times\Conid{Tri}}
+         \ar[ll]_{f}
+     }
+\end{eqnarray*}
+
+
+Logo,
+\begin{hscode}\SaveRestoreHook
+\column{B}{@{}>{\hspre}l<{\hspost}@{}}%
+\column{E}{@{}>{\hspre}l<{\hspost}@{}}%
+\>[B]{}\Varid{hyloLTree3}\;\Varid{f}\;\Varid{g}\mathrel{=}\Varid{cataLTree3}\;\Varid{f}\comp \Varid{anaLTree3}\;\Varid{g}{}\<[E]%
 \ColumnHook
 \end{hscode}\resethooks
 
@@ -1695,8 +1760,8 @@ Genes do hilomorfismo \ensuremath{\Varid{sierpinski}}:
 \column{B}{@{}>{\hspre}l<{\hspost}@{}}%
 \column{6}{@{}>{\hspre}l<{\hspost}@{}}%
 \column{E}{@{}>{\hspre}l<{\hspost}@{}}%
-\>[B]{}g_1 \mathrel{=}(\Varid{singl}\;\alt{\cdot }{\cdot }\;(\mathsf{conc}\mathbin{·}(\Varid{id}\mathbin{*}\mathsf{conc})))\;\mathbf{where}\;\mathsf{conc}\;(l_1 ,(l_2 ,\Varid{l3}))\mathrel{=}l_1 \mathbin{+\!\!\!+}l_2 \mathbin{+\!\!\!+}\Varid{l3}{}\<[E]%
-\\[\blanklineskip]%
+\>[B]{}g_1 \mathrel{=}(\Varid{singl}\mathbin{`\Varid{either}`}(\mathsf{conc}\comp (\Varid{id}\times\mathsf{conc})))\;\mathbf{where}\;\Varid{conc'}\;(l_1 ,(l_2 ,\Varid{l3}))\mathrel{=}l_1 \mathbin{+\!\!\!+}l_2 \mathbin{+\!\!\!+}\Varid{l3}{}\<[E]%
+\\
 \>[B]{}g_2 \;(\Varid{t},\mathrm{0})\mathrel{=}i_1\;\Varid{t}{}\<[E]%
 \\
 \>[B]{}g_2 \;(((\Varid{x},\Varid{y}),\Varid{s}),\Varid{n}\mathbin{+}\mathrm{1})\mathrel{=}i_2\;((\Varid{t1},\Varid{t2}),\Varid{t3})\;\mathbf{where}{}\<[E]%
