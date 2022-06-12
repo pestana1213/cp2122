@@ -1324,7 +1324,6 @@ O que nos leva à seguinte definição:
 \end{eqnarray*}
 Assim sendo, pelo diagrama anterior podemos retirar a seguinte definição de g.
 \begin{code}
-both :: Ord d => LTree d -> (d, d)
 both = cataLTree g
 g = either g11 g12
 g11 x = (x,x)
@@ -1640,16 +1639,17 @@ Ora, sabendo que outLTree3 é o isomorfismo de inLTree3, temos então que outLTr
 
 \begin{code}
 outLTree3 (Tri x) = i1 x
-outLTree3 (Nodo t y z) =  i2 t y z
+outLTree3 (Nodo t y z) = i2 ((t,y),z)
 
-baseLTree3 f g =  g + f * (f * f)
+baseLTree3 g f = g -|- f >< (f><f)
+
 \end{code}
 
 
 Pela propriedade de Base-cata, temos que recLTree3 f =  baseLTree3 id f = id + f * (f * f).
 
 \begin{code}
-recLTree3 f = id + f * (f*f)
+recLTree3 f = id -|- f >< (f><f)
 \end{code}
 \begin{eqnarray*}
      \xymatrix@@C=1cm@@R=2cm{
@@ -1669,7 +1669,8 @@ recLTree3 f = id + f * (f*f)
 \end{eqnarray*}
 
 \begin{code}
-cataLTree3 f = f · (recLTree3 (cataLTree3 f)) · outLTree3
+cataLTree3 f = f . (recLTree3 (cataLTree3 f)) . outLTree3
+
 \end{code}
 
 \begin{eqnarray*}
@@ -1696,7 +1697,7 @@ cataLTree3 f = f · (recLTree3 (cataLTree3 f)) · outLTree3
 \end{eqnarray*}
 
 \begin{code}
-anaLTree3 f = inLTree3 · (recLTree3 (anaLTree3 f )) · f
+anaLTree3 f = inLTree3 . (recLTree3 (anaLTree3 f )) · f
 \end{code}
 
 \begin{eqnarray*}
@@ -1724,13 +1725,13 @@ anaLTree3 f = inLTree3 · (recLTree3 (anaLTree3 f )) · f
 \end{eqnarray*}
 
 \begin{code}
-hyloLTree3 f g = cataLTree3 f · anaLTree3 g
+hyloLTree3 f g = cataLTree3 f . anaLTree3 g
 \end{code}
 
 Genes do hilomorfismo |sierpinski|:
 
 \begin{code}
-g1 = (singl either (conc · (id * conc))) where conc (l1,(l2,l3)) = l1++l2++l3
+g1 = (singl `either` (conc . (id >< conc))) where conc' (l1,(l2,l3)) = l1++l2++l3
 g2 (t,0) = i1 t 
 g2 (((x,y),s),n+1) = i2((t1,t2),t3) where
      t1 = (((x,y),s/2),n)
