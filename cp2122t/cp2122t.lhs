@@ -1145,35 +1145,35 @@ Por aplicação da lei de recursividade mútua em aux temos:
 Consideremos apenas um ramo do sistema de cada vez, com o intuito de facilitar a resolução da questao. Assim sendo, no primeiro ramo temos que: 
 \begin{eqnarray*}
      \start
-          |(either ((q d) . (const 0)) ((q d) . succ))  = (either (h1) (h2 . (split ((q d)) (split ((r d)) ((c d))))) )|
+          |(either ((q d) . (const 0)) ((q d) . succ))  = (either (h1 d) (h2 d . (split ((q d)) (split ((r d)) ((c d))))) )|
      %
      \just\equiv{Eq - + (27)}
      %
                |lcbr(
-                    (q d) . (const 0) = h1 
+                    (q d) . (const 0) = h1 d
               )(
-                    (q d) . succ =  h2 . (split (q d) (split (r d) (c d)))
+                    (q d) . succ =  h2 d . (split (q d) (split (r d) (c d)))
               )|
      %
      \just\equiv{Como foi provado em cima, |(q d) .(const 0) = (const 0)|, Igualdade extensional (71), Def-comp (72), Def-split (76)}
      %
                |lcbr(
-                    (const 0) = h1 
+                    (const 0) = h1 d
               )(
-                    (q d) (succ x) = h2 (q d x, (r d x, c d x))
+                    (q d) (succ x) = h2 d (q d x, (r d x, c d x))
               )|
      %
      \just\equiv{Como foi provado em cima, |(q d) . succ = uncurry(+) . ( split (q d) ((either (const 1) (const 0)) . ((0 ==) . (cd)) ?) )|}   
      %  
           |lcbr(
-               (const 0) = h1 
+               (const 0) = h1 d
           )(
-               uncurry(+) . (split (q d) ( (either (const 1) (const 0)) . ((0 ==) . (cd)) ? ) ) = h2 (q d x, (r d x, c d x))
+               uncurry(+) . (split (q d) d ( (either (const 1) (const 0)) . ((0 ==) . (cd)) ? ) ) = h2 d (q d x, (r d x, c d x))
           )|
      %
      \just\equiv{Eq - + (27), Fusao - + (20)}
      %
-          | h . (either(const 0) (succ)) = (either (const 0) (uncurry(+) . (split (q d) ( (either (const 1) (const 0)) . ((0 ==) . (cd)) ? ) )))|
+          | h d . (either(const 0) (succ)) = (either (const 0) (uncurry(+) . (split (q d) ( (either (const 1) (const 0)) . ((0 ==) . (cd)) ? ) )))|
      %
      \qed
 \end{eqnarray*}
@@ -1182,35 +1182,35 @@ Para o segundo ramo temos que:
 
 \begin{eqnarray*}
      \start
-          |(either ((r d) . (const 0)) ((r d) . succ))  = (either (k1) (k2 . (split ((q d)) (split ((r d)) ((c d))))) )|
+          |(either ((r d) . (const 0)) ((r d) . succ))  = (either (k1 d) (k2 d . (split ((q d)) (split ((r d)) ((c d))))) )|
      %
      \just\equiv{Eq - +(27)}
      %
                |lcbr(
-                    (r d) . (const 0) = k1 
+                    (r d) . (const 0) = k1 d 
               )(
-                    (r d) . succ =  k2 . (split (q d) (split (r d) (c d)))
+                    (r d) . succ =  k2 d . (split (q d) (split (r d) (c d)))
               )|
      %
      \just\equiv{Como foi provado em cima, |(r d) .(const 0) = (const 0)|, Igualdade extensional (71), Def-comp (72), Def-split (76)}
      %
                |lcbr(
-                    (const 0) = k1 
+                    (const 0) = k1 d
               )(
-                    (r d) (succ x) = k2 (q d x, (r d x, c d x))
+                    (r d) (succ x) = k2 d (q d x, (r d x, c d x))
               )|
      %
      \just\equiv{Como foi provado em cima, |(r d) . succ = (either (const 0) (uncurry(+) . (split (const (1)) (r d)) )) . ((0 ==) . (c d)) ?|}   
      %  
           |lcbr(
-               (const 0) = k1 
+               (const 0) = k1 d
           )(
-               (either (const 0) (uncurry(+) . (split (const 1) (r d)) )) . ((0 ==) . (c d)) ? = k2 (q d x, (r d x, c d x))
+               (either (const 0) (uncurry(+) . (split (const 1) (r d)) )) . ((0 ==) . (c d)) ? = k2 d (q d x, (r d x, c d x))
           )|
      %
      \just\equiv{Eq - + (27), Fusao - + (20)}
      %
-          | k . (either(const 0) (succ)) = (either (const 0) ((either (const 0) (uncurry(+) . (split (const 1) (r d)) )) . ((0 ==) . (c d)) ?))|
+          | k d . (either(const 0) (succ)) = (either (const 0) ((either (const 0) (uncurry(+) . (split (const 1) (r d)) )) . ((0 ==) . (c d)) ?))|
      %
      \qed
 \end{eqnarray*}
@@ -1219,35 +1219,35 @@ Finalmente, para o terceiro ramo:
 
 \begin{eqnarray*}
      \start
-          |(either ((c d) . (const 0)) ((c d) . succ))  = (either (l1) (l2 . (split ((q d)) (split ((r d)) ((c d))))) )|
+          |(either ((c d) . (const 0)) ((c d) . succ))  = (either (l1 d) (l2 d . (split ((q d)) (split ((r d)) ((c d))))) )|
      %
      \just\equiv{Eq - + (27)}
      %
                |lcbr(
-                    (c d) . (const 0) = l1 
+                    (c d) . (const 0) = l1 d
               )(
-                    (c d) . succ =   l2 . (split (q d) (split (r d) (c d)))
+                    (c d) . succ =   l2 d . (split (q d) (split (r d) (c d)))
               )|
      %
      \just\equiv{Como foi provado em cima, |(c d) .(const 0) = (const d)|, Igualdade extensional (71), Def-comp (72), Def-split (76)}
      %
                |lcbr(
-                    (const d) = l1 
+                    (const d) = l1 d
               )(
-                    (r d) (succ x) = l2 (q d x, (r d x, c d x))
+                    (r d) (succ x) = l2 d (q d x, (r d x, c d x))
               )|
      %
      \just\equiv{Como foi provado em cima, |(c d) . succ = (either (const d) (uncurry(-) . (split ((c d)) (const(1))) )) . ((0 ==) . (c d)) ?|}   
      %  
           |lcbr(
-              (const d) = l1 
+              (const d) = l1 d
           )(
-               (either (const d) (uncurry(-) . (split ((c d)) (const 1)) )) . ((0 ==) . (c d)) ? = l2 (q d x, (r d x, c d x))
+               (either (const d) (uncurry(-) . (split ((c d)) (const 1)) )) . ((0 ==) . (c d)) ? = l2 d (q d x, (r d x, c d x))
           )|
      %
      \just\equiv{Eq - + (27),Fusao - + (20)}
      %
-          | l . (either(const 0) (succ)) = either (const d) (either (const d) (uncurry(-) . (split ((c d)) (const 1))) ) . ((0 ==) . (c d)) ?|
+          | l d . (either(const 0) (succ)) = either (const d) (either (const d) (uncurry(-) . (split ((c d)) (const 1))) ) . ((0 ==) . (c d)) ?|
      %
      \qed
 \end{eqnarray*}
@@ -1269,7 +1269,7 @@ Logo,
      %
      \just\equiv{for b i = | cata (either (const i) (b))|}
      %
-          |for ((h2, (k2,l2))) ((0,(0,d))) |
+          |for ((h2 d, (k2 d,l2 d))) ((0,(0,d))) |
      %
      \qed
 \end{eqnarray*}
@@ -1277,12 +1277,34 @@ Obter-se-á:
 \begin{eqnarray*}
      \start
 
-     | for (g d) (0,(0,d)) where 
-          (g d) (q,(r,0)) = 
-          (g d) (q,(r,c + 1)) = 
-     |
+     | for (g d) (0,(0,d))| where 
+
+     |(g d) (q,(r,c)) = (h2 d (q,(r,c)) , (k2 d (q,(r,d)),l2 d (q,(r,c))))|
+
      \qed
+
 \end{eqnarray*}
+
+Podemos verificar que vão existir dois casos: 
+Quando c = 0 e quando c |>| 0. 
+
+\begin{eqnarray*}
+     \start
+
+     \just\equiv{h2 d (q,(r,0)) = q+1; k2 d (q,(r,0)) = 0; l2 d (q,(r,0)) = d}
+
+     \just\equiv{h2 d (q,(r,c)) = q+1; k2 d (q,(r,c)) = r+1 ;l2 d (q,(r,c)) = c}
+
+     | for (g d) (0,(0,d))|  where 
+
+     |(g d) (q,(r,0)) = (q+1, (0,d))|
+
+     |(g d) (q,(r,c+1)) = (q, (r+1,c))|
+
+     \qed
+
+\end{eqnarray*}
+
 \subsection*{Problema 2}
 
 \begin{eqnarray*}
