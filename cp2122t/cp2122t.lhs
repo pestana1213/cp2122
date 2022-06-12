@@ -898,7 +898,7 @@ Comecemos, então, pela função q d.
      \just\equiv{Uncurry (84)}
      %
              |lcbr(
-                  (q d) . const(0) n = const(0) n 
+                  (q d) . (const 0) n = (const 0) n 
           )(
                ((q d) . succ ) n  = uncurry (+) ((q d) n , ((0 ==) . (cd) ==> const(1), const(0)) n ) 
           )|
@@ -906,7 +906,7 @@ Comecemos, então, pela função q d.
      \just\equiv{Def-split (76)}
      %
              |lcbr(
-                  (q d) . const(0) n = const(0) n 
+                  (q d) . (const 0) n = (const 0) n 
           )(
                ((q d) . succ) n  = uncurry (+)  . (split (q d) ((0 ==) . (cd) ==> const(1), const(0)))  n
           )|
@@ -914,7 +914,7 @@ Comecemos, então, pela função q d.
      \just\equiv{Igualdade extensional (71)}
      %
              |lcbr(
-                  (q d) . const(0) = 0 
+                  (q d) . (const 0) = (const 0)
           )(
                (q d) . succ = uncurry(+) . (split (q d) ((0 ==) . (cd) ==> const(1), const(0))) 
           )|
@@ -922,14 +922,14 @@ Comecemos, então, pela função q d.
      \just\equiv{Def condicional de McCarthy (30)}
      %
                |lcbr(
-                    (q d) . const(0) = 0 
+                    (q d) . (const 0) = (const 0) 
               )(
                   (q d) . succ = uncurry(+) . (split (q d) ((either (const 1) (const 0)) . ((0 ==) . (cd)) ?)) 
               )|
      %
      \just\equiv{Eq - + (27)}
      %
-               | (either ((q d) . const(0)) ( (q d) . succ) ) = (either (0) (uncurry(+) . (split (q d) ((either (const 1) (const 0)) . ((0 ==) . (cd)) ?)) ))|
+               | (either ((q d) . const(0)) ( (q d) . succ) ) = (either (const 0) (uncurry(+) . (split (q d) ((either (const 1) (const 0)) . ((0 ==) . (cd)) ?)) ))|
      %
      \just\equiv{Fusão - + (20)}
      %
@@ -998,18 +998,18 @@ Procederemos à obtenção de uma definição alternativa da função (r d).
      \just\equiv{Def condicional de McCarthy (30)}
      %
                |lcbr(
-                    (r d) . const(0) = 0 
+                    (r d) . const(0) = (const 0)
               )(
                   (r d) . succ = (either (const 0) (uncurry(+) . (split (const (1)) (r d)) )) . ((0 ==) . (c d)) ?
               )|
      %
      \just\equiv{Eq - + (27)}
      %
-              | (either ((r d) . const(0)) ( (r d) . succ) ) = (either (0) ((either (const 0) (uncurry(+) . (split (const (1)) (r d)) )) . ((0 ==) . (c d)) ?))|
+              | (either ((r d) . const(0)) ( (r d) . succ) ) = (either (const 0) ((either (const 0) (uncurry(+) . (split (const (1)) (r d)) )) . ((0 ==) . (c d)) ?))|
      %
      \just\equiv{Fusão - + (20)}
      %
-               | (r d) . (either (const(0)) (succ)) = (either (0) ((either (const 0) (uncurry(+) . (split (const (1)) (r d)) )) . ((0 ==) . (c d)) ?))|
+               | (r d) . (either (const(0)) (succ)) = (either (const 0) ((either (const 0) (uncurry(+) . (split (const (1)) (r d)) )) . ((0 ==) . (c d)) ?))|
      %
      \qed
 \end{eqnarray*}
@@ -1075,18 +1075,18 @@ Finalmente, aplicaremos o mesmo processo para a função (c d).
      \just\equiv{Def condicional de McCarthy (30)}
      %
                |lcbr(
-                    (c d) . const(0) = 0 
+                    (c d) . const(0) = (const d)
               )(
                   (c d) . succ = (either (const d) (uncurry(-) . (split ((c d)) (const(1))) )) . ((0 ==) . (c d)) ?
               )|
      %
      \just\equiv{Eq - + (27)}
      %
-               | (either ((c d) . const(0)) ( (c d) . succ) ) = (either (0) ((either (const d) (uncurry(-) . (split ((c d)) (const(1))) )) . ((0 ==) . (c d)) ?))|
+               | (either ((c d) . const(0)) ( (c d) . succ) ) = (either (const d) ((either (const d) (uncurry(-) . (split ((c d)) (const(1))) )) . ((0 ==) . (c d)) ?))|
      %
      \just\equiv{Fusão - + (20)}
      %
-                | (c d) . (either (const(0)) (succ)) = (either (0) ((either (const d) (uncurry(-) . (split ((c d)) (const(1))) )) . ((0 ==) . (c d)) ?))|
+                | (c d) . (either (const(0)) (succ)) = (either (const d) ((either (const d) (uncurry(-) . (split ((c d)) (const(1))) )) . ((0 ==) . (c d)) ?))|
      %
      \qed
 \end{eqnarray*}
@@ -1119,7 +1119,7 @@ Por aplicação da lei de recursividade mútua em aux temos:
                     (c d) . (either (const 0) (succ))  = l . (id + (split (q d) (split (r d) (c d))))
               )|
      %
-     \just\equiv{Fusão-+ (20)}
+     \just\equiv{Fusão-+ (20), como o |F (split ((q d)) (split ((r d)) ((c d))))| mapeia para uma soma, temos que h, k e l são eithers.}
      %
                |cases3(
                     (either ((q d) . (const 0)) ((q d) . succ)) = (either (h1) (h2)) . (id + (split ((q d)) (split ((r d)) ((c d)))))
@@ -1155,7 +1155,7 @@ Consideremos apenas um ramo do sistema de cada vez, com o intuito de facilitar a
                     (q d) . succ =  h2 . (split (q d) (split (r d) (c d)))
               )|
      %
-     \just\equiv{Como foi provado em cima, |(q d) .(const 0) = 0|, Igualdade extensional (71), Def-comp (72), Def-split (76)}
+     \just\equiv{Como foi provado em cima, |(q d) .(const 0) = (const 0)|, Igualdade extensional (71), Def-comp (72), Def-split (76)}
      %
                |lcbr(
                     (const 0) = h1 
@@ -1163,7 +1163,7 @@ Consideremos apenas um ramo do sistema de cada vez, com o intuito de facilitar a
                     (q d) (succ x) = h2 (q d x, (r d x, c d x))
               )|
      %
-     \just\equiv{Como foi provado em cima, |(q d) . scc = uncurry(+) . ( split (q d) ((either (const 1) (const 0)) . ((0 ==) . (cd)) ?) )|}   
+     \just\equiv{Como foi provado em cima, |(q d) . succ = uncurry(+) . ( split (q d) ((either (const 1) (const 0)) . ((0 ==) . (cd)) ?) )|}   
      %  
           |lcbr(
                (const 0) = h1 
@@ -1192,7 +1192,7 @@ Para o segundo ramo temos que:
                     (r d) . succ =  k2 . (split (q d) (split (r d) (c d)))
               )|
      %
-     \just\equiv{Como foi provado em cima, |(r d) .(const 0) = 0|, Igualdade extensional (71), Def-comp (72), Def-split (76)}
+     \just\equiv{Como foi provado em cima, |(r d) .(const 0) = (const 0)|, Igualdade extensional (71), Def-comp (72), Def-split (76)}
      %
                |lcbr(
                     (const 0) = k1 
