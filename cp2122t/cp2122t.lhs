@@ -1142,38 +1142,38 @@ Por aplicação da lei de recursividade mútua em aux temos:
      \qed
 \end{eqnarray*}
 
-Consideremos apenas um ramo do sistema de cada vez, com o intuito de facilitar a resolução da questao. Assim sendo, no primeiro ramo temos que: 
+Consideremos apenas um ramo do sistema de cada vez, com o intuito de facilitar a resolução da questão. Assim sendo, no primeiro ramo temos que: 
 \begin{eqnarray*}
      \start
-          |(either ((q d) . (const 0)) ((q d) . succ))  = (either (h1 d) (h2 d . (split ((q d)) (split ((r d)) ((c d))))) )|
+          |(either ((q d) . (const 0)) ((q d) . succ))  = (either (h1) (h2 . (split ((q d)) (split ((r d)) ((c d))))) )|
      %
      \just\equiv{Eq - + (27)}
      %
                |lcbr(
-                    (q d) . (const 0) = h1 d
+                    (q d) . (const 0) = h1 
               )(
-                    (q d) . succ =  h2 d . (split (q d) (split (r d) (c d)))
+                    (q d) . succ =  h2 . (split (q d) (split (r d) (c d)))
               )|
      %
      \just\equiv{Como foi provado em cima, |(q d) .(const 0) = (const 0)|, Igualdade extensional (71), Def-comp (72), Def-split (76)}
      %
                |lcbr(
-                    (const 0) = h1 d
+                    (const 0) = h1 
               )(
-                    (q d) (succ x) = h2 d (q d x, (r d x, c d x))
+                    (q d) (succ x) = h2 (q d x, (r d x, c d x))
               )|
      %
      \just\equiv{Como foi provado em cima, |(q d) . succ = uncurry(+) . ( split (q d) ((either (const 1) (const 0)) . ((0 ==) . (cd)) ?) )|}   
      %  
           |lcbr(
-               (const 0) = h1 d
+               (const 0) = h1 
           )(
-               uncurry(+) . (split (q d) d ( (either (const 1) (const 0)) . ((0 ==) . (cd)) ? ) ) = h2 d (q d x, (r d x, c d x))
+               uncurry(+) . (split (q d) ( (either (const 1) (const 0)) . ((0 ==) . (cd)) ? ) ) = h2 (q d x, (r d x, c d x))
           )|
      %
      \just\equiv{Eq - + (27), Fusao - + (20)}
      %
-          | h d . (either(const 0) (succ)) = (either (const 0) (uncurry(+) . (split (q d) ( (either (const 1) (const 0)) . ((0 ==) . (cd)) ? ) )))|
+          | h . (either(const 0) (succ)) = (either (const 0) (uncurry(+) . (split (q d) ( (either (const 1) (const 0)) . ((0 ==) . (cd)) ? ) )))|
      %
      \qed
 \end{eqnarray*}
@@ -1182,35 +1182,35 @@ Para o segundo ramo temos que:
 
 \begin{eqnarray*}
      \start
-          |(either ((r d) . (const 0)) ((r d) . succ))  = (either (k1 d) (k2 d . (split ((q d)) (split ((r d)) ((c d))))) )|
+          |(either ((r d) . (const 0)) ((r d) . succ))  = (either (k1) (k2 . (split ((q d)) (split ((r d)) ((c d))))) )|
      %
      \just\equiv{Eq - +(27)}
      %
                |lcbr(
-                    (r d) . (const 0) = k1 d 
+                    (r d) . (const 0) = k1 
               )(
-                    (r d) . succ =  k2 d . (split (q d) (split (r d) (c d)))
+                    (r d) . succ =  k2 . (split (q d) (split (r d) (c d)))
               )|
      %
      \just\equiv{Como foi provado em cima, |(r d) .(const 0) = (const 0)|, Igualdade extensional (71), Def-comp (72), Def-split (76)}
      %
                |lcbr(
-                    (const 0) = k1 d
+                    (const 0) = k1 
               )(
-                    (r d) (succ x) = k2 d (q d x, (r d x, c d x))
+                    (r d) (succ x) = k2 (q d x, (r d x, c d x))
               )|
      %
      \just\equiv{Como foi provado em cima, |(r d) . succ = (either (const 0) (uncurry(+) . (split (const (1)) (r d)) )) . ((0 ==) . (c d)) ?|}   
      %  
           |lcbr(
-               (const 0) = k1 d
+               (const 0) = k1 
           )(
-               (either (const 0) (uncurry(+) . (split (const 1) (r d)) )) . ((0 ==) . (c d)) ? = k2 d (q d x, (r d x, c d x))
+               (either (const 0) (uncurry(+) . (split (const 1) (r d)) )) . ((0 ==) . (c d)) ? = k2 (q d x, (r d x, c d x))
           )|
      %
      \just\equiv{Eq - + (27), Fusao - + (20)}
      %
-          | k d . (either(const 0) (succ)) = (either (const 0) ((either (const 0) (uncurry(+) . (split (const 1) (r d)) )) . ((0 ==) . (c d)) ?))|
+          | k . (either(const 0) (succ)) = (either (const 0) ((either (const 0) (uncurry(+) . (split (const 1) (r d)) )) . ((0 ==) . (c d)) ?))|
      %
      \qed
 \end{eqnarray*}
@@ -1219,35 +1219,35 @@ Finalmente, para o terceiro ramo:
 
 \begin{eqnarray*}
      \start
-          |(either ((c d) . (const 0)) ((c d) . succ))  = (either (l1 d) (l2 d . (split ((q d)) (split ((r d)) ((c d))))) )|
+          |(either ((c d) . (const 0)) ((c d) . succ))  = (either (l1) (l2 . (split ((q d)) (split ((r d)) ((c d))))) )|
      %
      \just\equiv{Eq - + (27)}
      %
                |lcbr(
-                    (c d) . (const 0) = l1 d
+                    (c d) . (const 0) = l1 
               )(
-                    (c d) . succ =   l2 d . (split (q d) (split (r d) (c d)))
+                    (c d) . succ =   l2 . (split (q d) (split (r d) (c d)))
               )|
      %
      \just\equiv{Como foi provado em cima, |(c d) .(const 0) = (const d)|, Igualdade extensional (71), Def-comp (72), Def-split (76)}
      %
                |lcbr(
-                    (const d) = l1 d
+                    (const d) = l1 
               )(
-                    (r d) (succ x) = l2 d (q d x, (r d x, c d x))
+                    (r d) (succ x) = l2 (q d x, (r d x, c d x))
               )|
      %
      \just\equiv{Como foi provado em cima, |(c d) . succ = (either (const d) (uncurry(-) . (split ((c d)) (const(1))) )) . ((0 ==) . (c d)) ?|}   
      %  
           |lcbr(
-              (const d) = l1 d
+              (const d) = l1 
           )(
-               (either (const d) (uncurry(-) . (split ((c d)) (const 1)) )) . ((0 ==) . (c d)) ? = l2 d (q d x, (r d x, c d x))
+               (either (const d) (uncurry(-) . (split ((c d)) (const 1)) )) . ((0 ==) . (c d)) ? = l2 (q d x, (r d x, c d x))
           )|
      %
      \just\equiv{Eq - + (27),Fusao - + (20)}
      %
-          | l d . (either(const 0) (succ)) = either (const d) (either (const d) (uncurry(-) . (split ((c d)) (const 1))) ) . ((0 ==) . (c d)) ?|
+          | l . (either(const 0) (succ)) = either (const d) (either (const d) (uncurry(-) . (split ((c d)) (const 1))) ) . ((0 ==) . (c d)) ?|
      %
      \qed
 \end{eqnarray*}
@@ -1261,49 +1261,49 @@ Logo,
      %
      \just\equiv{Lei da troca (28)}
      %
-          | (split ((q d)) (split ((r d)) ((c d)))) = cata (split (h) (either ((split (const 0) ((const d))) (split (k2) (l2)))))| 
+          | (split ((q d)) (split ((r d)) ((c d)))) = cata (split (h) (either (split (const 0) (const d)) (split (k2) (l2))))| 
      %
      \just\equiv{Lei da troca (28)}
      %
-          |(split ((q d)) (split ((r d)) ((c d)))) = cata (either (split (const 0) (split (const 0) (const d))) ((split (h2) (split (k2) (l2))))) |
+          |(split ((q d)) (split ((r d)) ((c d)))) = cata (either (split (const 0) (split (const 0) (const d))) (split (h2) (split (k2) (l2)))) |
      %
      \just\equiv{for b i = | cata (either (const i) (b))|}
      %
-          |for ((h2 d, (k2 d,l2 d))) ((0,(0,d))) |
+          |(split ((q d)) (split ((r d)) ((c d)))) = for ((h2 d, (k2 d,l2 d))) ((0,(0,d))) |
      %
-     \qed
 \end{eqnarray*}
-Obter-se-á: 
-\begin{eqnarray*}
-     \start
+\paragraph{}
+Observando a linha anterior podemos concluir que | aux d = for ((h2 d, (k2 d,l2 d))) ((0,(0,d))) |. Com o intuito de obter uma definição mais completa deste ciclo-for continuemos esta prova, assim sendo obtemos:
+\begin{verbatim}
+<(q d),<(r d),(c d)>> = for (g d) (0,(0,d)) where 
+          (g d)(q,(r,c)) = (h2 d (q,(r,c)) , (k2 d (q,(r,d)),l2 d (q,(r,c))))
+\end{verbatim}               
+                    
 
-     | for (g d) (0,(0,d))| where 
+Podemos verificar que vão existir dois casos, para valores de c = 0 e para c |>| 0. Ora, para o primeiro caso, sabemos que:
 
-     |(g d) (q,(r,c)) = (h2 d (q,(r,c)) , (k2 d (q,(r,d)),l2 d (q,(r,c))))|
+\begin{itemize}
+     \item |h2 d (q, (r, 0)) = q + 1;|
+     \item | k2 d (q, (r, 0)) = 0;|
+     \item | l2 d (q, (r, 0)) = d|.
+\end{itemize}
 
-     \qed
 
-\end{eqnarray*}
+Já para o segundo caso, temos que:
 
-Podemos verificar que vão existir dois casos: 
-Quando c = 0 e quando c |>| 0. 
+\begin{itemize}
+     \item |h2 d (q, (r, c)) = q + 1;|
+     \item |k2 d (q, (r, c)) = r + 1;|
+     \item |l2 d (q, (r, c)) = c|.
+\end{itemize}
 
-\begin{eqnarray*}
-     \start
 
-     \just\equiv{h2 d (q,(r,0)) = q+1; k2 d (q,(r,0)) = 0; l2 d (q,(r,0)) = d}
-
-     \just\equiv{h2 d (q,(r,c)) = q+1; k2 d (q,(r,c)) = r+1 ;l2 d (q,(r,c)) = c}
-
-     | for (g d) (0,(0,d))|  where 
-
-     |(g d) (q,(r,0)) = (q+1, (0,d))|
-
-     |(g d) (q,(r,c+1)) = (q, (r+1,c))|
-
-     \qed
-
-\end{eqnarray*}
+O que nos leva à seguinte definição:
+\begin{verbatim}
+     <(q d),<(r d),(c d)>> = for (g d) (0,(0,d)) where 
+              (g d) (q,(r,0)) = (q+1, (0,d))
+              (g d) (q,(r,c+1)) = (q, (r+1,c))
+     \end{verbatim}    
 
 \subsection*{Problema 2}
 
@@ -1324,8 +1324,9 @@ Quando c = 0 e quando c |>| 0.
 \end{eqnarray*}
 Assim sendo, pelo diagrama anterior podemos retirar a seguinte definição de g.
 \begin{code}
-both = (cataLTree g) where 
-g = either g11 g12 where 
+both :: Ord d => LTree d -> (d, d)
+both = cataLTree g
+g = either g11 g12
 g11 x = (x,x)
 g12 ((a,b),(c,d)) = (a+c,b+d)
 \end{code}
@@ -1594,8 +1595,7 @@ bob = undefined
 Biblioteca |LTree3|:
 
 \begin{code}
-inLTree3 =  [Tri, uncurry uncurry Nodo]
-
+inLTree3 = [Tri,Nodo]
 \end{code}
 
 Ora, sabendo que outLTree3 é o isomorfismo de inLTree3, temos então que outLTree3 . inLTree3 = id. Ou seja, a partir desta equação, conseguimos obter a definição de outLTree3.
@@ -1640,47 +1640,97 @@ Ora, sabendo que outLTree3 é o isomorfismo de inLTree3, temos então que outLTr
 
 \begin{code}
 outLTree3 (Tri x) = i1 x
-outLTree3 (Nodo t y z) =  i2 ((t,y),z)
+outLTree3 (Nodo t y z) =  i2 t y z
 
-baseLTree3 g f = g -|- f >< (f><f)
+baseLTree3 f g =  g + f * (f * f)
 \end{code}
 
 
 Pela propriedade de Base-cata, temos que recLTree3 f =  baseLTree3 id f = id + f * (f * f).
 
 \begin{code}
-recLTree3 f =  id -|- f >< (f><f)
+recLTree3 f = id + f * (f*f)
 \end{code}
-
 \begin{eqnarray*}
      \xymatrix@@C=1cm@@R=2cm{
-         |Ltree3 A|
-         \ar[d]_{|cataLTree f|}\ar@@/^1.5pc/[rr]^(0.5){out} 
+         |Ltree3 |
+         \ar[d]_{|cataLTree f|}
+         \ar@@/^1.5pc/[rr]^(0.5){out} 
      & 
           \cong
      &
-         |A + Ltree3 A >< Ltree3 A|
+         |Tri + Ltree3 >< (Ltree3 >< Ltree3 )|
                 \ar[d]^{recLTree3 (cataLtree3 f)}
                 \ar@@/^1.5pc/[ll]^(0.5){in}
      \\
-          |A| && |A + A >< A|
+          |Tri*| && |Tri + Tri >< Tri >< Tri|
           \ar[ll]^{|f|}
      }
 \end{eqnarray*}
 
 \begin{code}
-cataLTree3 f=f.(recLTree3 (cataLTree3 f)).outLTree3
+cataLTree3 f = f · (recLTree3 (cataLTree3 f)) · outLTree3
+\end{code}
 
-anaLTree3 f = inLTree3 . (recLTree3 (anaLTree3 f )) . f
+\begin{eqnarray*}
+     \xymatrix@@C=2cm@@R=2cm{
+         |Ltree3|
+         \ar@@/^1.5pc/[rr]^(0.5){out} 
+     & 
+          \cong
+     &
+         |Tri + Ltree3 >< (Ltree3 >< Ltree3 )|
+         \ar@@/^1.5pc/[ll]^(0.5){in}
+     \\
+          |Tri >< Nat0|
+          \ar[u]^{anaLtree3 f} 
+          \ar[rr]^{out_{|Nat0|}}
+          \ar@@/^1.5pc/[rr]^(0.5){f} 
+     &&
+          |Tri >< 1 + Tri >< Nat0|
+          \ar[r]^{id + }
+     && 
+          |Tri + Tri >< Tri >< Tri|
+          \ar[u]_{recLTree3 (anaLtree3 f)}
+     }
+\end{eqnarray*}
 
-hyloLTree3 f g = cataLTree3 f . anaLTree3 g
+\begin{code}
+anaLTree3 f = inLTree3 · (recLTree3 (anaLTree3 f )) · f
+\end{code}
+
+\begin{eqnarray*}
+     \xymatrix@@C=2cm@@R=2cm{
+         |Tri >< Nat0|
+         \ar[d]^{anaLtree3 g}
+         \ar[rr]^{g}
+     &&
+         |Tri + Tri >< Tri >< Tri|
+         \ar[d]_{recLTree3 (anaLtree3 g)}
+     \\    
+         |Tri + Ltree3 >< (Ltree3 >< Ltree3 )|
+         \ar@@/^1.5pc/[ll]^(0.5){in}
+         \ar[d]^{recLTree3 (cataLtree3 f)}
+     &
+          \cong 
+     & 
+          |Ltree3 |
+          \ar[d]_{|cataLTree f|}
+          \ar@@/^1.5pc/[rr]^(0.5){out} 
+     \\
+          |Tri*| && |Tri + Tri >< Tri >< Tri|
+           \ar[ll]^{|f|}
+     }
+\end{eqnarray*}
+
+\begin{code}
+hyloLTree3 f g = cataLTree3 f · anaLTree3 g
 \end{code}
 
 Genes do hilomorfismo |sierpinski|:
 
 \begin{code}
-g1 = (singl `either` (conc . (id >< conc))) where  conc' (l1,(l2,l3)) = l1++l2++l3
-
+g1 = (singl either (conc · (id * conc))) where conc (l1,(l2,l3)) = l1++l2++l3
 g2 (t,0) = i1 t 
 g2 (((x,y),s),n+1) = i2((t1,t2),t3) where
      t1 = (((x,y),s/2),n)
