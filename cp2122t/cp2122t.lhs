@@ -1324,11 +1324,11 @@ Quando c = 0 e quando c |>| 0.
 \end{eqnarray*}
 Assim sendo, pelo diagrama anterior podemos retirar a seguinte definição de g.
 \begin{code}
-     both :: Ord d => LTree d -> (d, d)
-     both = cataLTree g
-     g = either g11 g12
-     g11 x = (x,x)
-     g12 ((a,b),(c,d)) = (a+c,b+d)
+both :: Ord d => LTree d -> (d, d)
+both = (cataLTree g)
+g = either g11 g12
+g11 x = (x,x)
+g12 ((a,b),(c,d)) = (a+c,b+d)
 \end{code}
 
 \paragraph{}
@@ -1595,7 +1595,8 @@ bob = undefined
 Biblioteca |LTree3|:
 
 \begin{code}
-inLTree3 = [Tri,Nodo]
+inLTree3 = [ Tri, uncurry uncurry Nodo]
+
 \end{code}
 
 Ora, sabendo que outLTree3 é o isomorfismo de inLTree3, temos então que outLTree3 . inLTree3 = id. Ou seja, a partir desta equação, conseguimos obter a definição de outLTree3.
