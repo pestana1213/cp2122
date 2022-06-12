@@ -1697,7 +1697,7 @@ cataLTree3 f = f . (recLTree3 (cataLTree3 f)) . outLTree3
 \end{eqnarray*}
 
 \begin{code}
-anaLTree3 f = inLTree3 . (recLTree3 (anaLTree3 f )) · f
+anaLTree3 f = inLTree3 . (recLTree3 (anaLTree3 f )) . f
 \end{code}
 
 \begin{eqnarray*}
@@ -1731,12 +1731,11 @@ hyloLTree3 f g = cataLTree3 f . anaLTree3 g
 Genes do hilomorfismo |sierpinski|:
 
 \begin{code}
-g1 = (singl `either` (conc . (id >< conc))) where conc' (l1,(l2,l3)) = l1++l2++l3
-g2 (t,0) = i1 t 
-g2 (((x,y),s),n+1) = i2((t1,t2),t3) where
-     t1 = (((x,y),s/2),n)
-     t2 = (((x + s/2,y),s/2),n)
-     t3 = (((x,y +s/2),s/2),n)
+g1 = (singl `either` (conc . (id >< conc))) --where conc' (l1,(l2,l3)) = l1++l2++l3
+g2 (((x,y),s),n) | n==0 = i1 ((x,y),s)
+                               | otherwise = i2 ((((x,y),s'), n') , ((((x+s',y),s'),n') , (((x,y+s'),s'),n')))
+                                   where s' = div s 2
+                                         n' = pred n
 \end{code}
 
 \subsection*{Problema 4}
