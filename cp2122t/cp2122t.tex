@@ -1779,6 +1779,25 @@ Genes do hilomorfismo \ensuremath{\Varid{sierpinski}}:
 
 \subsection*{Problema 4}
 
+
+\begin{eqnarray*}
+     \xymatrix@C=1cm@R=2cm{
+         Bit^*
+         \ar[d]_{\ensuremath{\cataList{\Varid{gf}}}}
+         \ar@/^1.5pc/[rr]^(0.5){outList} 
+     & 
+          \cong
+     &
+         1 + Bit \ensuremath{\times} Bit^*
+                \ar[d]^{\ensuremath{\Varid{id}\mathbin{+}\Varid{id}\times\cataList{\Varid{gf}}}}
+                \ar@/^1.5pc/[ll]^(0.5){inList}
+     \\
+          D(Bit^*) && 1 + Bit \ensuremath{\times} D(Bit^*)
+          \ar[ll]
+     }
+\end{eqnarray*}
+
+
 \begin{hscode}\SaveRestoreHook
 \column{B}{@{}>{\hspre}l<{\hspost}@{}}%
 \column{4}{@{}>{\hspre}l<{\hspost}@{}}%

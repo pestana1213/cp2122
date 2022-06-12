@@ -1756,6 +1756,25 @@ g2 (((x,y),s),n+1) = i2((t1,t2),t3) where
 
 \subsection*{Problema 4}
 
+
+\begin{eqnarray*}
+     \xymatrix@@C=1cm@@R=2cm{
+         Bit^*
+         \ar[d]_{|cataList gf |}
+         \ar@@/^1.5pc/[rr]^(0.5){outList} 
+     & 
+          \cong
+     &
+         1 + Bit |><| Bit^*
+                \ar[d]^{|id + id >< (cataList gf )|}
+                \ar@@/^1.5pc/[ll]^(0.5){inList}
+     \\
+          D(Bit^*) && 1 + Bit |><| D(Bit^*)
+          \ar[ll]
+     }
+\end{eqnarray*}
+
+
 \begin{code}
 propagate :: Monad m => (t -> m a) -> [t] -> m [a]
 propagate f = cataList (g f) where
