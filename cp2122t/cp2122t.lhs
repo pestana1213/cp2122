@@ -1651,27 +1651,34 @@ Pela propriedade de Base-cata, temos que recLTree3 f =  baseLTree3 id f = id + f
 \begin{code}
 recLTree3 f = id -|- f >< (f><f)
 \end{code}
+
+Como |folhasSierp = cataLTree g1|, o diagrama correspondente a esta função é o seguinte:
 \begin{eqnarray*}
      \xymatrix@@C=1cm@@R=2cm{
          |Ltree3 |
-         \ar[d]_{|cataLTree f|}
+         \ar[d]_{|cataLTree g1|}
          \ar@@/^1.5pc/[rr]^(0.5){out} 
      & 
           \cong
      &
          |Tri + Ltree3 >< (Ltree3 >< Ltree3 )|
-                \ar[d]^{recLTree3 (cataLtree3 f)}
+                \ar[d]^{recLTree3 (cataLtree3 g1)}
                 \ar@@/^1.5pc/[ll]^(0.5){in}
      \\
-          |Tri*| && |Tri + Tri >< Tri >< Tri|
-          \ar[ll]^{|f|}
+          Tri^* && |Tri + Tri >< Tri >< Tri|
+          \ar[ll]^{|g1|}
      }
 \end{eqnarray*}
 
+
+Pelo que podemos concluir que a seguinte definição:
 \begin{code}
 cataLTree3 f = f . (recLTree3 (cataLTree3 f)) . outLTree3
 
 \end{code}
+
+
+Relativamente, à função |geraSierp = anaLTree g2|, o seu diagrama é o seguinte:
 
 \begin{eqnarray*}
      \xymatrix@@C=2cm@@R=2cm{
@@ -1684,46 +1691,54 @@ cataLTree3 f = f . (recLTree3 (cataLTree3 f)) . outLTree3
          \ar@@/^1.5pc/[ll]^(0.5){in}
      \\
           |Tri >< Nat0|
-          \ar[u]^{anaLtree3 f} 
-          \ar[rr]^{out_{|Nat0|}}
-          \ar@@/^1.5pc/[rr]^(0.5){f} 
-     &&
+          \ar[u]^{|anaLTree g|} 
+          \ar[r]^(0.35){out_{|Nat0|}} 
+          \ar@@/_1.5pc/[rr]_(0.5){g2} 
+     & 
           |Tri >< 1 + Tri >< Nat0|
-          \ar[r]^{id + }
-     && 
+          \ar[r]^{|id + f >< g >< h|}
+     &
           |Tri + Tri >< Tri >< Tri|
-          \ar[u]_{recLTree3 (anaLtree3 f)}
+          \ar[u]_{recLTree3 (|anaLtree3 g|)}
      }
 \end{eqnarray*}
 
+
+Assim sendo, podemos inferir a seguinte definição:
 \begin{code}
 anaLTree3 f = inLTree3 . (recLTree3 (anaLTree3 f )) · f
 \end{code}
 
+
+Ora, sabemos que um hilomorfismo é a composição de catamorfismo, após um anamorfismo. Logo, o hilomorfismo |sierpinski = folhasSierp · geraSierp|, caracteriza-se da seguinte forma:
 \begin{eqnarray*}
      \xymatrix@@C=2cm@@R=2cm{
          |Tri >< Nat0|
-         \ar[d]^{anaLtree3 g}
-         \ar[rr]^{g}
+         \ar[d]_{|anaLTree g|}
+         \ar[rr]^{|g2|}
      &&
          |Tri + Tri >< Tri >< Tri|
-         \ar[d]_{recLTree3 (anaLtree3 g)}
-     \\    
-         |Tri + Ltree3 >< (Ltree3 >< Ltree3 )|
-         \ar@@/^1.5pc/[ll]^(0.5){in}
-         \ar[d]^{recLTree3 (cataLtree3 f)}
-     &
-          \cong 
-     & 
-          |Ltree3 |
-          \ar[d]_{|cataLTree f|}
-          \ar@@/^1.5pc/[rr]^(0.5){out} 
+         \ar[d]^{recLTree3 (|anaLTree3 g|)}
      \\
-          |Tri*| && |Tri + Tri >< Tri >< Tri|
-           \ar[ll]^{|f|}
+          |Ltree3|
+          \ar[d]_{|cataLTree f|}
+          \ar@@/^1.5pc/[rr]^(0.5){out}
+     & 
+          \cong
+     &
+          |Tri + LTree3 >< Ltree3 >< LTree3|
+          \ar[d]^{recLTree3 (|cataLTree3 g|)}
+          \ar@@/^1.5pc/[ll]^(0.5){in}
+     \\
+         Tri^* 
+     && 
+         |Tri + Tri >< Tri >< Tri|
+         \ar[ll]_{f}
      }
 \end{eqnarray*}
 
+
+Logo,
 \begin{code}
 hyloLTree3 f g = cataLTree3 f . anaLTree3 g
 \end{code}
