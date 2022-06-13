@@ -1596,7 +1596,7 @@ bob (Fork (x,y)) = (bob x) + (bob y)
 Biblioteca |LTree3|:
 
 \begin{code}
-inLTree3 = [Tri,Nodo]
+inLTree3 = either (Tri) (uncurry (uncurry Nodo))
 \end{code}
 
 Ora, sabendo que outLTree3 é o isomorfismo de inLTree3, temos então que outLTree3 . inLTree3 = id. Ou seja, a partir desta equação, conseguimos obter a definição de outLTree3.
@@ -1626,7 +1626,7 @@ Ora, sabendo que outLTree3 é o isomorfismo de inLTree3, temos então que outLTr
              |lcbr(
                (outLTree3  .  Tri) x = i1 x
           )(
-               (outLTree3  .  Nodo) t y z = i2 t y z
+               (outLTree3  .  Nodo) ((t,y),z) = i2 ((t, y), z)
           )|
      %
      \just\equiv{Def-comp (72)}
@@ -1634,7 +1634,7 @@ Ora, sabendo que outLTree3 é o isomorfismo de inLTree3, temos então que outLTr
           |lcbr(
                outLTree3 (Tri x) = i1 x
           )(
-               outLTree3 (Nodo t y z) = i2 t y z
+               outLTree3 (Nodo ((t, y), z)) = i2 ((t, y), z)
           )|
      \qed
 \end{eqnarray*}
@@ -1643,15 +1643,14 @@ Ora, sabendo que outLTree3 é o isomorfismo de inLTree3, temos então que outLTr
 outLTree3 (Tri x) = i1 x
 outLTree3 (Nodo t y z) = i2 ((t,y),z)
 
-baseLTree3 g f = g -|- f >< (f><f)
-
+baseLTree3 g f = g -|- ((f >< f) ><f)
 \end{code}
 
 
 Pela propriedade de Base-cata, temos que recLTree3 |f =  baseLTree3 id f = id + f >< (f >< f)|.
 
 \begin{code}
-recLTree3 f = id -|- f >< (f><f)
+recLTree3 f = id -|- ((f >< f) >< f)
 \end{code}
 
 Como |folhasSierp = cataLTree g1|, o diagrama correspondente a esta função é o seguinte:
@@ -1676,7 +1675,6 @@ Como |folhasSierp = cataLTree g1|, o diagrama correspondente a esta função é 
 Pelo que podemos concluir que a seguinte definição:
 \begin{code}
 cataLTree3 f = f . (recLTree3 (cataLTree3 f)) . outLTree3
-
 \end{code}
 
 
@@ -1748,9 +1746,11 @@ hyloLTree3 f g = cataLTree3 f . anaLTree3 g
 Genes do hilomorfismo |sierpinski|:
 
 \begin{code}
+
 g1 = (singl `either` (conc . (id >< conc))) --where conc' (l1,(l2,l3)) = l1++l2++l3
+
 g2 (((x,y),s),n) | n==0 = i1 ((x,y),s)
-                               | otherwise = i2 ((((x,y),s'), n') , ((((x+s',y),s'),n') , (((x,y+s'),s'),n')))
+                 | otherwise = i2 ((((x,y),s'), n') , ((((x+s',y),s'),n') , (((x,y+s'),s'),n')))
                                    where s' = div s 2
                                          n' = pred n
 \end{code}
