@@ -1583,11 +1583,11 @@ Assim sendo,
 \end{eqnarray*}
 
 \begin{code}
-alice :: Ord c => LTree c -> c
+alice :: Num c => LTree c -> c
 alice (Leaf z) = z
 alice (Fork (x,y)) = (alice x) + (alice y)
 
-bob :: Ord c => LTree c -> c
+bob :: Num c => LTree c -> c
 bob (Leaf z) = z
 bob (Fork (x,y)) = (bob x) + (bob y)
 \end{code}
@@ -1607,7 +1607,7 @@ Ora, sabendo que outLTree3 é o isomorfismo de inLTree3, temos então que outLTr
      %
      \just\equiv{Definição de inLTree3 : |(either (Tri) (Nodo))|}
      %
-          |outLTree3 . (either (Tri) (Nodo))| = id
+          |outLTree3 . (either (Tri) (uncurry (uncurry Nodo)))| = id
      %
      \just\equiv{Fusão-+ (20)}
      %
@@ -1740,23 +1740,23 @@ Ora, sabemos que um hilomorfismo é a composição de catamorfismo, após um ana
 
 Logo,
 \begin{code}
-hyloLTree3 f g = cataLTree3 f . anaLTree3 g
+hyloLTree3 f g = cataLTree3 . anaLTree3
 \end{code}
 
 Genes do hilomorfismo |sierpinski|:
 
 \begin{code}
-
-g1 = (singl `either` (conc . (id >< conc))) --where conc' (l1,(l2,l3)) = l1++l2++l3
-
-g2 (((x,y),s),n) | n==0 = i1 ((x,y),s)
-                 | otherwise = i2 ((((x,y),s'), n') , ((((x+s',y),s'),n') , (((x,y+s'),s'),n')))
-                                   where s' = div s 2
-                                         n' = pred n
+g1 = either (singl) (conc . (conc >< id))
+g2 (((x,y),s), n) | n==0 = i1 ((x,y),s)
+                  | otherwise = i2 ((x1,y1),s1) where 
+                                 x1 = (((x,y),s'), n')
+                                 y1 = (((x+s',y),s'),n')
+                                 s1 = (((x,y+s'),s'),n')
+                                 s' = div s 2
+                                 n' = pred n
 \end{code}
 
 \subsection*{Problema 4}
-
 
 \begin{eqnarray*}
      \xymatrix@@C=1cm@@R=2cm{
