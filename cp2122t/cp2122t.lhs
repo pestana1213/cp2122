@@ -1775,13 +1775,15 @@ g2 (((x,y),s), n) | n==0 = i1 ((x,y),s)
 
 Após definir os genes do hilomorfismo |sierpinski|, vamos correr |teste = desenha (sierpinski (base,4))| e verificar se o triângulo gerado é de facto igual à figura 2:
 
-\begin{figure}\centering
-\includegraphics[scale=0.20]{images/3ex.png}
-\caption{Função teste}
-\label{fig:teste}
-\end{figure}
+$$ 
+     \includegraphics[scale=0.20]{images/3ex.png}
+     \caption{Função teste}
+     \label{fig:teste}
+$$
+         
 
 \subsection*{Problema 4}
+
 
 \begin{eqnarray*}
      \xymatrix@@C=1cm@@R=2cm{
