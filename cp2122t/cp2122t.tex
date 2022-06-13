@@ -1731,7 +1731,7 @@ Assim sendo, podemos inferir a seguinte definição:
 \end{hscode}\resethooks
 
 
-Ora, sabemos que um hilomorfismo é a composição de catamorfismo, após um anamorfismo. Logo, o hilomorfismo \ensuremath{\Varid{sierpinski}\mathrel{=}\Varid{folhasSierp}\mathbin{·}\Varid{geraSierp}}, caracteriza-se da seguinte forma:
+Ora, sabemos que um hilomorfismo é a composição de catamorfismo, após um anamorfismo. Logo, o hilomorfismo \ensuremath{\Varid{sierpinski}\mathrel{=}\Varid{folhasSierp}\mathbin{·}\Varid{geraSierp}}, em que \ensuremath{\Varid{folhasSierp}\mathrel{=}\llparenthesis\, g_1 \,\rrparenthesis} e \ensuremath{\Varid{geraSierp}\mathrel{=}\mathopen{[\!(}g_2 \mathclose{)\!]}}, caracteriza-se da seguinte forma:
 \begin{eqnarray*}
      \xymatrix@C=2cm@R=2cm{
          \ensuremath{\Conid{Tri}\times\N_0}
@@ -1818,6 +1818,8 @@ Genes do hilomorfismo \ensuremath{\Varid{sierpinski}}:
 \end{eqnarray*}
 
 
+Assim sendo, a função \ensuremath{\Varid{propagate}} é um catamorfismo de g e f. Ora, em g temos a divisão em dois casos, o caso em que lista inicial é vazia, e o caso em que é diferente de vazia, em que passaremos a função \ensuremath{\Varid{f}}, a uma nova função \ensuremath{g_2 }. ~
+Nesta função, criámos o \ensuremath{\Varid{m}\;[\mskip1.5mu \Varid{a}\mskip1.5mu]}, ou seja, dentro de um \ensuremath{\mathbf{do}}, vamos aplicar f a cada elemento da lista, do tipo a, retornando no final um monade de uma lista de a's. 
 \begin{hscode}\SaveRestoreHook
 \column{B}{@{}>{\hspre}l<{\hspost}@{}}%
 \column{4}{@{}>{\hspre}l<{\hspost}@{}}%
@@ -1834,29 +1836,36 @@ Genes do hilomorfismo \ensuremath{\Varid{sierpinski}}:
 \ColumnHook
 \end{hscode}\resethooks
 
+
+Tomando como "inspiração" a função \ensuremath{\Varid{propagate}} inicial, a função \ensuremath{\Varid{propagate3}} será definida da mesma forma através do \ensuremath{\cataList{\Varid{gf}}}. Seguindo o mesmo pensamento, a função g também terá a mesma definição, existindo apenas diferenças na função g2. 
+Uma vez que será esta que criará um \ensuremath{\Varid{m}\;[\mskip1.5mu \Conid{Bit}\mskip1.5mu]}, a partir de um lista de \ensuremath{\Conid{Bit}} que não é vazia. Assim sendo, temos de pegar em cada lista, e passá-lo à função f, dada como argumento. No entanto, esta recebe como argumento um \ensuremath{\Conid{Bit3}}, pelo que teremos de criar um triplo com o elemento da lista. 
+Finalmente, "pegamos" nos restantes elementos da lista, dada como argumento, e iremos criar um \ensuremath{\Varid{m}\;[\mskip1.5mu \Conid{Bit}\mskip1.5mu]}. 
 \begin{hscode}\SaveRestoreHook
 \column{B}{@{}>{\hspre}l<{\hspost}@{}}%
 \column{4}{@{}>{\hspre}l<{\hspost}@{}}%
+\column{46}{@{}>{\hspre}l<{\hspost}@{}}%
 \column{E}{@{}>{\hspre}l<{\hspost}@{}}%
 \>[B]{}\Varid{propagate3}\mathbin{::}(\Conid{Monad}\;\Varid{m})\Rightarrow (\Conid{Bit3}\to \Varid{m}\;\Conid{Bit3})\to [\mskip1.5mu \Conid{Bit}\mskip1.5mu]\to \Varid{m}\;[\mskip1.5mu \Conid{Bit}\mskip1.5mu]{}\<[E]%
 \\
 \>[B]{}\Varid{propagate3}\;\Varid{f}\mathrel{=}\cataList{\Varid{g}\;\Varid{f}}\;\mathbf{where}{}\<[E]%
 \\
 \>[B]{}\hsindent{4}{}\<[4]%
-\>[4]{}\Varid{g}\;\Varid{f}\mathrel{=}\alt{\bot }{g_2 \;\Varid{f}}{}\<[E]%
+\>[4]{}\Varid{g}\;\Varid{f}\mathrel{=}\alt{\Varid{return}\comp \Varid{nil}}{g_2 \;\Varid{f}}{}\<[E]%
 \\
 \>[B]{}\hsindent{4}{}\<[4]%
-\>[4]{}g_2 \;\Varid{f}\;(\Varid{a},\Varid{b})\mathrel{=}\bot {}\<[E]%
+\>[4]{}g_2 \;\Varid{f}\;(\Varid{a},\Varid{b})\mathrel{=}\mathbf{do}\;\{\mskip1.5mu \Varid{h}\leftarrow \Varid{f}\;(\Varid{a},\Varid{a},\Varid{a});\Varid{t}\leftarrow \Varid{b};{}\<[46]%
+\>[46]{}\Varid{return}\;(\Varid{cons}\;(v_3 \;(\Varid{h}),\Varid{t}))\mskip1.5mu\}{}\<[E]%
 \ColumnHook
 \end{hscode}\resethooks
-A função \ensuremath{\Varid{bflip3}}, a programar a seguir, deverá estender \ensuremath{\Varid{bflip}} aos três bits da entrada:
 
+
+Temos que a função \ensuremath{\Varid{bflip3}}, que recebe como argumento um \ensuremath{\Conid{Bit3}}, pretende estender a função já definida, anteriormente, \ensuremath{\Varid{bflip}} aos três \ensuremath{\Conid{Bit}} existintes no \ensuremath{\Conid{Bit3}} argumento. Assim sendo, teremos que, num do, aplicar \ensuremath{\Varid{bflip}} a cada elemento do tuplo e posteriormente returnar o triplo constituiente com as três aplicações do \ensuremath{\Varid{bflip}}. Da seguinte forma, 
 \begin{hscode}\SaveRestoreHook
 \column{B}{@{}>{\hspre}l<{\hspost}@{}}%
 \column{E}{@{}>{\hspre}l<{\hspost}@{}}%
 \>[B]{}\Varid{bflip3}\mathbin{::}\Conid{Bit3}\to \fun{Dist}\;\Conid{Bit3}{}\<[E]%
 \\
-\>[B]{}\Varid{bflip3}\;(\Varid{a},\Varid{b},\Varid{c})\mathrel{=}\mathbf{do}\;\{\mskip1.5mu \bot \mskip1.5mu\}{}\<[E]%
+\>[B]{}\Varid{bflip3}\;(\Varid{a},\Varid{b},\Varid{c})\mathrel{=}\mathbf{do}\;\{\mskip1.5mu \Varid{h}\leftarrow (\Varid{bflip}\;(\Varid{a}));\Varid{t}\leftarrow (\Varid{bflip}\;(\Varid{b}));\Varid{x}\leftarrow (\Varid{bflip}\;(\Varid{c}));\Varid{return}\;(\Varid{h},\Varid{t},\Varid{x})\mskip1.5mu\}{}\<[E]%
 \ColumnHook
 \end{hscode}\resethooks
 

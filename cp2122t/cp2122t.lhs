@@ -1727,7 +1727,7 @@ anaLTree3 f = inLTree3 . (recLTree3 (anaLTree3 f )) . f
 \end{code}
 
 
-Ora, sabemos que um hilomorfismo é a composição de catamorfismo, após um anamorfismo. Logo, o hilomorfismo |sierpinski = folhasSierp · geraSierp|, caracteriza-se da seguinte forma:
+Ora, sabemos que um hilomorfismo é a composição de catamorfismo, após um anamorfismo. Logo, o hilomorfismo |sierpinski = folhasSierp · geraSierp|, em que |folhasSierp = cataLTree g1| e |geraSierp = anaLTree g2|, caracteriza-se da seguinte forma:
 \begin{eqnarray*}
      \xymatrix@@C=2cm@@R=2cm{
          |Tri >< Nat0|
@@ -1793,24 +1793,31 @@ g2 (((x,y),s), n) | n==0 = i1 ((x,y),s)
 \end{eqnarray*}
 
 
+Assim sendo, a função |propagate| é um catamorfismo de g e f. Ora, em g temos a divisão em dois casos, o caso em que lista inicial é vazia, e o caso em que é diferente de vazia, em que passaremos a função |f|, a uma nova função |g2|. ~
+Nesta função, criámos o |m [a]|, ou seja, dentro de um |do|, vamos aplicar f a cada elemento da lista, do tipo a, retornando no final um monade de uma lista de a's. 
 \begin{code}
 propagate :: Monad m => (t -> m a) -> [t] -> m [a]
 propagate f = cataList (g f) where
-   g f = either (return.nil) (g2 f)
+   g f = (either (return.nil) (g2 f))
    g2 f (a,b) = do{ h <- f a; t <- b; return (cons(h,t))}
 \end{code}
 
+
+Tomando como "inspiração" a função |propagate| inicial, a função |propagate3| será definida da mesma forma através do |cataList gf|. Seguindo o mesmo pensamento, a função g também terá a mesma definição, existindo apenas diferenças na função g2. 
+Uma vez que será esta que criará um |m [Bit]|, a partir de um lista de |Bit| que não é vazia. Assim sendo, temos de pegar em cada lista, e passá-lo à função f, dada como argumento. No entanto, esta recebe como argumento um |Bit3|, pelo que teremos de criar um triplo com o elemento da lista. 
+Finalmente, "pegamos" nos restantes elementos da lista, dada como argumento, e iremos criar um |m [Bit]|. 
 \begin{code}
 propagate3 :: (Monad m) => (Bit3 -> m Bit3) -> [Bit] -> m [Bit]
 propagate3 f = cataList (g f) where
-   g f = either undefined (g2 f)
-   g2 f (a,b) = undefined
+   g f = (either (return.nil) (g2 f))
+   g2 f (a,b) = do{ h <- f (a,a,a); t <- b;  return (cons(v3(h),t))}
 \end{code}
-A função |bflip3|, a programar a seguir, deverá estender |bflip| aos três bits da entrada:
 
+
+Temos que a função |bflip3|, que recebe como argumento um |Bit3|, pretende estender a função já definida, anteriormente, |bflip| aos três |Bit| existintes no |Bit3| argumento. Assim sendo, teremos que, num do, aplicar |bflip| a cada elemento do tuplo e posteriormente returnar o triplo constituiente com as três aplicações do |bflip|. Da seguinte forma, 
 \begin{code}
 bflip3 :: Bit3 -> Dist Bit3
-bflip3(a,b,c) = do { undefined } 
+bflip3 (a,b,c) = do { h <- (bflip(a)); t <- (bflip(b)); x <- (bflip(c)); return (h,t,x)} 
 \end{code}
 
 %----------------- Índice remissivo (exige makeindex) -------------------------%
