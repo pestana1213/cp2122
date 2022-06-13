@@ -1586,13 +1586,13 @@ Assim sendo,
 \begin{hscode}\SaveRestoreHook
 \column{B}{@{}>{\hspre}l<{\hspost}@{}}%
 \column{E}{@{}>{\hspre}l<{\hspost}@{}}%
-\>[B]{}\Varid{alice}\mathbin{::}\Conid{Ord}\;\Varid{c}\Rightarrow {\LTree}\;\Varid{c}\to \Varid{c}{}\<[E]%
+\>[B]{}\Varid{alice}\mathbin{::}\Conid{Num}\;\Varid{c}\Rightarrow {\LTree}\;\Varid{c}\to \Varid{c}{}\<[E]%
 \\
 \>[B]{}\Varid{alice}\;(\Conid{Leaf}\;\Varid{z})\mathrel{=}\Varid{z}{}\<[E]%
 \\
 \>[B]{}\Varid{alice}\;(\Conid{Fork}\;(\Varid{x},\Varid{y}))\mathrel{=}(\Varid{alice}\;\Varid{x})\mathbin{+}(\Varid{alice}\;\Varid{y}){}\<[E]%
 \\[\blanklineskip]%
-\>[B]{}\Varid{bob}\mathbin{::}\Conid{Ord}\;\Varid{c}\Rightarrow {\LTree}\;\Varid{c}\to \Varid{c}{}\<[E]%
+\>[B]{}\Varid{bob}\mathbin{::}\Conid{Num}\;\Varid{c}\Rightarrow {\LTree}\;\Varid{c}\to \Varid{c}{}\<[E]%
 \\
 \>[B]{}\Varid{bob}\;(\Conid{Leaf}\;\Varid{z})\mathrel{=}\Varid{z}{}\<[E]%
 \\
@@ -1606,7 +1606,7 @@ Biblioteca \ensuremath{\mathsf{LTree3}}:
 \begin{hscode}\SaveRestoreHook
 \column{B}{@{}>{\hspre}l<{\hspost}@{}}%
 \column{E}{@{}>{\hspre}l<{\hspost}@{}}%
-\>[B]{}\Varid{inLTree3}\mathrel{=}[\mskip1.5mu \Conid{Tri},\Conid{Nodo}\mskip1.5mu]{}\<[E]%
+\>[B]{}\Varid{inLTree3}\mathrel{=}\alt{\Conid{Tri}}{\uncurry{\uncurry{\Conid{Nodo}}}}{}\<[E]%
 \ColumnHook
 \end{hscode}\resethooks
 
@@ -1616,25 +1616,34 @@ Ora, sabendo que outLTree3 é o isomorfismo de inLTree3, temos então que outLTr
      \start
            \ensuremath{\Varid{outLTree3}\comp \Varid{inLTree3}\mathrel{=}\Varid{id}}
      %
-     \just\equiv{Definição de inLTree3 : \ensuremath{\alt{\Conid{Tri}}{\Conid{Nodo}}}}
+     \just\equiv{Definição de inLTree3 : \ensuremath{\alt{\Conid{Tri}}{\uncurry{\uncurry{\Conid{Nodo}}}}}}
      %
-          \ensuremath{\Varid{outLTree3}\comp \alt{\Conid{Tri}}{\Conid{Nodo}}} = id
+          \ensuremath{\Varid{outLTree3}\comp \alt{\Conid{Tri}}{\uncurry{\uncurry{\Conid{Nodo}}}}} = id
      %
      \just\equiv{Fusão-+ (20)}
      %
-          \ensuremath{\alt{\Varid{outLTree3}\comp \Conid{Tri}}{\Varid{outLTree3}\comp \Conid{Nodo}}} = id
+          \ensuremath{\alt{\Varid{outLTree3}\comp \Conid{Tri}}{\Varid{outLTree3}\comp \uncurry{\uncurry{\Conid{Nodo}}}}} = id
      %
      \just\equiv{Universal-+ (17)}
      %
-             \ensuremath{\begin{lcbr}\Varid{outLTree3}\comp \Conid{Tri}\mathrel{=}\Varid{id}\comp i_1\\\Varid{outLTree3}\comp \Conid{Nodo}\mathrel{=}\Varid{id}\comp i_2\end{lcbr}}
+          \ensuremath{\begin{lcbr}\Varid{outLTree3}\comp \Conid{Tri}\mathrel{=}\Varid{id}\comp i_1\\\Varid{outLTree3}\comp \uncurry{\uncurry{\Conid{Nodo}}}\mathrel{=}\Varid{id}\comp i_2\end{lcbr}}
      %
      \just\equiv{Natural-id (1), Igualdade extensional (71) considerando que x, t, y, z são LTree3}
      %
-             \ensuremath{\begin{lcbr}(\Varid{outLTree3}\comp \Conid{Tri})\;\Varid{x}\mathrel{=}i_1\;\Varid{x}\\(\Varid{outLTree3}\comp \Conid{Nodo})\;\Varid{t}\;\Varid{y}\;\Varid{z}\mathrel{=}i_2\;\Varid{t}\;\Varid{y}\;\Varid{z}\end{lcbr}}
+             \ensuremath{\begin{lcbr}(\Varid{outLTree3}\comp \Conid{Tri})\;\Varid{x}\mathrel{=}i_1\;\Varid{x}\\(\Varid{outLTree3}\comp \uncurry{\uncurry{\Conid{Nodo}}})\;((\Varid{t},\Varid{y}),\Varid{z})\mathrel{=}i_2\;((\Varid{t},\Varid{y}),\Varid{z})\end{lcbr}}
      %
      \just\equiv{Def-comp (72)}
      %
-          \ensuremath{\begin{lcbr}\Varid{outLTree3}\;(\Conid{Tri}\;\Varid{x})\mathrel{=}i_1\;\Varid{x}\\\Varid{outLTree3}\;(\Conid{Nodo}\;\Varid{t}\;\Varid{y}\;\Varid{z})\mathrel{=}i_2\;\Varid{t}\;\Varid{y}\;\Varid{z}\end{lcbr}}
+          \ensuremath{\begin{lcbr}\Varid{outLTree3}\;(\Conid{Tri}\;\Varid{x})\mathrel{=}i_1\;\Varid{x}\\\Varid{outLTree3}\;\uncurry{\uncurry{(\Conid{Nodo}\;((\Varid{t},\Varid{y}),\Varid{z}))}}\mathrel{=}i_2\;((\Varid{t},\Varid{y}),\Varid{z})\end{lcbr}}
+     %
+     \just\equiv{Uncurry (84)}
+     %
+          \ensuremath{\begin{lcbr}\Varid{outLTree3}\;(\Conid{Tri}\;\Varid{x})\mathrel{=}i_1\;\Varid{x}\\\Varid{outLTree3}\;\uncurry{(\Conid{Nodo}\;(\Varid{t},\Varid{y})\;\Varid{z})}\mathrel{=}i_2\;((\Varid{t},\Varid{y}),\Varid{z})\end{lcbr}}
+     %
+     \just\equiv{Uncurry (84)}
+     %
+          \ensuremath{\begin{lcbr}\Varid{outLTree3}\;(\Conid{Tri}\;\Varid{x})\mathrel{=}i_1\;\Varid{x}\\\Varid{outLTree3}\;(\Conid{Nodo}\;\Varid{t}\;\Varid{y}\;\Varid{z})\mathrel{=}i_2\;((\Varid{t},\Varid{y}),\Varid{z})\end{lcbr}}
+     %
      \qed
 \end{eqnarray*}
 
@@ -1645,7 +1654,7 @@ Ora, sabendo que outLTree3 é o isomorfismo de inLTree3, temos então que outLTr
 \\
 \>[B]{}\Varid{outLTree3}\;(\Conid{Nodo}\;\Varid{t}\;\Varid{y}\;\Varid{z})\mathrel{=}i_2\;((\Varid{t},\Varid{y}),\Varid{z}){}\<[E]%
 \\[\blanklineskip]%
-\>[B]{}\Varid{baseLTree3}\;\Varid{g}\;\Varid{f}\mathrel{=}\Varid{g}+\Varid{f}\times(\Varid{f}\times\Varid{f}){}\<[E]%
+\>[B]{}\Varid{baseLTree3}\;\Varid{g}\;\Varid{f}\mathrel{=}\Varid{g}+((\Varid{f}\times\Varid{f})\times\Varid{f}){}\<[E]%
 \ColumnHook
 \end{hscode}\resethooks
 
@@ -1655,7 +1664,7 @@ Pela propriedade de Base-cata, temos que recLTree3 \ensuremath{\Varid{f}\mathrel
 \begin{hscode}\SaveRestoreHook
 \column{B}{@{}>{\hspre}l<{\hspost}@{}}%
 \column{E}{@{}>{\hspre}l<{\hspost}@{}}%
-\>[B]{}\Varid{recLTree3}\;\Varid{f}\mathrel{=}\Varid{id}+\Varid{f}\times(\Varid{f}\times\Varid{f}){}\<[E]%
+\>[B]{}\Varid{recLTree3}\;\Varid{f}\mathrel{=}\Varid{id}+((\Varid{f}\times\Varid{f})\times\Varid{f}){}\<[E]%
 \ColumnHook
 \end{hscode}\resethooks
 
@@ -1762,27 +1771,34 @@ Genes do hilomorfismo \ensuremath{\Varid{sierpinski}}:
 
 \begin{hscode}\SaveRestoreHook
 \column{B}{@{}>{\hspre}l<{\hspost}@{}}%
-\column{32}{@{}>{\hspre}l<{\hspost}@{}}%
-\column{36}{@{}>{\hspre}l<{\hspost}@{}}%
-\column{42}{@{}>{\hspre}l<{\hspost}@{}}%
+\column{19}{@{}>{\hspre}l<{\hspost}@{}}%
+\column{34}{@{}>{\hspre}l<{\hspost}@{}}%
 \column{E}{@{}>{\hspre}l<{\hspost}@{}}%
-\>[B]{}g_1 \mathrel{=}(\Varid{singl}\mathbin{`\Varid{either}`}(\mathsf{conc}\comp (\Varid{id}\times\mathsf{conc})))\mbox{\onelinecomment where conc' (l1,(l2,l3)) = l1++l2++l3}{}\<[E]%
+\>[B]{}g_1 \mathrel{=}\alt{\Varid{singl}}{\mathsf{conc}\comp (\mathsf{conc}\times\Varid{id})}{}\<[E]%
 \\
 \>[B]{}g_2 \;(((\Varid{x},\Varid{y}),\Varid{s}),\Varid{n})\mid \Varid{n}\equiv \mathrm{0}\mathrel{=}i_1\;((\Varid{x},\Varid{y}),\Varid{s}){}\<[E]%
 \\
-\>[B]{}\hsindent{32}{}\<[32]%
-\>[32]{}\mid \Varid{otherwise}\mathrel{=}i_2\;((((\Varid{x},\Varid{y}),\Varid{s'}),\Varid{n'}),((((\Varid{x}\mathbin{+}\Varid{s'},\Varid{y}),\Varid{s'}),\Varid{n'}),(((\Varid{x},\Varid{y}\mathbin{+}\Varid{s'}),\Varid{s'}),\Varid{n'}))){}\<[E]%
+\>[B]{}\hsindent{19}{}\<[19]%
+\>[19]{}\mid \Varid{otherwise}\mathrel{=}i_2\;((\Varid{x1},\Varid{y1}),\Varid{s1})\;\mathbf{where}{}\<[E]%
 \\
-\>[32]{}\hsindent{4}{}\<[36]%
-\>[36]{}\mathbf{where}\;\Varid{s'}\mathrel{=}\Varid{s}\div \mathrm{2}{}\<[E]%
+\>[19]{}\hsindent{15}{}\<[34]%
+\>[34]{}\Varid{x1}\mathrel{=}(((\Varid{x},\Varid{y}),\Varid{s'}),\Varid{n'}){}\<[E]%
 \\
-\>[36]{}\hsindent{6}{}\<[42]%
-\>[42]{}\Varid{n'}\mathrel{=}\Varid{pred}\;\Varid{n}{}\<[E]%
+\>[19]{}\hsindent{15}{}\<[34]%
+\>[34]{}\Varid{y1}\mathrel{=}(((\Varid{x}\mathbin{+}\Varid{s'},\Varid{y}),\Varid{s'}),\Varid{n'}){}\<[E]%
+\\
+\>[19]{}\hsindent{15}{}\<[34]%
+\>[34]{}\Varid{s1}\mathrel{=}(((\Varid{x},\Varid{y}\mathbin{+}\Varid{s'}),\Varid{s'}),\Varid{n'}){}\<[E]%
+\\
+\>[19]{}\hsindent{15}{}\<[34]%
+\>[34]{}\Varid{s'}\mathrel{=}\Varid{s}\div \mathrm{2}{}\<[E]%
+\\
+\>[19]{}\hsindent{15}{}\<[34]%
+\>[34]{}\Varid{n'}\mathrel{=}\Varid{pred}\;\Varid{n}{}\<[E]%
 \ColumnHook
 \end{hscode}\resethooks
 
 \subsection*{Problema 4}
-
 
 \begin{eqnarray*}
      \xymatrix@C=1cm@R=2cm{

@@ -1605,20 +1605,20 @@ Ora, sabendo que outLTree3 é o isomorfismo de inLTree3, temos então que outLTr
      \start
            |outLTree3 . inLTree3 = id|
      %
-     \just\equiv{Definição de inLTree3 : |(either (Tri) (Nodo))|}
+     \just\equiv{Definição de inLTree3 : |(either (Tri) (uncurry (uncurry Nodo)))|}
      %
           |outLTree3 . (either (Tri) (uncurry (uncurry Nodo)))| = id
      %
      \just\equiv{Fusão-+ (20)}
      %
-          |(either (outLTree3 . Tri) (outLTree3 . Nodo))| = id
+          |(either (outLTree3 . Tri) (outLTree3 .(uncurry (uncurry Nodo))))| = id
      %
      \just\equiv{Universal-+ (17)}
      %
-             |lcbr( 
+          |lcbr( 
                outLTree3 . Tri = id . i1
           )(
-               outLTree3 . Nodo = id . i2
+               outLTree3 . (uncurry (uncurry Nodo)) = id . i2
           )|
      %
      \just\equiv{Natural-id (1), Igualdade extensional (71) considerando que x, t, y, z são LTree3}
@@ -1626,7 +1626,7 @@ Ora, sabendo que outLTree3 é o isomorfismo de inLTree3, temos então que outLTr
              |lcbr(
                (outLTree3  .  Tri) x = i1 x
           )(
-               (outLTree3  .  Nodo) ((t,y),z) = i2 ((t, y), z)
+               (outLTree3  .  (uncurry (uncurry Nodo))) ((t,y),z) = i2 ((t, y), z)
           )|
      %
      \just\equiv{Def-comp (72)}
@@ -1634,8 +1634,25 @@ Ora, sabendo que outLTree3 é o isomorfismo de inLTree3, temos então que outLTr
           |lcbr(
                outLTree3 (Tri x) = i1 x
           )(
-               outLTree3 (Nodo ((t, y), z)) = i2 ((t, y), z)
+               outLTree3 (uncurry (uncurry (Nodo ((t, y), z)))) = i2 ((t, y), z)
           )|
+     %
+     \just\equiv{Uncurry (84)}
+     %
+          |lcbr(
+               outLTree3 (Tri x) = i1 x
+          )(
+               outLTree3 (uncurry (Nodo (t, y) z)) = i2 ((t, y), z)
+          )|
+     %
+     \just\equiv{Uncurry (84)}
+     %
+          |lcbr(
+               outLTree3 (Tri x) = i1 x
+          )(
+               outLTree3 (Nodo t y z) = i2 ((t, y), z)
+          )|
+     %
      \qed
 \end{eqnarray*}
 
@@ -1740,7 +1757,7 @@ Ora, sabemos que um hilomorfismo é a composição de catamorfismo, após um ana
 
 Logo,
 \begin{code}
-hyloLTree3 f g = cataLTree3 . anaLTree3
+hyloLTree3 f g = cataLTree3 f . anaLTree3 g
 \end{code}
 
 Genes do hilomorfismo |sierpinski|:
